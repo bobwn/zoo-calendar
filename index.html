@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoo Calendar - Your Gateway to Current Zoo Events</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2d5016 0%, #3d6b23 50%, #4a7c29 100%);
+            color: #2d3e2d;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-bottom: 3px solid #4a7c29;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo h1 {
+            color: #2d5016;
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .logo::before {
+            content: "🦁";
+            font-size: 2rem;
+        }
+
+        .tagline {
+            color: #5a4037;
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-top: 0.2rem;
+        }
+
+        .header-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .login-form {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .login-form input {
+            padding: 0.4rem 0.8rem;
+            border: 2px solid #4a7c29;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            background: white;
+        }
+
+        .login-form input:focus {
+            outline: none;
+            border-color: #2d5016;
+            box-shadow: 0 0 5px rgba(45, 80, 22, 0.3);
+        }
+
+        .btn {
+            background: #4a7c29;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+        }
+
+        .btn:hover {
+            background: #2d5016;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: #5a4037;
+        }
+
+        .btn-secondary:hover {
+            background: #3d2b26;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            display: flex;
+            padding: 2rem;
+            gap: 2rem;
+            overflow: hidden;
+        }
+
+        .states-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            width: 100%;
+            height: 100%;
+        }
+
+        .state-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 3px solid #4a7c29;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .state-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-color: #2d5016;
+        }
+
+        .state-header {
+            text-align: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #4a7c29;
+        }
+
+        .state-name {
+            color: #2d5016;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .zoo-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            flex: 1;
+        }
+
+        .zoo-link {
+            display: block;
+            padding: 0.8rem 1rem;
+            background: #f8f9f8;
+            color: #2d5016;
+            text-decoration: none;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .zoo-link:hover {
+            background: #4a7c29;
+            color: white;
+            border-color: #2d5016;
+            transform: scale(1.02);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 500px;
+            margin: 10% auto;
+            position: relative;
+            border: 3px solid #4a7c29;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #5a4037;
+        }
+
+        .modal h3 {
+            color: #2d5016;
+            margin-bottom: 1rem;
+        }
+
+        .modal textarea {
+            width: 100%;
+            height: 120px;
+            padding: 0.8rem;
+            border: 2px solid #4a7c29;
+            border-radius: 8px;
+            font-family: inherit;
+            resize: vertical;
+        }
+
+        .modal textarea:focus {
+            outline: none;
+            border-color: #2d5016;
+            box-shadow: 0 0 5px rgba(45, 80, 22, 0.3);
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        /* Success message */
+        .success-message {
+            display: none;
+            background: #4a7c29;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {            
+            .header {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .login-form {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 600px) {            
+            .main-content {
+                padding: 1rem;
+                overflow-y: auto;
+            }
+            
+            .zoo-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            body {
+                overflow: auto;
+            }
+            
+            .container {
+                height: auto;
+                min-height: 100vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div>
+                <div class="logo">
+                    <h1>Zoo Calendar</h1>
+                </div>
+                <div class="tagline">Your gateway to current zoo events</div>
+            </div>
+            
+            <div class="header-controls">
+                <div class="login-form">
+                    <input type="text" id="username" placeholder="Username" />
+                    <input type="password" id="password" placeholder="Password" />
+                    <button class="btn" onclick="handleLogin()">Login</button>
+                </div>
+                <button class="btn btn-secondary" onclick="openCommentModal()">Comment</button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="states-grid">
+                <!-- California -->
+                <div class="state-card">
+                    <div class="state-header">
+                        <h2 class="state-name">California</h2>
+                    </div>
+                    <div class="zoo-links">
+                        <a href="https://zoo.sandiegozoo.org/events" target="_blank" class="zoo-link">San Diego Zoo Events</a>
+                    </div>
+                </div>
+
+                <!-- Texas -->
+                <div class="state-card">
+                    <div class="state-header">
+                        <h2 class="state-name">Texas</h2>
+                    </div>
+                    <div class="zoo-links">
+                        <a href="https://www.houstonzoo.org/events/" target="_blank" class="zoo-link">Houston Zoo Events</a>
+                        <a href="https://sazoo.org/events/" target="_blank" class="zoo-link">San Antonio Zoo Events</a>
+                    </div>
+                </div>
+
+                <!-- Tennessee -->
+                <div class="state-card">
+                    <div class="state-header">
+                        <h2 class="state-name">Tennessee</h2>
+                    </div>
+                    <div class="zoo-links">
+                        <a href="https://www.memphiszoo.org/events" target="_blank" class="zoo-link">Memphis Zoo Events</a>
+                        <a href="https://knoxvillezoo.org/events/" target="_blank" class="zoo-link">Knoxville Zoo Events</a>
+                    </div>
+                </div>
+
+                <!-- Pennsylvania -->
+                <div class="state-card">
+                    <div class="state-header">
+                        <h2 class="state-name">Pennsylvania</h2>
+                    </div>
+                    <div class="zoo-links">
+                        <a href="https://www.philadelphiazoo.org/events/" target="_blank" class="zoo-link">Philadelphia Zoo Events</a>
+                    </div>
+                </div>
+
+                <!-- Colorado -->
+                <div class="state-card">
+                    <div class="state-header">
+                        <h2 class="state-name">Colorado</h2>
+                    </div>
+                    <div class="zoo-links">
+                        <a href="https://denzoo.org/events/" target="_blank" class="zoo-link">Denver Zoo Events</a>
+                    </div>
+                </div>
+
+                <!-- Ohio -->
+                <div class="state-card">
+                    <div class="state-header">
+                        <h2 class="state-name">Ohio</h2>
+                    </div>
+                    <div class="zoo-links">
+                        <a href="https://cincinnatizoo.org/events/" target="_blank" class="zoo-link">Cincinnati Zoo Events</a>
+                    </div>
+                </div>
+
+                <!-- Illinois -->
+                <div class="state-card">
+                    <div class="state-header">
+                        <h2 class="state-name">Illinois</h2>
+                    </div>
+                    <div class="zoo-links">
+                        <a href="https://www.brookfieldzoo.org/events" target="_blank" class="zoo-link">Brookfield Zoo Events</a>
+                    </div>
+                </div>
+
+                <!-- Featured Info Card -->
+                <div class="state-card" style="background: rgba(74, 124, 41, 0.1); border-color: #5a4037;">
+                    <div class="state-header">
+                        <h2 class="state-name" style="color: #5a4037;">Welcome!</h2>
+                    </div>
+                    <div style="text-align: center; padding: 1rem;">
+                        <p style="color: #5a4037; font-weight: 500; line-height: 1.5;">
+                            Discover amazing events at top zoos across America. Click any zoo link to explore their current activities and plan your next wildlife adventure!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Comment Modal -->
+    <div id="commentModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeCommentModal()">&times;</span>
+            <h3>Share Your Feedback</h3>
+            <p style="margin-bottom: 1rem; color: #5a4037;">Help us improve Zoo Calendar by sharing your thoughts on the website's functionality:</p>
+            <textarea id="commentText" placeholder="Tell us what you think about the website, its usability, or suggest improvements..."></textarea>
+            <div class="success-message" id="successMessage">
+                Thank you for your feedback! Your comment has been submitted.
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeCommentModal()">Cancel</button>
+                <button class="btn" onclick="submitComment()">Submit Comment</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Login functionality
+        function handleLogin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (username && password) {
+                alert(`Welcome back, ${username}! Login successful.`);
+                document.getElementById('username').value = '';
+                document.getElementById('password').value = '';
+            } else {
+                alert('Please enter both username and password.');
+            }
+        }
+
+        // Comment modal functionality
+        function openCommentModal() {
+            document.getElementById('commentModal').style.display = 'block';
+            document.getElementById('successMessage').style.display = 'none';
+            document.getElementById('commentText').value = '';
+        }
+
+        function closeCommentModal() {
+            document.getElementById('commentModal').style.display = 'none';
+        }
+
+        function submitComment() {
+            const comment = document.getElementById('commentText').value.trim();
+            
+            if (comment) {
+                document.getElementById('successMessage').style.display = 'block';
+                document.getElementById('commentText').value = '';
+                
+                setTimeout(() => {
+                    closeCommentModal();
+                }, 2000);
+            } else {
+                alert('Please enter your comment before submitting.');
+            }
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('commentModal');
+            if (event.target === modal) {
+                closeCommentModal();
+            }
+        }
+
+        // Handle Enter key for login
+        document.getElementById('password').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                handleLogin();
+            }
+        });
+
+        // Add some interactive animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.state-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    card.style.transition = 'all 0.6s ease';
+                    
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 100);
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>
