@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zoo Calendar Explorer</title>
+    <title>Zoo Calendar</title>
     <style>
         * {
             margin: 0;
@@ -80,7 +80,7 @@
         
         .main-content {
             display: grid;
-            grid-template-columns: 2.2fr 1fr;
+            grid-template-columns: 1fr;
             gap: 12px;
             flex: 1;
             overflow: hidden;
@@ -138,6 +138,7 @@
             box-shadow: 0 3px 10px rgba(52, 152, 219, 0.3);
         }
         
+        /* Commented out authentication section
         .auth-section {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 8px;
@@ -228,11 +229,11 @@
             border: 1px solid #c3e6cb;
             font-size: 0.8em;
         }
+        */
         
         @media (max-width: 768px) {
             .main-content {
                 grid-template-columns: 1fr;
-                grid-template-rows: 1fr auto;
             }
             
             .header h1 {
@@ -242,23 +243,15 @@
             .container {
                 padding: 5px;
             }
-            
-            .zoo-links {
-                order: 1;
-            }
-            
-            .auth-section {
-                order: 2;
-            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="version">Version 1.2</div>
+        <div class="version">Version 1.3</div>
         
         <div class="header">
-            <h1>Zoo Calendar Explorer<span class="parrot-icon">🦜</span></h1>
+            <h1>Zoo Calendar<span class="parrot-icon">🦜</span></h1>
             <div class="tagline">Your gateway to exciting zoo events</div>
             <div class="subtitle">Connect with amazing zoo experiences across America</div>
         </div>
@@ -323,6 +316,7 @@
                 </div>
             </div>
             
+            <!-- Commented out authentication section
             <div class="auth-section">
                 <div class="auth-toggle">
                     <button id="loginTab" class="active" onclick="showLogin()">Login</button>
@@ -365,9 +359,11 @@
                     </form>
                 </div>
             </div>
+            -->
         </div>
     </div>
 
+    <!-- Commented out authentication JavaScript
     <script>
         function showLogin() {
             document.getElementById('loginForm').classList.remove('hidden');
@@ -405,7 +401,7 @@
             }
             
             // Simulate account creation
-            showSuccessMessage('Account created successfully! Welcome to Zoo Calendar Explorer.');
+            showSuccessMessage('Account created successfully! Welcome to Zoo Calendar.');
         }
 
         function showSuccessMessage(message) {
@@ -427,5 +423,6 @@
             document.querySelectorAll('input').forEach(input => input.value = '');
         }
     </script>
+    -->
 </body>
 </html>
