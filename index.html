@@ -3,432 +3,562 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zoo Calendar</title>
+    <title>ZooCalendar - Find a Zoo! Plan an event!</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.3;
-            color: #333;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            height: 100vh;
-            overflow: hidden;
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 8px;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
         }
-        
-        .version {
-            text-align: right;
-            color: #fff;
-            font-size: 0.8em;
-            margin-bottom: 3px;
-            opacity: 0.8;
-        }
-        
+
         .header {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 8px;
-            padding: 12px;
             text-align: center;
-            margin-bottom: 8px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-        }
-        
-        .header h1 {
-            font-size: 1.6em;
-            color: #2c3e50;
-            margin-bottom: 3px;
-            font-weight: 700;
-            display: inline;
-        }
-        
-        .parrot-icon {
-            font-size: 1.6em;
-            margin-left: 10px;
-            display: inline;
-            animation: bob 2s ease-in-out infinite alternate;
-        }
-        
-        @keyframes bob {
-            from { transform: translateY(-3px); }
-            to { transform: translateY(3px); }
-        }
-        
-        .tagline {
-            font-size: 0.85em;
-            color: #7f8c8d;
-            margin-bottom: 3px;
-        }
-        
-        .subtitle {
-            font-size: 0.9em;
-            color: #34495e;
-            font-weight: 500;
-        }
-        
-        .main-content {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 12px;
-            flex: 1;
-            overflow: hidden;
-        }
-        
-        .zoo-links {
+            margin-bottom: 40px;
             background: rgba(255, 255, 255, 0.95);
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-            height: 100%;
-            overflow-y: auto;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
         }
-        
-        .zoo-links h2 {
-            color: #2c3e50;
-            margin-bottom: 12px;
-            font-size: 1.3em;
-            text-align: center;
-        }
-        
-        .state-section {
-            margin-bottom: 12px;
-        }
-        
-        .state-name {
-            font-size: 1em;
-            font-weight: 600;
-            color: #3498db;
-            margin-bottom: 6px;
-            border-bottom: 1px solid #ecf0f1;
-            padding-bottom: 2px;
-        }
-        
-        .zoo-item {
-            margin-bottom: 4px;
-            margin-left: 12px;
-        }
-        
-        .zoo-item a {
-            color: #2980b9;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.85em;
-            padding: 4px 8px;
-            border-radius: 5px;
-            display: inline-block;
-            transition: all 0.3s ease;
-        }
-        
-        .zoo-item a:hover {
-            background: #3498db;
-            color: white;
-            transform: translateY(-1px);
-            box-shadow: 0 3px 10px rgba(52, 152, 219, 0.3);
-        }
-        
-        /* Commented out authentication section
-        .auth-section {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-            height: fit-content;
-        }
-        
-        .auth-toggle {
+
+        .title {
             display: flex;
-            margin-bottom: 12px;
-            border-radius: 5px;
-            overflow: hidden;
-            background: #ecf0f1;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
         }
-        
-        .auth-toggle button {
-            flex: 1;
-            padding: 8px;
+
+        .title h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .parrot-gif {
+            width: 60px;
+            height: 60px;
+            background: url('https://media.giphy.com/media/l0HlMSVVw9zqmClLq/giphy.gif') no-repeat center;
+            background-size: cover;
+            border-radius: 50%;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .byline {
+            font-size: 1.2rem;
+            color: #666;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+
+        .search-container {
+            position: relative;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        #stateInput {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 1.1rem;
+            border: 2px solid #ddd;
+            border-radius: 50px;
+            outline: none;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        #stateInput:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.2);
+        }
+
+        #searchBtn {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            bottom: 5px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
             border: none;
-            background: #ecf0f1;
-            color: #7f8c8d;
+            border-radius: 50px;
+            padding: 0 25px;
             cursor: pointer;
-            font-weight: 500;
-            font-size: 0.85em;
+            font-weight: 600;
             transition: all 0.3s ease;
         }
-        
-        .auth-toggle button.active {
-            background: #3498db;
-            color: white;
+
+        #searchBtn:hover {
+            transform: translateX(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
         }
-        
-        .form-group {
+
+        .tiles-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .zoo-tile {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            transform: scale(0);
+            animation: tileAppear 0.5s ease-out forwards;
+            border-left: 5px solid #667eea;
+        }
+
+        @keyframes tileAppear {
+            to {
+                transform: scale(1);
+            }
+        }
+
+        .tile-header {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .zoo-list {
+            list-style: none;
+        }
+
+        .zoo-list li {
             margin-bottom: 10px;
         }
-        
-        .form-group label {
+
+        .zoo-list a {
             display: block;
-            margin-bottom: 3px;
-            font-weight: 500;
-            color: #2c3e50;
-            font-size: 0.8em;
+            padding: 12px 15px;
+            background: linear-gradient(45deg, #f8f9ff, #e8f0ff);
+            color: #333;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
         }
-        
-        .form-group input {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 13px;
-            transition: border-color 0.3s ease;
-        }
-        
-        .form-group input:focus {
-            outline: none;
-            border-color: #3498db;
-            box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
-        }
-        
-        .submit-btn {
-            width: 100%;
-            padding: 8px;
-            background: #27ae60;
+
+        .zoo-list a:hover {
+            background: linear-gradient(45deg, #667eea, #764ba2);
             color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 13px;
+            transform: translateX(5px);
+            border-left-color: #fff;
+        }
+
+        .error-message {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
             font-weight: 600;
-            cursor: pointer;
-            transition: background 0.3s ease;
+            animation: shake 0.5s ease-in-out;
         }
-        
-        .submit-btn:hover {
-            background: #229954;
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
         }
-        
-        .hidden {
-            display: none;
+
+        .placeholder-parrot {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            animation: bounce 2s infinite;
         }
-        
-        .success-message {
-            background: #d5edda;
-            color: #155724;
-            padding: 8px;
-            border-radius: 4px;
-            margin-bottom: 10px;
-            border: 1px solid #c3e6cb;
-            font-size: 0.8em;
-        }
-        */
-        
+
         @media (max-width: 768px) {
-            .main-content {
+            .title h1 {
+                font-size: 2rem;
+            }
+            
+            .title {
+                flex-direction: column;
+            }
+            
+            .tiles-container {
                 grid-template-columns: 1fr;
-            }
-            
-            .header h1 {
-                font-size: 1.4em;
-            }
-            
-            .container {
-                padding: 5px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="version">Version 1.3</div>
-        
         <div class="header">
-            <h1>Zoo Calendar<span class="parrot-icon">🦜</span></h1>
-            <div class="tagline">Your gateway to exciting zoo events</div>
-            <div class="subtitle">Connect with amazing zoo experiences across America</div>
-        </div>
-        
-        <div class="main-content">
-            <div class="zoo-links">
-                <h2>Zoo Events by State</h2>
-                
-                <div class="state-section">
-                    <div class="state-name">California</div>
-                    <div class="zoo-item">
-                        <a href="https://zoo.sandiegozoo.org/activities" target="_blank">San Diego Zoo events</a>
-                    </div>
-                </div>
-                
-                <div class="state-section">
-                    <div class="state-name">Texas</div>
-                    <div class="zoo-item">
-                        <a href="https://www.houstonzoo.org/plan-your-visit/calendar/" target="_blank">Houston Zoo events</a>
-                    </div>
-                    <div class="zoo-item">
-                        <a href="https://sazoo.org/events/" target="_blank">San Antonio Zoo events</a>
-                    </div>
-                </div>
-                
-                <div class="state-section">
-                    <div class="state-name">Tennessee</div>
-                    <div class="zoo-item">
-                        <a href="https://www.memphiszoo.org/special-events" target="_blank">Memphis Zoo events</a>
-                    </div>
-                    <div class="zoo-item">
-                        <a href="https://www.zooknoxville.org/special-events/events/" target="_blank">Knoxville Zoo events</a>
-                    </div>
-                </div>
-                
-                <div class="state-section">
-                    <div class="state-name">Pennsylvania</div>
-                    <div class="zoo-item">
-                        <a href="https://www.philadelphiazoo.org/events/" target="_blank">Philadelphia Zoo events</a>
-                    </div>
-                </div>
-                
-                <div class="state-section">
-                    <div class="state-name">Colorado</div>
-                    <div class="zoo-item">
-                        <a href="https://denverzoo.org/things-to-do/" target="_blank">Denver Zoo events</a>
-                    </div>
-                </div>
-                
-                <div class="state-section">
-                    <div class="state-name">Ohio</div>
-                    <div class="zoo-item">
-                        <a href="https://cincinnatizoo.org/events/" target="_blank">Cincinnati Zoo events</a>
-                    </div>
-                </div>
-                
-                <div class="state-section">
-                    <div class="state-name">Illinois</div>
-                    <div class="zoo-item">
-                        <a href="https://www.brookfieldzoo.org/events" target="_blank">Chicago Zoo events</a>
-                    </div>
-                </div>
-                <div class="state-section">
-                    <div class="state-name">Kansas</div>
-                    <div class="zoo-item">
-                        <a href="https://www.rollinghillszoo.org/events" target="_blank">Salina: Rolling Hills Zoo events</a>
-                    </div>
-                </div>
+            <div class="title">
+                <h1>ZooCalendar</h1>
+                <div class="placeholder-parrot">🦜</div>
             </div>
-            
-            <!-- Commented out authentication section
-            <div class="auth-section">
-                <div class="auth-toggle">
-                    <button id="loginTab" class="active" onclick="showLogin()">Login</button>
-                    <button id="signupTab" onclick="showSignup()">Sign Up</button>
-                </div>
-                
-                <div id="loginForm">
-                    <form onsubmit="handleLogin(event)">
-                        <div class="form-group">
-                            <label for="loginEmail">Email</label>
-                            <input type="email" id="loginEmail" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="loginPassword">Password</label>
-                            <input type="password" id="loginPassword" required>
-                        </div>
-                        <button type="submit" class="submit-btn">Login</button>
-                    </form>
-                </div>
-                
-                <div id="signupForm" class="hidden">
-                    <form onsubmit="handleSignup(event)">
-                        <div class="form-group">
-                            <label for="signupName">Full Name</label>
-                            <input type="text" id="signupName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="signupEmail">Email</label>
-                            <input type="email" id="signupEmail" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="signupPassword">Password</label>
-                            <input type="password" id="signupPassword" required minlength="6">
-                        </div>
-                        <div class="form-group">
-                            <label for="confirmPassword">Confirm Password</label>
-                            <input type="password" id="confirmPassword" required minlength="6">
-                        </div>
-                        <button type="submit" class="submit-btn">Create Account</button>
-                    </form>
-                </div>
+            <p class="byline">Find a Zoo! Plan an event!</p>
+            <div class="search-container">
+                <input type="text" id="stateInput" placeholder="Enter a state name (e.g., California, Texas, Florida)">
+                <button id="searchBtn">Search</button>
             </div>
-            -->
         </div>
+
+        <div class="tiles-container" id="tilesContainer">
+        </div>
+
+        <div id="errorContainer"></div>
     </div>
 
-    <!-- Commented out authentication JavaScript
     <script>
-        function showLogin() {
-            document.getElementById('loginForm').classList.remove('hidden');
-            document.getElementById('signupForm').classList.add('hidden');
-            document.getElementById('loginTab').classList.add('active');
-            document.getElementById('signupTab').classList.remove('active');
+        // Comprehensive zoo data by state
+        const zooData = {
+            'alabama': [
+                { name: 'Birmingham Zoo', url: 'https://www.birminghamzoo.com/' },
+                { name: 'Montgomery Zoo', url: 'https://www.montgomeryzoo.com/' },
+                { name: 'Gulf Coast Zoo', url: 'https://www.gulfcoastzoo.org/' }
+            ],
+            'alaska': [
+                { name: 'Alaska Zoo', url: 'https://www.alaskazoo.org/' },
+                { name: 'Alaska Wildlife Conservation Center', url: 'https://www.alaskawildlife.org/' }
+            ],
+            'arizona': [
+                { name: 'Phoenix Zoo', url: 'https://www.phoenixzoo.org/' },
+                { name: 'Reid Park Zoo', url: 'https://reidparkzoo.org/' },
+                { name: 'Arizona-Sonora Desert Museum', url: 'https://www.desertmuseum.org/' },
+                { name: 'Wildlife World Zoo', url: 'https://wildlifeworld.com/' }
+            ],
+            'arkansas': [
+                { name: 'Little Rock Zoo', url: 'https://www.littlerockzoo.com/' },
+                { name: 'Turpentine Creek Wildlife Refuge', url: 'https://www.turpentinecreek.org/' }
+            ],
+            'california': [
+                { name: 'San Diego Zoo', url: 'https://zoo.sandiegozoo.org/' },
+                { name: 'Los Angeles Zoo', url: 'https://www.lazoo.org/' },
+                { name: 'San Francisco Zoo', url: 'https://www.sfzoo.org/' },
+                { name: 'Oakland Zoo', url: 'https://www.oaklandzoo.org/' },
+                { name: 'Sacramento Zoo', url: 'https://www.saczoo.org/' },
+                { name: 'Fresno Chaffee Zoo', url: 'https://www.fresnochaffeezoo.org/' }
+            ],
+            'colorado': [
+                { name: 'Denver Zoo', url: 'https://denverzoo.org/' },
+                { name: 'Cheyenne Mountain Zoo', url: 'https://www.cmzoo.org/' },
+                { name: 'Pueblo Zoo', url: 'https://www.pueblozoo.org/' }
+            ],
+            'connecticut': [
+                { name: 'Beardsley Zoo', url: 'https://www.beardsleyzoo.org/' },
+                { name: 'Mystic Aquarium', url: 'https://www.mysticaquarium.org/' }
+            ],
+            'delaware': [
+                { name: 'Brandywine Zoo', url: 'https://www.brandywinezoo.org/' }
+            ],
+            'florida': [
+                { name: 'Zoo Miami', url: 'https://www.zoomiami.org/' },
+                { name: 'Busch Gardens Tampa Bay', url: 'https://buschgardens.com/tampa/' },
+                { name: 'Central Florida Zoo', url: 'https://www.centralfloridazoo.org/' },
+                { name: 'Jacksonville Zoo', url: 'https://www.jacksonvillezoo.org/' },
+                { name: 'Palm Beach Zoo', url: 'https://www.palmbeachzoo.org/' },
+                { name: 'Lowry Park Zoo', url: 'https://www.zootampa.org/' }
+            ],
+            'georgia': [
+                { name: 'Zoo Atlanta', url: 'https://zooatlanta.org/' },
+                { name: 'Wild Adventures', url: 'https://www.wildadventures.com/' }
+            ],
+            'hawaii': [
+                { name: 'Honolulu Zoo', url: 'https://www.honoluluzoo.org/' }
+            ],
+            'idaho': [
+                { name: 'Zoo Boise', url: 'https://zooboise.org/' },
+                { name: 'Tautphaus Park Zoo', url: 'https://www.idahofallsidaho.gov/facilities/facility/details/Tautphaus-Park-Zoo-5' }
+            ],
+            'illinois': [
+                { name: 'Lincoln Park Zoo', url: 'https://www.lpzoo.org/' },
+                { name: 'Brookfield Zoo', url: 'https://www.czs.org/' },
+                { name: 'Miller Park Zoo', url: 'https://www.bloomingtonparks.org/miller-park-zoo' }
+            ],
+            'indiana': [
+                { name: 'Indianapolis Zoo', url: 'https://www.indianapoliszoo.com/' },
+                { name: 'Fort Wayne Children\'s Zoo', url: 'https://kidszoo.org/' },
+                { name: 'Mesker Park Zoo', url: 'https://www.meskerparkzoo.com/' }
+            ],
+            'iowa': [
+                { name: 'Blank Park Zoo', url: 'https://www.blankparkzoo.com/' }
+            ],
+            'kansas': [
+                { name: 'Sedgwick County Zoo', url: 'https://www.scz.org/' },
+                { name: 'Topeka Zoo', url: 'https://www.topekazoo.org/' }
+            ],
+            'kentucky': [
+                { name: 'Louisville Zoo', url: 'https://www.louisvillezoo.org/' },
+                { name: 'Newport Aquarium', url: 'https://www.newportaquarium.com/' }
+            ],
+            'louisiana': [
+                { name: 'Audubon Zoo', url: 'https://audubonnatureinstitute.org/zoo' },
+                { name: 'Alexandria Zoo', url: 'https://www.thealexandriazoo.com/' }
+            ],
+            'maine': [
+                { name: 'Maine Wildlife Park', url: 'https://www.maine.gov/ifw/wildlife-park/' }
+            ],
+            'maryland': [
+                { name: 'Maryland Zoo', url: 'https://www.marylandzoo.org/' },
+                { name: 'National Aquarium', url: 'https://www.aqua.org/' }
+            ],
+            'massachusetts': [
+                { name: 'Franklin Park Zoo', url: 'https://www.zoonewengland.org/franklin-park-zoo/' },
+                { name: 'Stone Zoo', url: 'https://www.zoonewengland.org/stone-zoo/' }
+            ],
+            'michigan': [
+                { name: 'Detroit Zoo', url: 'https://detroitzoo.org/' },
+                { name: 'Potter Park Zoo', url: 'https://potterparkzoo.org/' },
+                { name: 'John Ball Zoo', url: 'https://www.jbzoo.org/' }
+            ],
+            'minnesota': [
+                { name: 'Minnesota Zoo', url: 'https://mnzoo.org/' },
+                { name: 'Como Park Zoo', url: 'https://comozooconservatory.org/' }
+            ],
+            'mississippi': [
+                { name: 'Jackson Zoo', url: 'https://jacksonzoo.org/' },
+                { name: 'Hattiesburg Zoo', url: 'https://hattiesburgzoo.com/' }
+            ],
+            'missouri': [
+                { name: 'Saint Louis Zoo', url: 'https://www.stlzoo.org/' },
+                { name: 'Kansas City Zoo', url: 'https://www.kansascityzoo.org/' }
+            ],
+            'montana': [
+                { name: 'ZooMontana', url: 'https://www.zoomontana.org/' }
+            ],
+            'nebraska': [
+                { name: 'Henry Doorly Zoo', url: 'https://www.omahazoo.com/' },
+                { name: 'Lincoln Children\'s Zoo', url: 'https://www.lincolnzoo.org/' }
+            ],
+            'nevada': [
+                { name: 'Sierra Safari Zoo', url: 'https://www.sierrasafarizoo.org/' }
+            ],
+            'new hampshire': [
+                { name: 'Charmingfare Farm', url: 'https://www.charmingfare.com/' }
+            ],
+            'new jersey': [
+                { name: 'Turtle Back Zoo', url: 'https://www.turtlebackzoo.com/' },
+                { name: 'Cape May County Zoo', url: 'https://www.capemaycountyzoo.com/' }
+            ],
+            'new mexico': [
+                { name: 'ABQ BioPark Zoo', url: 'https://www.cabq.gov/arks/' }
+            ],
+            'new york': [
+                { name: 'Bronx Zoo', url: 'https://bronxzoo.com/' },
+                { name: 'Central Park Zoo', url: 'https://centralparkzoo.com/' },
+                { name: 'Buffalo Zoo', url: 'https://www.buffalozoo.org/' },
+                { name: 'Seneca Park Zoo', url: 'https://senecaparkzoo.org/' }
+            ],
+            'north carolina': [
+                { name: 'North Carolina Zoo', url: 'https://www.nczoo.org/' },
+                { name: 'Riverbanks Zoo', url: 'https://www.riverbanks.org/' }
+            ],
+            'north dakota': [
+                { name: 'Roosevelt Park Zoo', url: 'https://www.rooseveltparkzoo.org/' }
+            ],
+            'ohio': [
+                { name: 'Cincinnati Zoo', url: 'https://cincinnatizoo.org/' },
+                { name: 'Cleveland Metroparks Zoo', url: 'https://www.clevelandmetroparks.com/zoo' },
+                { name: 'Columbus Zoo', url: 'https://www.columbuszoo.org/' },
+                { name: 'Toledo Zoo', url: 'https://www.toledozoo.org/' }
+            ],
+            'oklahoma': [
+                { name: 'Oklahoma City Zoo', url: 'https://www.okczoo.org/' },
+                { name: 'Tulsa Zoo', url: 'https://www.tulsazoo.org/' }
+            ],
+            'oregon': [
+                { name: 'Oregon Zoo', url: 'https://www.oregonzoo.org/' }
+            ],
+            'pennsylvania': [
+                { name: 'Philadelphia Zoo', url: 'https://www.philadelphiazoo.org/' },
+                { name: 'Pittsburgh Zoo', url: 'https://www.pittsburghzoo.org/' },
+                { name: 'Erie Zoo', url: 'https://www.eriezoo.org/' }
+            ],
+            'rhode island': [
+                { name: 'Roger Williams Park Zoo', url: 'https://www.rwpzoo.org/' }
+            ],
+            'south carolina': [
+                { name: 'Riverbanks Zoo', url: 'https://www.riverbanks.org/' },
+                { name: 'Greenville Zoo', url: 'https://www.greenvillezoo.com/' }
+            ],
+            'south dakota': [
+                { name: 'Great Plains Zoo', url: 'https://www.gpzoo.org/' }
+            ],
+            'tennessee': [
+                { name: 'Nashville Zoo', url: 'https://www.nashvillezoo.org/' },
+                { name: 'Memphis Zoo', url: 'https://www.memphiszoo.org/' },
+                { name: 'Knoxville Zoo', url: 'https://www.knoxvillezoo.org/' }
+            ],
+            'texas': [
+                { name: 'Houston Zoo', url: 'https://www.houstonzoo.org/' },
+                { name: 'Dallas Zoo', url: 'https://www.dallaszoo.com/' },
+                { name: 'San Antonio Zoo', url: 'https://sazoo.org/' },
+                { name: 'Fort Worth Zoo', url: 'https://www.fortworthzoo.org/' },
+                { name: 'Austin Zoo', url: 'https://austinzoo.org/' }
+            ],
+            'utah': [
+                { name: 'Hogle Zoo', url: 'https://www.hoglezoo.org/' }
+            ],
+            'vermont': [
+                { name: 'VINS Nature Center', url: 'https://vinsweb.org/' }
+            ],
+            'virginia': [
+                { name: 'Virginia Zoo', url: 'https://www.virginiazoo.org/' },
+                { name: 'Metro Richmond Zoo', url: 'https://www.metrorichmondzoo.com/' }
+            ],
+            'washington': [
+                { name: 'Woodland Park Zoo', url: 'https://www.zoo.org/' },
+                { name: 'Point Defiance Zoo', url: 'https://www.pdza.org/' }
+            ],
+            'west virginia': [
+                { name: 'Oglebay Good Zoo', url: 'https://www.oglebaygoodzioo.org/' }
+            ],
+            'wisconsin': [
+                { name: 'Milwaukee County Zoo', url: 'https://www.milwaukeezoo.org/' },
+                { name: 'Menominee Zoo', url: 'https://www.menomineezoo.org/' }
+            ],
+            'wyoming': [
+                { name: 'Cheyenne Mountain Zoo', url: 'https://www.cmzoo.org/' }
+            ]
+        };
+
+        const stateList = Object.keys(zooData);
+        let currentTiles = [];
+
+        function normalizeStateName(input) {
+            return input.toLowerCase().trim();
         }
 
-        function showSignup() {
-            document.getElementById('signupForm').classList.remove('hidden');
-            document.getElementById('loginForm').classList.add('hidden');
-            document.getElementById('signupTab').classList.add('active');
-            document.getElementById('loginTab').classList.remove('active');
+        function isValidState(stateName) {
+            return stateList.includes(normalizeStateName(stateName));
         }
 
-        function handleLogin(event) {
-            event.preventDefault();
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
+        function showError(message) {
+            const errorContainer = document.getElementById('errorContainer');
+            errorContainer.innerHTML = `<div class="error-message">${message}</div>`;
+            setTimeout(() => {
+                errorContainer.innerHTML = '';
+            }, 4000);
+        }
+
+        function createZooTile(stateName, zoos) {
+            const tile = document.createElement('div');
+            tile.className = 'zoo-tile';
             
-            // Simulate login process
-            showSuccessMessage('Login successful! Welcome back.');
+            const stateDisplayName = stateName.charAt(0).toUpperCase() + stateName.slice(1);
+            
+            let zooListHtml = '';
+            zoos.forEach(zoo => {
+                zooListHtml += `<li><a href="${zoo.url}" target="_blank" rel="noopener noreferrer">${zoo.name}</a></li>`;
+            });
+
+            tile.innerHTML = `
+                <div class="tile-header">${stateDisplayName} Zoos</div>
+                <ul class="zoo-list">
+                    ${zooListHtml}
+                </ul>
+            `;
+
+            return tile;
         }
 
-        function handleSignup(event) {
-            event.preventDefault();
-            const name = document.getElementById('signupName').value;
-            const email = document.getElementById('signupEmail').value;
-            const password = document.getElementById('signupPassword').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
+        function addZooTile(stateName) {
+            const normalizedState = normalizeStateName(stateName);
             
-            if (password !== confirmPassword) {
-                alert('Passwords do not match. Please try again.');
+            if (!isValidState(normalizedState)) {
+                showError('Please enter a valid US state name and we\'ll show you zoos in that state.');
+                return;
+            }
+
+            // Check if this state is already displayed
+            if (currentTiles.some(tile => tile.state === normalizedState)) {
+                showError(`${stateName} is already displayed!`);
+                return;
+            }
+
+            const zoos = zooData[normalizedState];
+            const tile = createZooTile(normalizedState, zoos);
+            
+            const tilesContainer = document.getElementById('tilesContainer');
+            
+            // If we have 5 tiles, remove the first one
+            if (currentTiles.length >= 5) {
+                const firstTile = currentTiles.shift();
+                firstTile.element.remove();
+            }
+            
+            // Add new tile
+            tilesContainer.appendChild(tile);
+            currentTiles.push({ state: normalizedState, element: tile });
+            
+            // Clear input
+            document.getElementById('stateInput').value = '';
+        }
+
+        function handleSearch() {
+            const input = document.getElementById('stateInput');
+            const stateName = input.value.trim();
+            
+            if (!stateName) {
+                showError('Please enter a state name.');
                 return;
             }
             
-            // Simulate account creation
-            showSuccessMessage('Account created successfully! Welcome to Zoo Calendar.');
+            addZooTile(stateName);
         }
 
-        function showSuccessMessage(message) {
-            // Remove any existing success messages
-            const existingMessage = document.querySelector('.success-message');
-            if (existingMessage) {
-                existingMessage.remove();
+        // Event listeners
+        document.getElementById('searchBtn').addEventListener('click', handleSearch);
+        
+        document.getElementById('stateInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                handleSearch();
             }
-            
-            // Create and show new success message
-            const successDiv = document.createElement('div');
-            successDiv.className = 'success-message';
-            successDiv.textContent = message;
-            
-            const authSection = document.querySelector('.auth-section');
-            authSection.insertBefore(successDiv, authSection.firstChild);
-            
-            // Clear form fields
-            document.querySelectorAll('input').forEach(input => input.value = '');
-        }
+        });
+
+        // Focus on input when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('stateInput').focus();
+        });
     </script>
-    -->
 </body>
 </html>
