@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZooCalendar - Find a Zoo! Plan an event!</title>
+    <title>ZooCalendar - Don't miss exciting upcoming zoo events!</title>
     <style>
         * {
             margin: 0;
@@ -51,12 +51,13 @@
             background-clip: text;
         }
 
-        .parrot-gif {
-            width: 60px;
-            height: 60px;
-            background: url('https://media.giphy.com/media/l0HlMSVVw9zqmClLq/giphy.gif') no-repeat center;
-            background-size: cover;
-            border-radius: 50%;
+        .parrot-emoji {
+            font-size: 50px;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             animation: bounce 2s infinite;
         }
 
@@ -82,7 +83,7 @@
         .search-container {
             position: relative;
             max-width: 500px;
-            margin: 0 auto;
+            margin: 0 auto 20px auto;
         }
 
         #stateInput {
@@ -119,6 +120,45 @@
         #searchBtn:hover {
             transform: translateX(-2px);
             box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .clear-btn, .comments-btn {
+            border: none;
+            border-radius: 25px;
+            padding: 12px 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .clear-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .clear-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .comments-btn {
+            background: linear-gradient(45deg, #4ecdc4, #44b3ac);
+            color: white;
+            box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
+        }
+
+        .comments-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(78, 205, 196, 0.4);
         }
 
         .tiles-container {
@@ -194,23 +234,129 @@
             animation: shake 0.5s ease-in-out;
         }
 
+        .success-message {
+            background: linear-gradient(45deg, #4ecdc4, #44b3ac);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+            font-weight: 600;
+        }
+
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
             25% { transform: translateX(-5px); }
             75% { transform: translateX(5px); }
         }
 
-        .placeholder-parrot {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
+        .comments-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
             justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .comments-modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .comment-item {
+            background: #f8f9fa;
+            border-left: 4px solid #4ecdc4;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+
+        .comment-timestamp {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .comment-text {
+            font-size: 0.95rem;
+            line-height: 1.4;
+            color: #333;
+        }
+
+        .modal-header {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #333;
+        }
+
+        .comment-form textarea {
+            width: 100%;
+            height: 120px;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            resize: vertical;
+            font-family: inherit;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .comment-form textarea:focus {
+            border-color: #667eea;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        .submit-comment, .close-modal {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .submit-comment {
+            background: linear-gradient(45deg, #667eea, #764ba2);
             color: white;
-            font-weight: bold;
-            animation: bounce 2s infinite;
+        }
+
+        .close-modal {
+            background: #f0f0f0;
+            color: #666;
+        }
+
+        .submit-comment:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
+        }
+
+        .close-modal:hover {
+            background: #e0e0e0;
         }
 
         @media (max-width: 768px) {
@@ -233,12 +379,17 @@
         <div class="header">
             <div class="title">
                 <h1>ZooCalendar</h1>
-                <div class="placeholder-parrot">🦜</div>
+                <div class="parrot-emoji">🦜</div>
             </div>
-            <p class="byline">Find a Zoo! Plan an event!</p>
+            <p class="byline">Don't miss exciting upcoming zoo events!</p>
             <div class="search-container">
                 <input type="text" id="stateInput" placeholder="Enter a state name (e.g., California, Texas, Florida)">
                 <button id="searchBtn">Search</button>
+            </div>
+            <div class="controls">
+                <button id="clearBtn" class="clear-btn">Clear All Tiles</button>
+                <button id="commentsBtn" class="comments-btn">Leave Comments</button>
+                <button id="reviewBtn" class="comments-btn">Review Comments</button>
             </div>
         </div>
 
@@ -248,8 +399,35 @@
         <div id="errorContainer"></div>
     </div>
 
+    <!-- Comments Modal -->
+    <div id="commentsModal" class="comments-modal">
+        <div class="modal-content">
+            <div class="modal-header">Share Your Feedback</div>
+            <form class="comment-form">
+                <textarea id="commentText" placeholder="Tell us what you think about ZooCalendar! Share suggestions, report bugs, or let us know about your favorite zoos..."></textarea>
+                <div class="modal-buttons">
+                    <button type="button" class="close-modal" id="closeModal">Close</button>
+                    <button type="button" class="submit-comment" id="submitComment">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Review Comments Modal -->
+    <div id="reviewModal" class="comments-modal">
+        <div class="modal-content">
+            <div class="modal-header">Submitted Comments</div>
+            <div id="commentsList">
+                <p style="text-align: center; color: #666; padding: 20px;">No comments submitted yet.</p>
+            </div>
+            <div class="modal-buttons">
+                <button type="button" class="close-modal" id="closeReviewModal">Close</button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Comprehensive zoo data by state
+        // Complete zoo data for all 50 states
         const zooData = {
             'alabama': [
                 { name: 'Birmingham Zoo', url: 'https://www.birminghamzoo.com/' },
@@ -296,7 +474,7 @@
                 { name: 'Central Florida Zoo', url: 'https://www.centralfloridazoo.org/' },
                 { name: 'Jacksonville Zoo', url: 'https://www.jacksonvillezoo.org/' },
                 { name: 'Palm Beach Zoo', url: 'https://www.palmbeachzoo.org/' },
-                { name: 'Lowry Park Zoo', url: 'https://www.zootampa.org/' }
+                { name: 'ZooTampa at Lowry Park', url: 'https://www.zootampa.org/' }
             ],
             'georgia': [
                 { name: 'Zoo Atlanta', url: 'https://zooatlanta.org/' },
@@ -461,20 +639,13 @@
             ]
         };
 
-        const stateList = Object.keys(zooData);
         let currentTiles = [];
+        let submittedComments = [];
 
-        function normalizeStateName(input) {
-            return input.toLowerCase().trim();
-        }
-
-        function isValidState(stateName) {
-            return stateList.includes(normalizeStateName(stateName));
-        }
-
-        function showError(message) {
+        function showMessage(message, isError = true) {
             const errorContainer = document.getElementById('errorContainer');
-            errorContainer.innerHTML = `<div class="error-message">${message}</div>`;
+            const messageClass = isError ? 'error-message' : 'success-message';
+            errorContainer.innerHTML = `<div class="${messageClass}">${message}</div>`;
             setTimeout(() => {
                 errorContainer.innerHTML = '';
             }, 4000);
@@ -484,7 +655,7 @@
             const tile = document.createElement('div');
             tile.className = 'zoo-tile';
             
-            const stateDisplayName = stateName.charAt(0).toUpperCase() + stateName.slice(1);
+            const stateDisplayName = stateName.charAt(0).toUpperCase() + stateName.slice(1).toLowerCase();
             
             let zooListHtml = '';
             zoos.forEach(zoo => {
@@ -502,16 +673,16 @@
         }
 
         function addZooTile(stateName) {
-            const normalizedState = normalizeStateName(stateName);
+            const normalizedState = stateName.toLowerCase().trim();
             
-            if (!isValidState(normalizedState)) {
-                showError('Please enter a valid US state name and we\'ll show you zoos in that state.');
+            if (!zooData[normalizedState]) {
+                showMessage('Please enter a valid US state name and we\'ll show you zoos in that state.', true);
                 return;
             }
 
             // Check if this state is already displayed
             if (currentTiles.some(tile => tile.state === normalizedState)) {
-                showError(`${stateName} is already displayed!`);
+                showMessage(`${stateName} is already displayed!`, true);
                 return;
             }
 
@@ -534,12 +705,76 @@
             document.getElementById('stateInput').value = '';
         }
 
+        function clearAllTiles() {
+            const tilesContainer = document.getElementById('tilesContainer');
+            tilesContainer.innerHTML = '';
+            currentTiles = [];
+        }
+
+        function showCommentsModal() {
+            const modal = document.getElementById('commentsModal');
+            modal.classList.add('show');
+            document.getElementById('commentText').focus();
+        }
+
+        function hideCommentsModal() {
+            const modal = document.getElementById('commentsModal');
+            modal.classList.remove('show');
+            document.getElementById('commentText').value = '';
+        }
+
+        function showReviewModal() {
+            const modal = document.getElementById('reviewModal');
+            const commentsList = document.getElementById('commentsList');
+            
+            if (submittedComments.length === 0) {
+                commentsList.innerHTML = '<p style="text-align: center; color: #666; padding: 20px;">No comments submitted yet.</p>';
+            } else {
+                let commentsHtml = '';
+                submittedComments.forEach((comment, index) => {
+                    commentsHtml += `
+                        <div class="comment-item">
+                            <div class="comment-timestamp">${comment.timestamp}</div>
+                            <div class="comment-text">${comment.text}</div>
+                        </div>
+                    `;
+                });
+                commentsList.innerHTML = commentsHtml;
+            }
+            
+            modal.classList.add('show');
+        }
+
+        function hideReviewModal() {
+            const modal = document.getElementById('reviewModal');
+            modal.classList.remove('show');
+        }
+
+        function submitComment() {
+            const commentText = document.getElementById('commentText').value.trim();
+            if (!commentText) {
+                showMessage('Please enter your comment before submitting.', true);
+                return;
+            }
+
+            // Store the comment with timestamp
+            const now = new Date();
+            const timestamp = now.toLocaleString();
+            submittedComments.push({
+                text: commentText,
+                timestamp: timestamp
+            });
+
+            hideCommentsModal();
+            showMessage('Thank you for your feedback! Your comment has been submitted.', false);
+        }
+
         function handleSearch() {
             const input = document.getElementById('stateInput');
             const stateName = input.value.trim();
             
             if (!stateName) {
-                showError('Please enter a state name.');
+                showMessage('Please enter a state name.', true);
                 return;
             }
             
@@ -547,16 +782,43 @@
         }
 
         // Event listeners
-        document.getElementById('searchBtn').addEventListener('click', handleSearch);
-        
-        document.getElementById('stateInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                handleSearch();
-            }
-        });
-
-        // Focus on input when page loads
         document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('searchBtn').addEventListener('click', handleSearch);
+            document.getElementById('clearBtn').addEventListener('click', clearAllTiles);
+            document.getElementById('commentsBtn').addEventListener('click', showCommentsModal);
+            document.getElementById('reviewBtn').addEventListener('click', showReviewModal);
+            document.getElementById('closeModal').addEventListener('click', hideCommentsModal);
+            document.getElementById('closeReviewModal').addEventListener('click', hideReviewModal);
+            document.getElementById('submitComment').addEventListener('click', submitComment);
+            
+            document.getElementById('stateInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    handleSearch();
+                }
+            });
+
+            // Close modals when clicking outside of them
+            document.getElementById('commentsModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    hideCommentsModal();
+                }
+            });
+
+            document.getElementById('reviewModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    hideReviewModal();
+                }
+            });
+            
+            // Close modals with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    hideCommentsModal();
+                    hideReviewModal();
+                }
+            });
+
+            // Focus on input when page loads
             document.getElementById('stateInput').focus();
         });
     </script>
