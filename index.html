@@ -102,6 +102,44 @@
             box-shadow: 0 0 20px rgba(102, 126, 234, 0.2);
         }
 
+        .autocomplete-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 2px solid #667eea;
+            border-top: none;
+            border-radius: 0 0 15px 15px;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .autocomplete-dropdown.show {
+            display: block;
+        }
+
+        .autocomplete-item {
+            padding: 12px 20px;
+            cursor: pointer;
+            border-bottom: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .autocomplete-item:hover,
+        .autocomplete-item.highlighted {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .autocomplete-item:last-child {
+            border-bottom: none;
+        }
+
         #searchBtn {
             position: absolute;
             right: 5px;
@@ -401,8 +439,9 @@
             </div>
             <p class="byline">Don't miss exciting upcoming zoo events!</p>
             <div class="search-container">
-                <input type="text" id="stateInput" placeholder="Enter a state name (e.g., California, Texas, Florida)">
+                <input type="text" id="stateInput" placeholder="Enter a state name (e.g., California, Texas, Florida)" autocomplete="off">
                 <button id="searchBtn">Search</button>
+                <div id="autocompleteDropdown" class="autocomplete-dropdown"></div>
             </div>
             <div class="controls">
                 <button id="clearBtn" class="clear-btn">Clear All Tiles</button>
@@ -417,7 +456,7 @@
         <div id="errorContainer"></div>
 
         <!-- Version Number -->
-        <div class="version-number">v1.4.0</div>
+        <div class="version-number">v1.5.0</div>
     </div>
 
     <!-- Comments Modal -->
@@ -501,6 +540,8 @@
         let currentTiles = [];
         let submittedComments = [];
         let zooData = {}; // Will be loaded from external file
+        let stateNames = []; // List of all state names for autocomplete
+        let highlightedIndex = -1; // For keyboard navigation
 
         // Wait for Firebase to initialize before setting up event listeners
         let firebaseReady = false;
@@ -527,6 +568,14 @@
                 }
                 const data = await response.json();
                 zooData = data;
+                
+                // Create array of state names for autocomplete
+                stateNames = Object.keys(zooData).map(state => {
+                    return state.split(' ').map(word => 
+                        word.charAt(0).toUpperCase() + word.slice(1)
+                    ).join(' ');
+                }).sort();
+                
                 console.log('Zoo data loaded successfully:', Object.keys(zooData).length, 'states');
                 return true;
             } catch (error) {
@@ -547,8 +596,88 @@
                         { name: 'Dallas Zoo', url: 'https://www.dallaszoo.com/' }
                     ]
                 };
+                
+                // Create fallback state names
+                stateNames = ['California', 'Florida', 'Texas'];
                 return false;
             }
+        }
+
+        // Autocomplete functionality
+        function showAutocomplete(inputValue) {
+            const dropdown = document.getElementById('autocompleteDropdown');
+            const filteredStates = stateNames.filter(state => 
+                state.toLowerCase().includes(inputValue.toLowerCase())
+            ).slice(0, 8); // Show max 8 suggestions
+
+            if (filteredStates.length === 0 || inputValue.length < 1) {
+                dropdown.classList.remove('show');
+                return;
+            }
+
+            let dropdownHtml = '';
+            filteredStates.forEach((state, index) => {
+                dropdownHtml += `<div class="autocomplete-item" data-state="${state}" data-index="${index}">${state}</div>`;
+            });
+
+            dropdown.innerHTML = dropdownHtml;
+            dropdown.classList.add('show');
+            highlightedIndex = -1;
+
+            // Add click listeners to autocomplete items
+            dropdown.querySelectorAll('.autocomplete-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    selectState(this.dataset.state);
+                });
+            });
+        }
+
+        function hideAutocomplete() {
+            const dropdown = document.getElementById('autocompleteDropdown');
+            dropdown.classList.remove('show');
+            highlightedIndex = -1;
+        }
+
+        function selectState(stateName) {
+            const input = document.getElementById('stateInput');
+            input.value = stateName;
+            hideAutocomplete();
+            addZooTile(stateName);
+        }
+
+        function highlightItem(direction) {
+            const dropdown = document.getElementById('autocompleteDropdown');
+            const items = dropdown.querySelectorAll('.autocomplete-item');
+            
+            if (items.length === 0) return;
+
+            // Remove previous highlight
+            if (highlightedIndex >= 0 && highlightedIndex < items.length) {
+                items[highlightedIndex].classList.remove('highlighted');
+            }
+
+            // Update index
+            if (direction === 'down') {
+                highlightedIndex = (highlightedIndex + 1) % items.length;
+            } else if (direction === 'up') {
+                highlightedIndex = highlightedIndex <= 0 ? items.length - 1 : highlightedIndex - 1;
+            }
+
+            // Highlight new item
+            if (highlightedIndex >= 0 && highlightedIndex < items.length) {
+                items[highlightedIndex].classList.add('highlighted');
+                items[highlightedIndex].scrollIntoView({ block: 'nearest' });
+            }
+        }
+
+        function selectHighlightedItem() {
+            const dropdown = document.getElementById('autocompleteDropdown');
+            const highlightedItem = dropdown.querySelector('.autocomplete-item.highlighted');
+            if (highlightedItem) {
+                selectState(highlightedItem.dataset.state);
+                return true;
+            }
+            return false;
         }
 
         function showMessage(message, isError = true) {
@@ -814,7 +943,48 @@
             
             document.getElementById('stateInput').addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
+                    e.preventDefault();
+                    const dropdown = document.getElementById('autocompleteDropdown');
+                    
+                    // If autocomplete is showing and an item is highlighted, select it
+                    if (dropdown.classList.contains('show') && selectHighlightedItem()) {
+                        return;
+                    }
+                    
+                    // Otherwise, proceed with normal search
                     handleSearch();
+                }
+            });
+
+            // Autocomplete input event
+            document.getElementById('stateInput').addEventListener('input', function(e) {
+                const inputValue = e.target.value.trim();
+                showAutocomplete(inputValue);
+            });
+
+            // Keyboard navigation for autocomplete
+            document.getElementById('stateInput').addEventListener('keydown', function(e) {
+                const dropdown = document.getElementById('autocompleteDropdown');
+                
+                if (dropdown.classList.contains('show')) {
+                    if (e.key === 'ArrowDown') {
+                        e.preventDefault();
+                        highlightItem('down');
+                    } else if (e.key === 'ArrowUp') {
+                        e.preventDefault();
+                        highlightItem('up');
+                    } else if (e.key === 'Escape') {
+                        e.preventDefault();
+                        hideAutocomplete();
+                    }
+                }
+            });
+
+            // Hide autocomplete when clicking outside
+            document.addEventListener('click', function(e) {
+                const searchContainer = document.querySelector('.search-container');
+                if (!searchContainer.contains(e.target)) {
+                    hideAutocomplete();
                 }
             });
 
