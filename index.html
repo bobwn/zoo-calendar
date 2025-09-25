@@ -383,6 +383,7 @@
             
             .title {
                 flex-direction: column;
+                gap: 10px;
             }
             
             .tiles-container {
@@ -416,7 +417,7 @@
         <div id="errorContainer"></div>
 
         <!-- Version Number -->
-        <div class="version-number">v1.2.2</div>
+        <div class="version-number">v1.2.4</div>
     </div>
 
     <!-- Comments Modal -->
@@ -711,6 +712,22 @@
 
         let currentTiles = [];
         let submittedComments = [];
+
+        // Wait for Firebase to initialize before setting up event listeners
+        let firebaseReady = false;
+        
+        window.addEventListener('firebaseReady', function(e) {
+            firebaseReady = true;
+            console.log('Firebase ready event received:', e.detail.initialized);
+        });
+
+        // Also check if it's already initialized
+        setTimeout(() => {
+            if (window.firebaseInitialized !== undefined) {
+                firebaseReady = true;
+                console.log('Firebase status checked:', window.firebaseInitialized);
+            }
+        }, 100);
 
         // Firebase functions with fallback to local storage
         async function saveCommentToFirebase(commentText) {
