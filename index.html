@@ -456,7 +456,7 @@
         <div id="errorContainer"></div>
 
         <!-- Version Number -->
-        <div class="version-number">v1.5.0</div>
+        <div class="version-number">v1.6.0</div>
     </div>
 
     <!-- Comments Modal -->
@@ -697,7 +697,7 @@
             
             let zooListHtml = '';
             zoos.forEach(zoo => {
-                zooListHtml += `<li><a href="${zoo.url}" target="_blank" rel="noopener noreferrer">${zoo.name}</a></li>`;
+                zooListHtml += `<li><a href="${zoo.url}" target="_system" rel="noopener noreferrer nofollow" onclick="openExternalLink('${zoo.url}'); return false;">${zoo.name}</a></li>`;
             });
 
             tile.innerHTML = `
@@ -708,6 +708,27 @@
             `;
 
             return tile;
+        }
+
+        function openExternalLink(url) {
+            // Try multiple methods to open in external browser
+            if (window.electronAPI && window.electronAPI.openExternal) {
+                // Electron app
+                window.electronAPI.openExternal(url);
+            } else if (window.external && window.external.InvokeScript) {
+                // Some desktop app frameworks
+                window.external.InvokeScript('openExternal', url);
+            } else if (window.chrome && window.chrome.runtime) {
+                // Chrome extension context
+                window.open(url, '_blank');
+            } else {
+                // Fallback: try normal window.open
+                const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+                if (!newWindow) {
+                    // Last resort: prompt user to copy URL
+                    prompt('Please copy this URL and open it in your browser:', url);
+                }
+            }
         }
 
         function addZooTile(stateName) {
