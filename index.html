@@ -417,7 +417,7 @@
         <div id="errorContainer"></div>
 
         <!-- Version Number -->
-        <div class="version-number">v1.3.0</div>
+        <div class="version-number">v1.4.0</div>
     </div>
 
     <!-- Comments Modal -->
@@ -600,8 +600,8 @@
             
             const tilesContainer = document.getElementById('tilesContainer');
             
-            // If we have 5 tiles, remove the first one
-            if (currentTiles.length >= 5) {
+            // If we have 3 tiles, remove the first one
+            if (currentTiles.length >= 3) {
                 const firstTile = currentTiles.shift();
                 firstTile.element.remove();
             }
