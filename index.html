@@ -416,7 +416,7 @@
         <div id="errorContainer"></div>
 
         <!-- Version Number -->
-        <div class="version-number">v1.2.0</div>
+        <div class="version-number">v1.2.2</div>
     </div>
 
     <!-- Comments Modal -->
@@ -462,7 +462,7 @@
             appId: "1:175044718591:web:4ef209b44210cbac4081ca",
             measurementId: "G-S0SDSJR9KJ"
         };
-/*
+
         // Initialize Firebase
         let app, db;
         let firebaseInitialized = false;
@@ -476,9 +476,11 @@
             console.log("Firebase initialization error:", error.message);
             firebaseInitialized = false;
         }
-*/
-        // Make Firebase functions available globally
+
+        // Make Firebase functions available globally - FIXED SCOPING
         window.firebaseInitialized = firebaseInitialized;
+        window.firebaseApp = app;
+        window.firebaseDb = db;
         if (firebaseInitialized) {
             window.db = db;
             window.collection = collection;
@@ -487,6 +489,11 @@
             window.orderBy = orderBy;
             window.query = query;
         }
+
+        // Also make sure the main script waits for Firebase to initialize
+        window.dispatchEvent(new CustomEvent('firebaseReady', { 
+            detail: { initialized: firebaseInitialized } 
+        }));
     </script>
 
     <script>
@@ -707,6 +714,11 @@
 
         // Firebase functions with fallback to local storage
         async function saveCommentToFirebase(commentText) {
+            console.log("=== SAVING COMMENT ===");
+            console.log("Firebase initialized:", window.firebaseInitialized);
+            console.log("User agent:", navigator.userAgent);
+            console.log("Comment text:", commentText);
+
             // Check if Firebase is configured
             if (!window.firebaseInitialized) {
                 console.log("Firebase not configured, saving locally");
@@ -714,33 +726,46 @@
                 const comment = {
                     text: commentText,
                     timestamp: new Date().toLocaleString(),
-                    id: Date.now().toString()
+                    id: Date.now().toString(),
+                    source: 'local-storage'
                 };
                 let localComments = JSON.parse(localStorage.getItem('zooComments') || '[]');
                 localComments.unshift(comment);
                 localStorage.setItem('zooComments', JSON.stringify(localComments));
+                console.log("Saved to local storage:", comment);
                 return true;
             }
 
             try {
-                const docRef = await window.addDoc(window.collection(window.db, "comments"), {
+                console.log("Attempting to save to Firebase...");
+                const docData = {
                     text: commentText,
                     timestamp: new Date(),
-                    created: new Date().toLocaleString()
-                });
-                console.log("Comment saved to Firebase with ID: ", docRef.id);
+                    created: new Date().toLocaleString(),
+                    userAgent: navigator.userAgent,
+                    source: 'firebase'
+                };
+                console.log("Document data:", docData);
+                
+                const docRef = await window.addDoc(window.collection(window.db, "comments"), docData);
+                console.log("SUCCESS: Comment saved to Firebase with ID:", docRef.id);
                 return true;
             } catch (e) {
-                console.error("Error adding comment to Firebase: ", e);
+                console.error("FIREBASE ERROR - Falling back to local storage:", e);
+                console.error("Error details:", e.message, e.code);
+                
                 // Fallback to local storage
                 const comment = {
                     text: commentText,
                     timestamp: new Date().toLocaleString(),
-                    id: Date.now().toString()
+                    id: Date.now().toString(),
+                    source: 'local-storage-fallback',
+                    error: e.message
                 };
                 let localComments = JSON.parse(localStorage.getItem('zooComments') || '[]');
                 localComments.unshift(comment);
                 localStorage.setItem('zooComments', JSON.stringify(localComments));
+                console.log("Saved to local storage as fallback:", comment);
                 return true;
             }
         }
@@ -755,24 +780,28 @@
             }
 
             try {
+                console.log("Loading comments from Firebase...");
                 const q = window.query(window.collection(window.db, "comments"), window.orderBy("timestamp", "desc"));
                 const querySnapshot = await window.getDocs(q);
                 const comments = [];
                 
                 querySnapshot.forEach((doc) => {
                     const data = doc.data();
+                    console.log("Comment data:", data);
                     comments.push({
                         id: doc.id,
                         text: data.text,
-                        timestamp: data.created || data.timestamp?.toDate?.()?.toLocaleString() || 'Unknown time'
+                        timestamp: data.created || (data.timestamp?.toDate ? data.timestamp.toDate().toLocaleString() : data.timestamp) || 'Unknown time'
                     });
                 });
                 
+                console.log(`Loaded ${comments.length} comments from Firebase`);
                 return comments;
             } catch (e) {
                 console.error("Error loading comments from Firebase: ", e);
                 // Fallback to local storage
                 const localComments = JSON.parse(localStorage.getItem('zooComments') || '[]');
+                console.log(`Fallback: loaded ${localComments.length} comments from local storage`);
                 return localComments;
             }
         }
