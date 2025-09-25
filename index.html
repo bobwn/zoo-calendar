@@ -417,7 +417,7 @@
         <div id="errorContainer"></div>
 
         <!-- Version Number -->
-        <div class="version-number">v1.2.4</div>
+        <div class="version-number">v1.3.0</div>
     </div>
 
     <!-- Comments Modal -->
@@ -498,220 +498,9 @@
     </script>
 
     <script>
-        // Complete zoo data for all 50 states
-        const zooData = {
-            'alabama': [
-                { name: 'Birmingham Zoo', url: 'https://www.birminghamzoo.com/' },
-                { name: 'Montgomery Zoo', url: 'https://www.montgomeryzoo.com/' },
-                { name: 'Gulf Coast Zoo', url: 'https://www.gulfcoastzoo.org/' }
-            ],
-            'alaska': [
-                { name: 'Alaska Zoo', url: 'https://www.alaskazoo.org/' },
-                { name: 'Alaska Wildlife Conservation Center', url: 'https://www.alaskawildlife.org/' }
-            ],
-            'arizona': [
-                { name: 'Phoenix Zoo', url: 'https://www.phoenixzoo.org/' },
-                { name: 'Reid Park Zoo', url: 'https://reidparkzoo.org/' },
-                { name: 'Arizona-Sonora Desert Museum', url: 'https://www.desertmuseum.org/' },
-                { name: 'Wildlife World Zoo', url: 'https://wildlifeworld.com/' }
-            ],
-            'arkansas': [
-                { name: 'Little Rock Zoo', url: 'https://www.littlerockzoo.com/' },
-                { name: 'Turpentine Creek Wildlife Refuge', url: 'https://www.turpentinecreek.org/' }
-            ],
-            'california': [
-                { name: 'San Diego Zoo', url: 'https://zoo.sandiegozoo.org/' },
-                { name: 'Los Angeles Zoo', url: 'https://www.lazoo.org/' },
-                { name: 'San Francisco Zoo', url: 'https://www.sfzoo.org/' },
-                { name: 'Oakland Zoo', url: 'https://www.oaklandzoo.org/' },
-                { name: 'Sacramento Zoo', url: 'https://www.saczoo.org/' },
-                { name: 'Fresno Chaffee Zoo', url: 'https://www.fresnochaffeezoo.org/' }
-            ],
-            'colorado': [
-                { name: 'Denver Zoo', url: 'https://denverzoo.org/' },
-                { name: 'Cheyenne Mountain Zoo', url: 'https://www.cmzoo.org/' },
-                { name: 'Pueblo Zoo', url: 'https://www.pueblozoo.org/' }
-            ],
-            'connecticut': [
-                { name: 'Beardsley Zoo', url: 'https://www.beardsleyzoo.org/' },
-                { name: 'Mystic Aquarium', url: 'https://www.mysticaquarium.org/' }
-            ],
-            'delaware': [
-                { name: 'Brandywine Zoo', url: 'https://www.brandywinezoo.org/' }
-            ],
-            'florida': [
-                { name: 'Zoo Miami', url: 'https://www.zoomiami.org/' },
-                { name: 'Busch Gardens Tampa Bay', url: 'https://buschgardens.com/tampa/' },
-                { name: 'Central Florida Zoo', url: 'https://www.centralfloridazoo.org/' },
-                { name: 'Jacksonville Zoo', url: 'https://www.jacksonvillezoo.org/' },
-                { name: 'Palm Beach Zoo', url: 'https://www.palmbeachzoo.org/' },
-                { name: 'ZooTampa at Lowry Park', url: 'https://www.zootampa.org/' }
-            ],
-            'georgia': [
-                { name: 'Zoo Atlanta', url: 'https://zooatlanta.org/' },
-                { name: 'Wild Adventures', url: 'https://www.wildadventures.com/' }
-            ],
-            'hawaii': [
-                { name: 'Honolulu Zoo', url: 'https://www.honoluluzoo.org/' }
-            ],
-            'idaho': [
-                { name: 'Zoo Boise', url: 'https://zooboise.org/' },
-                { name: 'Tautphaus Park Zoo', url: 'https://www.idahofallsidaho.gov/facilities/facility/details/Tautphaus-Park-Zoo-5' }
-            ],
-            'illinois': [
-                { name: 'Lincoln Park Zoo', url: 'https://www.lpzoo.org/' },
-                { name: 'Brookfield Zoo', url: 'https://www.czs.org/' },
-                { name: 'Miller Park Zoo', url: 'https://www.bloomingtonparks.org/miller-park-zoo' }
-            ],
-            'indiana': [
-                { name: 'Indianapolis Zoo', url: 'https://www.indianapoliszoo.com/' },
-                { name: 'Fort Wayne Children\'s Zoo', url: 'https://kidszoo.org/' },
-                { name: 'Mesker Park Zoo', url: 'https://www.meskerparkzoo.com/' }
-            ],
-            'iowa': [
-                { name: 'Blank Park Zoo', url: 'https://www.blankparkzoo.com/' }
-            ],
-            'kansas': [
-                { name: 'Sedgwick County Zoo', url: 'https://www.scz.org/' },
-                { name: 'Topeka Zoo', url: 'https://www.topekazoo.org/' }
-            ],
-            'kentucky': [
-                { name: 'Louisville Zoo', url: 'https://www.louisvillezoo.org/' },
-                { name: 'Newport Aquarium', url: 'https://www.newportaquarium.com/' }
-            ],
-            'louisiana': [
-                { name: 'Audubon Zoo', url: 'https://audubonnatureinstitute.org/zoo' },
-                { name: 'Alexandria Zoo', url: 'https://www.thealexandriazoo.com/' }
-            ],
-            'maine': [
-                { name: 'Maine Wildlife Park', url: 'https://www.maine.gov/ifw/wildlife-park/' }
-            ],
-            'maryland': [
-                { name: 'Maryland Zoo', url: 'https://www.marylandzoo.org/' },
-                { name: 'National Aquarium', url: 'https://www.aqua.org/' }
-            ],
-            'massachusetts': [
-                { name: 'Franklin Park Zoo', url: 'https://www.zoonewengland.org/franklin-park-zoo/' },
-                { name: 'Stone Zoo', url: 'https://www.zoonewengland.org/stone-zoo/' }
-            ],
-            'michigan': [
-                { name: 'Detroit Zoo', url: 'https://detroitzoo.org/' },
-                { name: 'Potter Park Zoo', url: 'https://potterparkzoo.org/' },
-                { name: 'John Ball Zoo', url: 'https://www.jbzoo.org/' }
-            ],
-            'minnesota': [
-                { name: 'Minnesota Zoo', url: 'https://mnzoo.org/' },
-                { name: 'Como Park Zoo', url: 'https://comozooconservatory.org/' }
-            ],
-            'mississippi': [
-                { name: 'Jackson Zoo', url: 'https://jacksonzoo.org/' },
-                { name: 'Hattiesburg Zoo', url: 'https://hattiesburgzoo.com/' }
-            ],
-            'missouri': [
-                { name: 'Saint Louis Zoo', url: 'https://www.stlzoo.org/' },
-                { name: 'Kansas City Zoo', url: 'https://www.kansascityzoo.org/' }
-            ],
-            'montana': [
-                { name: 'ZooMontana', url: 'https://www.zoomontana.org/' }
-            ],
-            'nebraska': [
-                { name: 'Henry Doorly Zoo', url: 'https://www.omahazoo.com/' },
-                { name: 'Lincoln Children\'s Zoo', url: 'https://www.lincolnzoo.org/' }
-            ],
-            'nevada': [
-                { name: 'Sierra Safari Zoo', url: 'https://www.sierrasafarizoo.org/' }
-            ],
-            'new hampshire': [
-                { name: 'Charmingfare Farm', url: 'https://www.charmingfare.com/' }
-            ],
-            'new jersey': [
-                { name: 'Turtle Back Zoo', url: 'https://www.turtlebackzoo.com/' },
-                { name: 'Cape May County Zoo', url: 'https://www.capemaycountyzoo.com/' }
-            ],
-            'new mexico': [
-                { name: 'ABQ BioPark Zoo', url: 'https://www.cabq.gov/arks/' }
-            ],
-            'new york': [
-                { name: 'Bronx Zoo', url: 'https://bronxzoo.com/' },
-                { name: 'Central Park Zoo', url: 'https://centralparkzoo.com/' },
-                { name: 'Buffalo Zoo', url: 'https://www.buffalozoo.org/' },
-                { name: 'Seneca Park Zoo', url: 'https://senecaparkzoo.org/' }
-            ],
-            'north carolina': [
-                { name: 'North Carolina Zoo', url: 'https://www.nczoo.org/' },
-                { name: 'Riverbanks Zoo', url: 'https://www.riverbanks.org/' }
-            ],
-            'north dakota': [
-                { name: 'Roosevelt Park Zoo', url: 'https://www.rooseveltparkzoo.org/' }
-            ],
-            'ohio': [
-                { name: 'Cincinnati Zoo', url: 'https://cincinnatizoo.org/' },
-                { name: 'Cleveland Metroparks Zoo', url: 'https://www.clevelandmetroparks.com/zoo' },
-                { name: 'Columbus Zoo', url: 'https://www.columbuszoo.org/' },
-                { name: 'Toledo Zoo', url: 'https://www.toledozoo.org/' }
-            ],
-            'oklahoma': [
-                { name: 'Oklahoma City Zoo', url: 'https://www.okczoo.org/' },
-                { name: 'Tulsa Zoo', url: 'https://www.tulsazoo.org/' }
-            ],
-            'oregon': [
-                { name: 'Oregon Zoo', url: 'https://www.oregonzoo.org/' }
-            ],
-            'pennsylvania': [
-                { name: 'Philadelphia Zoo', url: 'https://www.philadelphiazoo.org/' },
-                { name: 'Pittsburgh Zoo', url: 'https://www.pittsburghzoo.org/' },
-                { name: 'Erie Zoo', url: 'https://www.eriezoo.org/' }
-            ],
-            'rhode island': [
-                { name: 'Roger Williams Park Zoo', url: 'https://www.rwpzoo.org/' }
-            ],
-            'south carolina': [
-                { name: 'Riverbanks Zoo', url: 'https://www.riverbanks.org/' },
-                { name: 'Greenville Zoo', url: 'https://www.greenvillezoo.com/' }
-            ],
-            'south dakota': [
-                { name: 'Great Plains Zoo', url: 'https://www.gpzoo.org/' }
-            ],
-            'tennessee': [
-                { name: 'Nashville Zoo', url: 'https://www.nashvillezoo.org/' },
-                { name: 'Memphis Zoo', url: 'https://www.memphiszoo.org/' },
-                { name: 'Knoxville Zoo', url: 'https://www.knoxvillezoo.org/' }
-            ],
-            'texas': [
-                { name: 'Houston Zoo', url: 'https://www.houstonzoo.org/' },
-                { name: 'Dallas Zoo', url: 'https://www.dallaszoo.com/' },
-                { name: 'San Antonio Zoo', url: 'https://sazoo.org/' },
-                { name: 'Fort Worth Zoo', url: 'https://www.fortworthzoo.org/' },
-                { name: 'Austin Zoo', url: 'https://austinzoo.org/' }
-            ],
-            'utah': [
-                { name: 'Hogle Zoo', url: 'https://www.hoglezoo.org/' }
-            ],
-            'vermont': [
-                { name: 'VINS Nature Center', url: 'https://vinsweb.org/' }
-            ],
-            'virginia': [
-                { name: 'Virginia Zoo', url: 'https://www.virginiazoo.org/' },
-                { name: 'Metro Richmond Zoo', url: 'https://www.metrorichmondzoo.com/' }
-            ],
-            'washington': [
-                { name: 'Woodland Park Zoo', url: 'https://www.zoo.org/' },
-                { name: 'Point Defiance Zoo', url: 'https://www.pdza.org/' }
-            ],
-            'west virginia': [
-                { name: 'Oglebay Good Zoo', url: 'https://www.oglebaygoodzioo.org/' }
-            ],
-            'wisconsin': [
-                { name: 'Milwaukee County Zoo', url: 'https://www.milwaukeezoo.org/' },
-                { name: 'Menominee Zoo', url: 'https://www.menomineezoo.org/' }
-            ],
-            'wyoming': [
-                { name: 'Cheyenne Mountain Zoo', url: 'https://www.cmzoo.org/' }
-            ]
-        };
-
         let currentTiles = [];
         let submittedComments = [];
+        let zooData = {}; // Will be loaded from external file
 
         // Wait for Firebase to initialize before setting up event listeners
         let firebaseReady = false;
@@ -728,6 +517,120 @@
                 console.log('Firebase status checked:', window.firebaseInitialized);
             }
         }, 100);
+
+        // Load zoo data from external JSON file
+        async function loadZooData() {
+            try {
+                const response = await fetch('zooData.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                zooData = data;
+                console.log('Zoo data loaded successfully:', Object.keys(zooData).length, 'states');
+                return true;
+            } catch (error) {
+                console.error('Error loading zoo data from external file:', error);
+                console.log('Falling back to embedded data...');
+                // Fallback to embedded data (keep a few states as backup)
+                zooData = {
+                    'california': [
+                        { name: 'San Diego Zoo', url: 'https://zoo.sandiegozoo.org/' },
+                        { name: 'Los Angeles Zoo', url: 'https://www.lazoo.org/' }
+                    ],
+                    'florida': [
+                        { name: 'Zoo Miami', url: 'https://www.zoomiami.org/' },
+                        { name: 'Busch Gardens Tampa Bay', url: 'https://buschgardens.com/tampa/' }
+                    ],
+                    'texas': [
+                        { name: 'Houston Zoo', url: 'https://www.houstonzoo.org/' },
+                        { name: 'Dallas Zoo', url: 'https://www.dallaszoo.com/' }
+                    ]
+                };
+                return false;
+            }
+        }
+
+        function showMessage(message, isError = true) {
+            const errorContainer = document.getElementById('errorContainer');
+            const messageClass = isError ? 'error-message' : 'success-message';
+            errorContainer.innerHTML = `<div class="${messageClass}">${message}</div>`;
+            setTimeout(() => {
+                errorContainer.innerHTML = '';
+            }, 4000);
+        }
+
+        function createZooTile(stateName, zoos) {
+            const tile = document.createElement('div');
+            tile.className = 'zoo-tile';
+            
+            const stateDisplayName = stateName.charAt(0).toUpperCase() + stateName.slice(1).toLowerCase();
+            
+            let zooListHtml = '';
+            zoos.forEach(zoo => {
+                zooListHtml += `<li><a href="${zoo.url}" target="_blank" rel="noopener noreferrer">${zoo.name}</a></li>`;
+            });
+
+            tile.innerHTML = `
+                <div class="tile-header">${stateDisplayName} Zoos</div>
+                <ul class="zoo-list">
+                    ${zooListHtml}
+                </ul>
+            `;
+
+            return tile;
+        }
+
+        function addZooTile(stateName) {
+            const normalizedState = stateName.toLowerCase().trim();
+            
+            if (!zooData[normalizedState]) {
+                showMessage('Please enter a valid US state name and we\'ll show you zoos in that state.', true);
+                return;
+            }
+
+            // Check if this state is already displayed
+            if (currentTiles.some(tile => tile.state === normalizedState)) {
+                showMessage(`${stateName} is already displayed!`, true);
+                return;
+            }
+
+            const zoos = zooData[normalizedState];
+            const tile = createZooTile(normalizedState, zoos);
+            
+            const tilesContainer = document.getElementById('tilesContainer');
+            
+            // If we have 5 tiles, remove the first one
+            if (currentTiles.length >= 5) {
+                const firstTile = currentTiles.shift();
+                firstTile.element.remove();
+            }
+            
+            // Add new tile
+            tilesContainer.appendChild(tile);
+            currentTiles.push({ state: normalizedState, element: tile });
+            
+            // Clear input
+            document.getElementById('stateInput').value = '';
+        }
+
+        function clearAllTiles() {
+            const tilesContainer = document.getElementById('tilesContainer');
+            tilesContainer.innerHTML = '';
+            currentTiles = [];
+        }
+
+        function showCommentsModal() {
+            const modal = document.getElementById('commentsModal');
+            modal.classList.add('show');
+            document.getElementById('commentText').focus();
+        }
+
+        function hideCommentsModal() {
+            const modal = document.getElementById('commentsModal');
+            modal.classList.remove('show');
+            document.getElementById('commentText').value = '';
+        }
 
         // Firebase functions with fallback to local storage
         async function saveCommentToFirebase(commentText) {
@@ -823,87 +726,6 @@
             }
         }
 
-        function showMessage(message, isError = true) {
-            const errorContainer = document.getElementById('errorContainer');
-            const messageClass = isError ? 'error-message' : 'success-message';
-            errorContainer.innerHTML = `<div class="${messageClass}">${message}</div>`;
-            setTimeout(() => {
-                errorContainer.innerHTML = '';
-            }, 4000);
-        }
-
-        function createZooTile(stateName, zoos) {
-            const tile = document.createElement('div');
-            tile.className = 'zoo-tile';
-            
-            const stateDisplayName = stateName.charAt(0).toUpperCase() + stateName.slice(1).toLowerCase();
-            
-            let zooListHtml = '';
-            zoos.forEach(zoo => {
-                zooListHtml += `<li><a href="${zoo.url}" target="_blank" rel="noopener noreferrer">${zoo.name}</a></li>`;
-            });
-
-            tile.innerHTML = `
-                <div class="tile-header">${stateDisplayName} Zoos</div>
-                <ul class="zoo-list">
-                    ${zooListHtml}
-                </ul>
-            `;
-
-            return tile;
-        }
-
-        function addZooTile(stateName) {
-            const normalizedState = stateName.toLowerCase().trim();
-            
-            if (!zooData[normalizedState]) {
-                showMessage('Please enter a valid US state name and we\'ll show you zoos in that state.', true);
-                return;
-            }
-
-            // Check if this state is already displayed
-            if (currentTiles.some(tile => tile.state === normalizedState)) {
-                showMessage(`${stateName} is already displayed!`, true);
-                return;
-            }
-
-            const zoos = zooData[normalizedState];
-            const tile = createZooTile(normalizedState, zoos);
-            
-            const tilesContainer = document.getElementById('tilesContainer');
-            
-            // If we have 5 tiles, remove the first one
-            if (currentTiles.length >= 5) {
-                const firstTile = currentTiles.shift();
-                firstTile.element.remove();
-            }
-            
-            // Add new tile
-            tilesContainer.appendChild(tile);
-            currentTiles.push({ state: normalizedState, element: tile });
-            
-            // Clear input
-            document.getElementById('stateInput').value = '';
-        }
-
-        function clearAllTiles() {
-            const tilesContainer = document.getElementById('tilesContainer');
-            tilesContainer.innerHTML = '';
-            currentTiles = [];
-        }
-
-        function showCommentsModal() {
-            const modal = document.getElementById('commentsModal');
-            modal.classList.add('show');
-            document.getElementById('commentText').focus();
-        }
-
-        function hideCommentsModal() {
-            const modal = document.getElementById('commentsModal');
-            modal.classList.remove('show');
-            document.getElementById('commentText').value = '';
-        }
-
         async function showReviewModal() {
             const modal = document.getElementById('reviewModal');
             const commentsList = document.getElementById('commentsList');
@@ -977,7 +799,11 @@
         }
 
         // Event listeners
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Load zoo data first
+            await loadZooData();
+            
+            // Then set up event listeners
             document.getElementById('searchBtn').addEventListener('click', handleSearch);
             document.getElementById('clearBtn').addEventListener('click', clearAllTiles);
             document.getElementById('commentsBtn').addEventListener('click', showCommentsModal);
