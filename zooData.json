@@ -2,533 +2,1073 @@
   "alabama": [
     {
       "name": "Birmingham Zoo",
-      "url": "https://www.birminghamzoo.com/"
+      "url": "https://www.birminghamzoo.com/",
+      "city": "Birmingham",
+      "type": "zoo",
+      "size": "medium",
+      "notable_features": ["Red Diamond Splash Pad", "Alabama Wilds", "Trails of Africa"],
+      "admission_required": true
     },
     {
       "name": "Montgomery Zoo",
-      "url": "https://www.montgomeryzoo.com/"
+      "url": "https://www.montgomeryzoo.com/",
+      "city": "Montgomery",
+      "type": "zoo",
+      "size": "medium",
+      "notable_features": ["Mann Wildlife Learning Museum", "Overlook Cafe", "Train rides"],
+      "admission_required": true
     },
     {
       "name": "Gulf Coast Zoo",
-      "url": "https://www.gulfcoastzoo.org/"
+      "url": "https://www.gulfcoastzoo.org/",
+      "city": "Gulf Shores",
+      "type": "zoo",
+      "size": "small",
+      "notable_features": ["Interactive experiences", "Educational programs"],
+      "admission_required": true
     }
   ],
   "alaska": [
     {
       "name": "Alaska Zoo",
-      "url": "https://www.alaskazoo.org/"
+      "url": "https://www.alaskazoo.org/",
+      "city": "Anchorage",
+      "type": "zoo",
+      "size": "medium",
+      "notable_features": ["Polar bears", "Arctic animals", "Brown bears"],
+      "admission_required": true
     },
     {
       "name": "Alaska Wildlife Conservation Center",
-      "url": "https://www.alaskawildlife.org/"
+      "url": "https://www.alaskawildlife.org/",
+      "city": "Girdwood",
+      "type": "wildlife_park",
+      "size": "large",
+      "notable_features": ["Wildlife rehabilitation", "Drive-through viewing", "Native Alaskan species"],
+      "admission_required": true
     }
   ],
   "arizona": [
     {
       "name": "Phoenix Zoo",
-      "url": "https://www.phoenixzoo.org/"
+      "url": "https://www.phoenixzoo.org/",
+      "city": "Phoenix",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["Desert animals", "Conservation programs", "ZooLights winter event"],
+      "admission_required": true
     },
     {
       "name": "Reid Park Zoo",
-      "url": "https://reidparkzoo.org/"
+      "url": "https://reidparkzoo.org/",
+      "city": "Tucson",
+      "type": "zoo",
+      "size": "medium",
+      "notable_features": ["Elephant care center", "African animals", "Conservation education"],
+      "admission_required": true
     },
     {
       "name": "Arizona-Sonora Desert Museum",
-      "url": "https://www.desertmuseum.org/"
+      "url": "https://www.desertmuseum.org/",
+      "city": "Tucson",
+      "type": "wildlife_park",
+      "size": "large",
+      "notable_features": ["Desert ecosystem", "Natural habitat exhibits", "Outdoor trails"],
+      "admission_required": true
     },
     {
       "name": "Wildlife World Zoo",
-      "url": "https://wildlifeworld.com/"
+      "url": "https://wildlifeworld.com/",
+      "city": "Litchfield Park",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["Aquarium", "Safari train", "Skyride"],
+      "admission_required": true
     }
   ],
   "arkansas": [
     {
       "name": "Little Rock Zoo",
-      "url": "https://www.littlerockzoo.com/"
+      "url": "https://www.littlerockzoo.com/",
+      "city": "Little Rock",
+      "type": "zoo",
+      "size": "medium",
+      "notable_features": ["Arkansas Carousel", "Great Ape House", "Penguin Pointe"],
+      "admission_required": true
     },
     {
       "name": "Turpentine Creek Wildlife Refuge",
-      "url": "https://www.turpentinecreek.org/"
+      "url": "https://www.turpentinecreek.org/",
+      "city": "Eureka Springs",
+      "type": "wildlife_refuge",
+      "size": "large",
+      "notable_features": ["Big cat sanctuary", "Rescue operations", "Educational tours"],
+      "admission_required": true
     }
   ],
   "california": [
     {
       "name": "San Diego Zoo",
-      "url": "https://zoo.sandiegozoo.org/"
+      "url": "https://zoo.sandiegozoo.org/",
+      "city": "San Diego",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["World famous", "Conservation research", "Pandas", "Skyfari gondolas"],
+      "admission_required": true
+    },
+    {
+      "name": "San Diego Zoo Safari Park",
+      "url": "https://safaripark.sandiegozoo.org/",
+      "city": "Escondido",
+      "type": "safari_park",
+      "size": "large",
+      "notable_features": ["Open-range exhibits", "Safari tours", "Breeding programs"],
+      "admission_required": true
     },
     {
       "name": "Los Angeles Zoo",
-      "url": "https://www.lazoo.org/"
+      "url": "https://www.lazoo.org/",
+      "city": "Los Angeles",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["Griffith Park location", "LAIR exhibit", "California condors"],
+      "admission_required": true
     },
     {
       "name": "San Francisco Zoo",
-      "url": "https://www.sfzoo.org/"
+      "url": "https://www.sfzoo.org/",
+      "city": "San Francisco",
+      "type": "zoo",
+      "size": "medium",
+      "notable_features": ["Ocean views", "Penguin exhibit", "Historic carousel"],
+      "admission_required": true
     },
     {
       "name": "Oakland Zoo",
-      "url": "https://www.oaklandzoo.org/"
+      "url": "https://www.oaklandzoo.org/",
+      "city": "Oakland",
+      "type": "zoo",
+      "size": "medium",
+      "notable_features": ["Gondola ride", "California Trail", "Conservation programs"],
+      "admission_required": true
     },
     {
       "name": "Sacramento Zoo",
-      "url": "https://www.saczoo.org/"
+      "url": "https://www.saczoo.org/",
+      "city": "Sacramento",
+      "type": "zoo",
+      "size": "small",
+      "notable_features": ["Fairytale Town nearby", "Reptile house", "Education center"],
+      "admission_required": true
     },
     {
       "name": "Fresno Chaffee Zoo",
-      "url": "https://www.fresnochaffeezoo.org/"
+      "url": "https://www.fresnochaffeezoo.org/",
+      "city": "Fresno",
+      "type": "zoo",
+      "size": "medium",
+      "notable_features": ["African Adventure", "Sea Lion Cove", "Reptile house"],
+      "admission_required": true
     }
   ],
   "colorado": [
     {
       "name": "Denver Zoo",
-      "url": "https://denverzoo.org/"
+      "url": "https://denverzoo.org/",
+      "city": "Denver",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["City Park location", "Conservation research", "Interactive exhibits"],
+      "admission_required": true
     },
     {
       "name": "Cheyenne Mountain Zoo",
-      "url": "https://www.cmzoo.org/"
+      "url": "https://www.cmzoo.org/",
+      "city": "Colorado Springs",
+      "type": "zoo",
+      "size": "medium",
+      "notable_features": ["Mountain location", "Giraffe feeding", "Scenic chairlift"],
+      "admission_required": true
     },
     {
       "name": "Pueblo Zoo",
-      "url": "https://www.pueblozoo.org/"
+      "url": "https://www.pueblozoo.org/",
+      "city": "Pueblo",
+      "type": "zoo",
+      "size": "small",
+      "notable_features": ["Eco-Center", "Native wildlife", "Educational programs"],
+      "admission_required": true
     }
   ],
   "connecticut": [
     {
       "name": "Beardsley Zoo",
-      "url": "https://www.beardsleyzoo.org/"
+      "url": "https://www.beardsleyzoo.org/",
+      "city": "Bridgeport",
+      "type": "zoo",
+      "size": "small",
+      "notable_features": ["New England farmyard", "South American rainforest", "Carousel"],
+      "admission_required": true
     },
     {
       "name": "Mystic Aquarium",
-      "url": "https://www.mysticaquarium.org/"
+      "url": "https://www.mysticaquarium.org/",
+      "city": "Mystic",
+      "type": "aquarium",
+      "size": "medium",
+      "notable_features": ["Beluga whales", "Sea lions", "Marine research"],
+      "admission_required": true
     }
   ],
   "delaware": [
     {
       "name": "Brandywine Zoo",
-      "url": "https://www.brandywinezoo.org/"
+      "url": "https://www.brandywinezoo.org/",
+      "city": "Wilmington",
+      "type": "zoo",
+      "size": "small",
+      "notable_features": ["River otters", "Andean bears", "Conservation focus"],
+      "admission_required": true
+    }
+  ],
+  "district of columbia": [
+    {
+      "name": "Smithsonian National Zoo",
+      "url": "https://nationalzoo.si.edu/",
+      "city": "Washington",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["Giant pandas", "Free admission", "Conservation research", "Smithsonian Institution"],
+      "admission_required": false
     }
   ],
   "florida": [
     {
       "name": "Zoo Miami",
-      "url": "https://www.zoomiami.org/"
+      "url": "https://www.zoomiami.org/",
+      "city": "Miami",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["Cageless exhibits", "Monorail", "Amazon rainforest exhibit"],
+      "admission_required": true
     },
     {
       "name": "Busch Gardens Tampa Bay",
-      "url": "https://buschgardens.com/tampa/"
+      "url": "https://buschgardens.com/tampa/",
+      "city": "Tampa",
+      "type": "theme_park_zoo",
+      "size": "large",
+      "notable_features": ["Roller coasters", "African animals", "SeaWorld partnership"],
+      "admission_required": true
     },
     {
       "name": "Central Florida Zoo",
-      "url": "https://www.centralfloridazoo.org/"
+      "url": "https://www.centralfloridazoo.org/",
+      "city": "Sanford",
+      "type": "zoo",
+      "size": "medium",
+      "notable_features": ["Zoom Air adventure course", "Barnyard Buddies", "Conservation programs"],
+      "admission_required": true
     },
     {
       "name": "Jacksonville Zoo",
-      "url": "https://www.jacksonvillezoo.org/"
+      "url": "https://www.jacksonvillezoo.org/",
+      "city": "Jacksonville",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["Range of the Jaguar", "Gardens", "Splash Ground"],
+      "admission_required": true
     },
     {
       "name": "Palm Beach Zoo",
-      "url": "https://www.palmbeachzoo.org/"
+      "url": "https://www.palmbeachzoo.org/",
+      "city": "West Palm Beach",
+      "type": "zoo",
+      "size": "medium",
+      "notable_features": ["Interactive fountain", "Malayan tiger exhibit", "Conservation programs"],
+      "admission_required": true
     },
     {
       "name": "ZooTampa at Lowry Park",
-      "url": "https://www.zootampa.org/"
+      "url": "https://www.zootampa.org/",
+      "city": "Tampa",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["Manatee rescue", "Roaring Springs", "Florida wildlife"],
+      "admission_required": true
     }
   ],
   "georgia": [
     {
       "name": "Zoo Atlanta",
-      "url": "https://zooatlanta.org/"
+      "url": "https://zooatlanta.org/",
+      "city": "Atlanta",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["Giant pandas", "Gorilla breeding program", "Conservation research"],
+      "admission_required": true
     },
     {
       "name": "Wild Adventures",
-      "url": "https://www.wildadventures.com/"
+      "url": "https://www.wildadventures.com/",
+      "city": "Valdosta",
+      "type": "theme_park_zoo",
+      "size": "medium",
+      "notable_features": ["Roller coasters", "Water park", "Animal exhibits"],
+      "admission_required": true
     }
   ],
   "hawaii": [
     {
       "name": "Honolulu Zoo",
-      "url": "https://www.honoluluzoo.org/"
+      "url": "https://www.honoluluzoo.org/",
+      "city": "Honolulu",
+      "type": "zoo",
+      "size": "medium",
+      "notable_features": ["Waikiki location", "Pacific islands animals", "Keiki Zoo"],
+      "admission_required": true
     }
   ],
   "idaho": [
     {
       "name": "Zoo Boise",
-      "url": "https://zooboise.org/"
+      "url": "https://zooboise.org/",
+      "city": "Boise",
+      "type": "zoo",
+      "size": "small",
+      "notable_features": ["Native Idaho animals", "Conservation education", "Playground"],
+      "admission_required": true
     },
     {
       "name": "Tautphaus Park Zoo",
-      "url": "https://www.idahofallsidaho.gov/facilities/facility/details/Tautphaus-Park-Zoo-5"
+      "url": "https://www.idahofallsidaho.gov/facilities/facility/details/Tautphaus-Park-Zoo-5",
+      "city": "Idaho Falls",
+      "type": "zoo",
+      "size": "small",
+      "notable_features": ["Family friendly", "Local wildlife focus", "Educational programs"],
+      "admission_required": true
     }
   ],
   "illinois": [
     {
       "name": "Lincoln Park Zoo",
-      "url": "https://www.lpzoo.org/"
+      "url": "https://www.lpzoo.org/",
+      "city": "Chicago",
+      "type": "zoo",
+      "size": "medium",
+      "notable_features": ["Free admission", "Urban location", "Great apes", "Farm-in-the-Zoo"],
+      "admission_required": false
     },
     {
       "name": "Brookfield Zoo",
-      "url": "https://www.czs.org/"
+      "url": "https://www.czs.org/",
+      "city": "Brookfield",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["Desert Dome", "Great Bear Wilderness", "Conservation research"],
+      "admission_required": true
     },
     {
       "name": "Miller Park Zoo",
-      "url": "https://www.bloomingtonparks.org/miller-park-zoo"
+      "url": "https://www.bloomingtonparks.org/miller-park-zoo",
+      "city": "Bloomington",
+      "type": "zoo",
+      "size": "small",
+      "notable_features": ["ZooLab discovery center", "Wallaby walkabout", "Educational focus"],
+      "admission_required": true
     }
   ],
   "indiana": [
     {
       "name": "Indianapolis Zoo",
-      "url": "https://www.indianapoliszoo.com/"
+      "url": "https://www.indianapoliszoo.com/",
+      "city": "Indianapolis",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["Dolphin pavilion", "Simon Skjodt International Orangutan Center", "White River Gardens"],
+      "admission_required": true
     },
     {
       "name": "Fort Wayne Children's Zoo",
-      "url": "https://kidszoo.org/"
+      "url": "https://kidszoo.org/",
+      "city": "Fort Wayne",
+      "type": "zoo",
+      "size": "medium",
+      "notable_features": ["Children focused", "Interactive experiences", "Australian Adventure"],
+      "admission_required": true
     },
     {
       "name": "Mesker Park Zoo",
-      "url": "https://www.meskerparkzoo.com/"
+      "url": "https://www.meskerparkzoo.com/",
+      "city": "Evansville",
+      "type": "zoo",
+      "size": "medium",
+      "notable_features": ["Amazonia", "Botanic Garden", "Conservation programs"],
+      "admission_required": true
     }
   ],
   "iowa": [
     {
       "name": "Blank Park Zoo",
-      "url": "https://www.blankparkzoo.com/"
+      "url": "https://www.blankparkzoo.com/",
+      "city": "Des Moines",
+      "type": "zoo",
+      "size": "medium",
+      "notable_features": ["Sea lion shows", "Discovery Center", "Train rides"],
+      "admission_required": true
     }
   ],
   "kansas": [
     {
       "name": "Sedgwick County Zoo",
-      "url": "https://scz.org/"
+      "url": "https://scz.org/",
+      "city": "Wichita",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["Downing Gorilla Forest", "Koch Penguin & Sea Lion Cove", "Conservation research"],
+      "admission_required": true
     },
     {
       "name": "Topeka Zoo",
-      "url": "https://www.topekazoo.org/"
+      "url": "https://www.topekazoo.org/",
+      "city": "Topeka",
+      "type": "zoo",
+      "size": "small",
+      "notable_features": ["Tropical Rain Forest", "Lions Pride", "Conservation education"],
+      "admission_required": true
     }
   ],
   "kentucky": [
     {
       "name": "Louisville Zoo",
-      "url": "https://www.louisvillezoo.org/"
+      "url": "https://www.louisvillezoo.org/",
+      "city": "Louisville",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["African Outpost", "Glacier Run", "HerpAquarium"],
+      "admission_required": true
     },
     {
       "name": "Newport Aquarium",
-      "url": "https://www.newportaquarium.com/"
+      "url": "https://www.newportaquarium.com/",
+      "city": "Newport",
+      "type": "aquarium",
+      "size": "medium",
+      "notable_features": ["Shark Ray Bay Theater", "Surrounded by Sharks tunnel", "Interactive exhibits"],
+      "admission_required": true
     }
   ],
   "louisiana": [
     {
       "name": "Audubon Zoo",
-      "url": "https://audubonnatureinstitute.org/zoo"
+      "url": "https://audubonnatureinstitute.org/zoo",
+      "city": "New Orleans",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["Louisiana Swamp exhibit", "Jaguar Jungle", "World of Primates"],
+      "admission_required": true
     },
     {
       "name": "Alexandria Zoo",
-      "url": "https://www.thealexandriazoo.com/"
+      "url": "https://www.thealexandriazoo.com/",
+      "city": "Alexandria",
+      "type": "zoo",
+      "size": "small",
+      "notable_features": ["Louisiana Habitat Trail", "Educational programs", "Native species focus"],
+      "admission_required": true
     }
   ],
   "maine": [
     {
       "name": "Maine Wildlife Park",
-      "url": "https://www.maine.gov/ifw/wildlife-park/"
+      "url": "https://www.maine.gov/ifw/wildlife-park/",
+      "city": "Gray",
+      "type": "wildlife_park",
+      "size": "small",
+      "notable_features": ["Native Maine animals", "Wildlife rehabilitation", "Educational programs"],
+      "admission_required": true
     }
   ],
   "maryland": [
     {
       "name": "Maryland Zoo",
-      "url": "https://www.marylandzoo.org/"
+      "url": "https://www.marylandzoo.org/",
+      "city": "Baltimore",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["African Journey", "Polar Bear Watch", "Conservation programs"],
+      "admission_required": true
     },
     {
       "name": "National Aquarium",
-      "url": "https://www.aqua.org/"
+      "url": "https://www.aqua.org/",
+      "city": "Baltimore",
+      "type": "aquarium",
+      "size": "large",
+      "notable_features": ["Blacktip Reef", "Rainforest exhibit", "Marine conservation"],
+      "admission_required": true
     }
   ],
   "massachusetts": [
     {
       "name": "Franklin Park Zoo",
-      "url": "https://www.zoonewengland.org/franklin-park-zoo/"
+      "url": "https://www.zoonewengland.org/franklin-park-zoo/",
+      "city": "Boston",
+      "type": "zoo",
+      "size": "medium",
+      "notable_features": ["Tropical Forest", "Outback Trail", "Giraffe Savannah"],
+      "admission_required": true
     },
     {
       "name": "Stone Zoo",
-      "url": "https://www.zoonewengland.org/stone-zoo/"
+      "url": "https://www.zoonewengland.org/stone-zoo/",
+      "city": "Stoneham",
+      "type": "zoo",
+      "size": "small",
+      "notable_features": ["Yukon Creek", "Himalayan Bears", "Conservation focus"],
+      "admission_required": true
     }
   ],
   "michigan": [
     {
       "name": "Detroit Zoo",
-      "url": "https://detroitzoo.org/"
+      "url": "https://detroitzoo.org/",
+      "city": "Royal Oak",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["Arctic Ring of Life", "Great Apes of Harambee", "Amphibiville"],
+      "admission_required": true
     },
     {
       "name": "Potter Park Zoo",
-      "url": "https://potterparkzoo.org/"
+      "url": "https://potterparkzoo.org/",
+      "city": "Lansing",
+      "type": "zoo",
+      "size": "medium",
+      "notable_features": ["Black rhinos", "Snow leopards", "Conservation education"],
+      "admission_required": true
     },
     {
       "name": "John Ball Zoo",
-      "url": "https://www.jbzoo.org/"
+      "url": "https://www.jbzoo.org/",
+      "city": "Grand Rapids",
+      "type": "zoo",
+      "size": "medium",
+      "notable_features": ["Zip line adventure", "Living Shores Aquarium", "Conservation programs"],
+      "admission_required": true
     }
   ],
   "minnesota": [
     {
       "name": "Minnesota Zoo",
-      "url": "https://mnzoo.org/"
+      "url": "https://mnzoo.org/",
+      "city": "Apple Valley",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["Northern Trail", "Tropics Trail", "Conservation research"],
+      "admission_required": true
     },
     {
       "name": "Como Park Zoo",
-      "url": "https://comozooconservatory.org/"
+      "url": "https://comozooconservatory.org/",
+      "city": "Saint Paul",
+      "type": "zoo",
+      "size": "medium",
+      "notable_features": ["Free admission", "Conservatory attached", "Marjorie McNeely Conservatory"],
+      "admission_required": false
     }
   ],
   "mississippi": [
     {
       "name": "Jackson Zoo",
-      "url": "https://jacksonzoo.org/"
+      "url": "https://jacksonzoo.org/",
+      "city": "Jackson",
+      "type": "zoo",
+      "size": "medium",
+      "notable_features": ["Mississippi wilderness", "Discovery Zone", "Conservation programs"],
+      "admission_required": true
     },
     {
       "name": "Hattiesburg Zoo",
-      "url": "https://hattiesburgzoo.com/"
+      "url": "https://hattiesburgzoo.com/",
+      "city": "Hattiesburg",
+      "type": "zoo",
+      "size": "small",
+      "notable_features": ["Train rides", "Carousel", "Educational programs"],
+      "admission_required": true
     }
   ],
   "missouri": [
     {
       "name": "Saint Louis Zoo",
-      "url": "https://www.stlzoo.org/"
+      "url": "https://www.stlzoo.org/",
+      "city": "Saint Louis",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["Free admission", "Penguin & Puffin Coast", "World-class reputation"],
+      "admission_required": false
     },
     {
       "name": "Kansas City Zoo",
-      "url": "https://www.kansascityzoo.org/"
+      "url": "https://www.kansascityzoo.org/",
+      "city": "Kansas City",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["Africa exhibit", "Stingray Bay", "Conservation Carousel"],
+      "admission_required": true
     }
   ],
   "montana": [
     {
       "name": "ZooMontana",
-      "url": "https://www.zoomontana.org/"
+      "url": "https://www.zoomontana.org/",
+      "city": "Billings",
+      "type": "zoo",
+      "size": "small",
+      "notable_features": ["Native Montana animals", "Sensory garden", "Educational focus"],
+      "admission_required": true
     }
   ],
   "nebraska": [
     {
       "name": "Henry Doorly Zoo",
-      "url": "https://www.omahazoo.com/"
+      "url": "https://www.omahazoo.com/",
+      "city": "Omaha",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["Desert Dome", "Rainforest", "Aquarium", "World's largest indoor desert"],
+      "admission_required": true
     },
     {
       "name": "Lincoln Children's Zoo",
-      "url": "https://www.lincolnzoo.org/"
+      "url": "https://www.lincolnzoo.org/",
+      "city": "Lincoln",
+      "type": "zoo",
+      "size": "small",
+      "notable_features": ["Children focused", "Interactive experiences", "Educational programs"],
+      "admission_required": true
     }
   ],
   "nevada": [
     {
       "name": "Sierra Safari Zoo",
-      "url": "https://www.sierrasafarizoo.org/"
+      "url": "https://www.sierrasafarizoo.org/",
+      "city": "Reno",
+      "type": "zoo",
+      "size": "small",
+      "notable_features": ["Walk-through exhibits", "Educational programs", "Local wildlife focus"],
+      "admission_required": true
     }
   ],
   "new hampshire": [
     {
       "name": "Charmingfare Farm",
-      "url": "https://www.charmingfare.com/"
+      "url": "https://www.charmingfare.com/",
+      "city": "Candia",
+      "type": "farm_zoo",
+      "size": "small",
+      "notable_features": ["Petting zoo", "Farm animals", "Educational programs"],
+      "admission_required": true
     }
   ],
   "new jersey": [
     {
       "name": "Turtle Back Zoo",
-      "url": "https://www.turtlebackzoo.com/"
+      "url": "https://www.turtlebackzoo.com/",
+      "city": "West Orange",
+      "type": "zoo",
+      "size": "medium",
+      "notable_features": ["Essex County Turtle Back Zoo", "Sea Lion training", "Carousel"],
+      "admission_required": true
     },
     {
       "name": "Cape May County Zoo",
-      "url": "https://www.capemaycountyzoo.com/"
+      "url": "https://www.capemaycountyzoo.com/",
+      "city": "Cape May Court House",
+      "type": "zoo",
+      "size": "medium",
+      "notable_features": ["Free admission", "African Savanna", "World of Birds"],
+      "admission_required": false
     }
   ],
   "new mexico": [
     {
       "name": "ABQ BioPark Zoo",
-      "url": "https://www.cabq.gov/arks/"
+      "url": "https://www.cabq.gov/arks/",
+      "city": "Albuquerque",
+      "type": "zoo",
+      "size": "medium",
+      "notable_features": ["Desert animals", "Aquarium attached", "Conservation programs"],
+      "admission_required": true
     }
   ],
   "new york": [
     {
       "name": "Bronx Zoo",
-      "url": "https://bronxzoo.com/"
+      "url": "https://bronxzoo.com/",
+      "city": "Bronx",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["Congo Gorilla Forest", "Tiger Mountain", "World's largest metropolitan zoo"],
+      "admission_required": true
     },
     {
       "name": "Central Park Zoo",
-      "url": "https://centralparkzoo.com/"
+      "url": "https://centralparkzoo.com/",
+      "city": "New York",
+      "type": "zoo",
+      "size": "small",
+      "notable_features": ["Manhattan location", "Tisch Children's Zoo", "Sea lion pool"],
+      "admission_required": true
     },
     {
       "name": "Buffalo Zoo",
-      "url": "https://www.buffalozoo.org/"
+      "url": "https://www.buffalozoo.org/",
+      "city": "Buffalo",
+      "type": "zoo",
+      "size": "medium",
+      "notable_features": ["Arctic Edge", "Vanishing Animals exhibit", "Historic carousel"],
+      "admission_required": true
     },
     {
       "name": "Seneca Park Zoo",
-      "url": "https://senecaparkzoo.org/"
+      "url": "https://senecaparkzoo.org/",
+      "city": "Rochester",
+      "type": "zoo",
+      "size": "small",
+      "notable_features": ["Rocky Coasts", "A Step Into Africa", "Conservation focus"],
+      "admission_required": true
     }
   ],
   "north carolina": [
     {
       "name": "North Carolina Zoo",
-      "url": "https://www.nczoo.org/"
-    },
-    {
-      "name": "Riverbanks Zoo",
-      "url": "https://www.riverbanks.org/"
+      "url": "https://www.nczoo.org/",
+      "city": "Asheboro",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["World's largest natural habitat zoo", "Africa and North America regions", "Tram system"],
+      "admission_required": true
     }
   ],
   "north dakota": [
     {
       "name": "Roosevelt Park Zoo",
-      "url": "https://www.rooseveltparkzoo.org/"
+      "url": "https://www.rooseveltparkzoo.org/",
+      "city": "Minot",
+      "type": "zoo",
+      "size": "small",
+      "notable_features": ["Northern plains animals", "Conservation education", "Family friendly"],
+      "admission_required": true
     }
   ],
   "ohio": [
     {
       "name": "Cincinnati Zoo",
-      "url": "https://cincinnatizoo.org/"
+      "url": "https://cincinnatizoo.org/",
+      "city": "Cincinnati",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["Historic zoo", "Hippo Cove", "Conservation research center"],
+      "admission_required": true
     },
     {
       "name": "Cleveland Metroparks Zoo",
-      "url": "https://www.clevelandmetroparks.com/zoo"
+      "url": "https://www.clevelandmetroparks.com/zoo",
+      "city": "Cleveland",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["RainForest", "African Savanna", "Australian Adventure"],
+      "admission_required": true
     },
     {
       "name": "Columbus Zoo",
-      "url": "https://www.columbuszoo.org/"
+      "url": "https://www.columbuszoo.org/",
+      "city": "Powell",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["Heart of Africa", "Adventure Cove", "Jack Hanna association"],
+      "admission_required": true
     },
     {
       "name": "Toledo Zoo",
-      "url": "https://www.toledozoo.org/"
+      "url": "https://www.toledozoo.org/",
+      "city": "Toledo",
+      "type": "zoo",
+      "size": "medium",
+      "notable_features": ["Aquarium", "Kingdom of the Apes", "Historic Works Progress Administration architecture"],
+      "admission_required": true
     }
   ],
   "oklahoma": [
     {
       "name": "Oklahoma City Zoo",
-      "url": "https://www.okczoo.org/"
+      "url": "https://www.okczoo.org/",
+      "city": "Oklahoma City",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["Great EscApe", "Cat Forest", "Sanctuary Asia"],
+      "admission_required": true
     },
     {
       "name": "Tulsa Zoo",
-      "url": "https://www.tulsazoo.org/"
+      "url": "https://www.tulsazoo.org/",
+      "city": "Tulsa",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["Conservation research", "Children's Zoo International", "Oxley Nature Center"],
+      "admission_required": true
     }
   ],
   "oregon": [
     {
       "name": "Oregon Zoo",
-      "url": "https://www.oregonzoo.org/"
+      "url": "https://www.oregonzoo.org/",
+      "city": "Portland",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["Elephant Lands", "Predators of the Serengeti", "Conservation programs"],
+      "admission_required": true
     }
   ],
   "pennsylvania": [
     {
       "name": "Philadelphia Zoo",
-      "url": "https://www.philadelphiazoo.org/"
+      "url": "https://www.philadelphiazoo.org/",
+      "city": "Philadelphia",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["America's first zoo", "Zoo360 animal exploration trails", "KidZooU"],
+      "admission_required": true
     },
     {
       "name": "Pittsburgh Zoo",
-      "url": "https://www.pittsburghzoo.org/"
+      "url": "https://www.pittsburghzoo.org/",
+      "city": "Pittsburgh",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["PPG Aquarium", "Polar Bear & Penguin Point", "Highland Park location"],
+      "admission_required": true
     },
     {
       "name": "Erie Zoo",
-      "url": "https://www.eriezoo.org/"
+      "url": "https://www.eriezoo.org/",
+      "city": "Erie",
+      "type": "zoo",
+      "size": "small",
+      "notable_features": ["Children's zoo", "Tiger exhibit", "Conservation education"],
+      "admission_required": true
     }
   ],
   "rhode island": [
     {
       "name": "Roger Williams Park Zoo",
-      "url": "https://www.rwpzoo.org/"
+      "url": "https://www.rwpzoo.org/",
+      "city": "Providence",
+      "type": "zoo",
+      "size": "medium",
+      "notable_features": ["Farmyard", "Marco Polo's Adventure Trek", "Conservation programs"],
+      "admission_required": true
     }
   ],
   "south carolina": [
     {
       "name": "Riverbanks Zoo",
-      "url": "https://www.riverbanks.org/"
+      "url": "https://www.riverbanks.org/",
+      "city": "Columbia",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["Riverbanks Botanical Garden", "Gorilla Base Camp", "Conservation research"],
+      "admission_required": true
     },
     {
       "name": "Greenville Zoo",
-      "url": "https://www.greenvillezoo.com/"
+      "url": "https://www.greenvillezoo.com/",
+      "city": "Greenville",
+      "type": "zoo",
+      "size": "small",
+      "notable_features": ["Cleveland Park location", "Reptile building", "Conservation focus"],
+      "admission_required": true
     }
   ],
   "south dakota": [
     {
       "name": "Great Plains Zoo",
-      "url": "https://www.gpzoo.org/"
+      "url": "https://www.gpzoo.org/",
+      "city": "Sioux Falls",
+      "type": "zoo",
+      "size": "medium",
+      "notable_features": ["Delbridge Museum", "Conservation research", "Children's zoo"],
+      "admission_required": true
     }
   ],
   "tennessee": [
     {
       "name": "Nashville Zoo",
-      "url": "https://www.nashvillezoo.org/"
+      "url": "https://www.nashvillezoo.org/",
+      "city": "Nashville",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["Grassmere Historic Home", "Jungle Gym", "Conservation programs"],
+      "admission_required": true
     },
     {
       "name": "Memphis Zoo",
-      "url": "https://www.memphiszoo.org/"
+      "url": "https://www.memphiszoo.org/",
+      "city": "Memphis",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["Giant pandas", "Teton Trek", "Cat Country"],
+      "admission_required": true
     },
     {
       "name": "Knoxville Zoo",
-      "url": "https://www.knoxvillezoo.org/"
+      "url": "https://www.knoxvillezoo.org/",
+      "city": "Knoxville",
+      "type": "zoo",
+      "size": "medium",
+      "notable_features": ["Clayton Family Kids Cove", "Red panda habitat", "Conservation programs"],
+      "admission_required": true
     }
   ],
   "texas": [
     {
       "name": "Houston Zoo",
-      "url": "https://www.houstonzoo.org/"
+      "url": "https://www.houstonzoo.org/",
+      "city": "Houston",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["African Forest", "Kipp Aquarium", "Conservation research"],
+      "admission_required": true
     },
     {
       "name": "Dallas Zoo",
-      "url": "https://www.dallaszoo.com/"
+      "url": "https://www.dallaszoo.com/",
+      "city": "Dallas",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["Giants of the Savanna", "Wilds of Africa", "Children's Aquarium"],
+      "admission_required": true
     },
     {
       "name": "San Antonio Zoo",
-      "url": "https://sazoo.org/"
+      "url": "https://sazoo.org/",
+      "city": "San Antonio",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["Brackenridge Park location", "Big Cat Valley", "Amazonia"],
+      "admission_required": true
     },
     {
       "name": "Fort Worth Zoo",
-      "url": "https://www.fortworthzoo.org/"
+      "url": "https://www.fortworthzoo.org/",
+      "city": "Fort Worth",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["Museum of Living Art", "African Savanna", "Texas Wild!"],
+      "admission_required": true
     },
     {
       "name": "Austin Zoo",
-      "url": "https://austinzoo.org/"
+      "url": "https://austinzoo.org/",
+      "city": "Austin",
+      "type": "wildlife_rescue",
+      "size": "medium",
+      "notable_features": ["Animal rescue focus", "Train rides", "Educational programs"],
+      "admission_required": true
     }
   ],
   "utah": [
     {
       "name": "Hogle Zoo",
-      "url": "https://www.hoglezoo.org/"
+      "url": "https://www.hoglezoo.org/",
+      "city": "Salt Lake City",
+      "type": "zoo",
+      "size": "medium",
+      "notable_features": ["Rocky Shores", "African Savanna", "Conservation programs"],
+      "admission_required": true
     }
   ],
   "vermont": [
     {
       "name": "VINS Nature Center",
-      "url": "https://vinsweb.org/"
+      "url": "https://vinsweb.org/",
+      "city": "Quechee",
+      "type": "nature_center",
+      "size": "small",
+      "notable_features": ["Birds of prey", "Wildlife rehabilitation", "Educational programs"],
+      "admission_required": true
     }
   ],
   "virginia": [
     {
       "name": "Virginia Zoo",
-      "url": "https://www.virginiazoo.org/"
+      "url": "https://www.virginiazoo.org/",
+      "city": "Norfolk",
+      "type": "zoo",
+      "size": "medium",
+      "notable_features": ["Trail of the Tiger", "Africa - Okavango Delta", "Conservation programs"],
+      "admission_required": true
     },
     {
       "name": "Metro Richmond Zoo",
-      "url": "https://www.metrorichmondzoo.com/"
+      "url": "https://www.metrorichmondzoo.com/",
+      "city": "Moseley",
+      "type": "zoo",
+      "size": "medium",
+      "notable_features": ["Safari village", "Snow leopards", "Giraffe feeding"],
+      "admission_required": true
     }
   ],
   "washington": [
     {
       "name": "Woodland Park Zoo",
-      "url": "https://www.zoo.org/"
+      "url": "https://www.zoo.org/",
+      "city": "Seattle",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["Trail of Vines", "Northern Trail", "Tropical Rain Forest"],
+      "admission_required": true
     },
     {
       "name": "Point Defiance Zoo",
-      "url": "https://www.pdza.org/"
+      "url": "https://www.pdza.org/",
+      "city": "Tacoma",
+      "type": "zoo",
+      "size": "medium",
+      "notable_features": ["Pacific Seas Aquarium", "Asian Forest Sanctuary", "Red Wolf Woods"],
+      "admission_required": true
     }
   ],
   "west virginia": [
     {
       "name": "Oglebay Good Zoo",
-      "url": "https://www.oglebaygoodzioo.org/"
+      "url": "https://www.oglebaygoodzioo.org/",
+      "city": "Wheeling",
+      "type": "zoo",
+      "size": "small",
+      "notable_features": ["Train rides", "Conservation education", "Benedum Planetarium nearby"],
+      "admission_required": true
     }
   ],
   "wisconsin": [
     {
       "name": "Milwaukee County Zoo",
-      "url": "https://www.milwaukeezoo.org/"
+      "url": "https://www.milwaukeezoo.org/",
+      "city": "Milwaukee",
+      "type": "zoo",
+      "size": "large",
+      "notable_features": ["Humboldt penguins", "Adventure Africa", "Zoomobile tours"],
+      "admission_required": true
     },
     {
       "name": "Menominee Zoo",
-      "url": "https://www.menomineezoo.org/"
-    }
-  ],
-  "wyoming": [
-    {
-      "name": "Cheyenne Mountain Zoo",
-      "url": "https://www.cmzoo.org/"
+      "url": "https://www.menomineezoo.org/",
+      "city": "Menominee",
+      "type": "zoo",
+      "size": "small",
+      "notable_features": ["Native American cultural connection", "Wolf exhibit", "Educational focus"],
+      "admission_required": true
     }
   ]
 }
