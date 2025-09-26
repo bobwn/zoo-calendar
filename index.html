@@ -274,6 +274,26 @@
             border-left-color: #fff;
         }
 
+        .zoo-name {
+            font-weight: 600;
+            font-size: 1rem;
+            line-height: 1.2;
+            margin-bottom: 2px;
+        }
+
+        .zoo-city {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            font-weight: 400;
+            line-height: 1.1;
+        }
+
+        /* Ensure hover state affects both name and city */
+        .zoo-list a:hover .zoo-name,
+        .zoo-list a:hover .zoo-city {
+            color: white;
+        }
+
         .error-message {
             background: linear-gradient(45deg, var(--logo-orange), var(--earth-tone));
             color: white;
@@ -596,16 +616,16 @@
                 // Fallback to embedded data (keep a few states as backup)
                 zooData = {
                     'california': [
-                        { name: 'San Diego Zoo', url: 'https://zoo.sandiegozoo.org/' },
-                        { name: 'Los Angeles Zoo', url: 'https://www.lazoo.org/' }
+                        { name: 'San Diego Zoo', url: 'https://zoo.sandiegozoo.org/', city: 'San Diego' },
+                        { name: 'Los Angeles Zoo', url: 'https://www.lazoo.org/', city: 'Los Angeles' }
                     ],
                     'florida': [
-                        { name: 'Zoo Miami', url: 'https://www.zoomiami.org/' },
-                        { name: 'Busch Gardens Tampa Bay', url: 'https://buschgardens.com/tampa/' }
+                        { name: 'Zoo Miami', url: 'https://www.zoomiami.org/', city: 'Miami' },
+                        { name: 'Busch Gardens Tampa Bay', url: 'https://buschgardens.com/tampa/', city: 'Tampa' }
                     ],
                     'texas': [
-                        { name: 'Houston Zoo', url: 'https://www.houstonzoo.org/' },
-                        { name: 'Dallas Zoo', url: 'https://www.dallaszoo.com/' }
+                        { name: 'Houston Zoo', url: 'https://www.houstonzoo.org/', city: 'Houston' },
+                        { name: 'Dallas Zoo', url: 'https://www.dallaszoo.com/', city: 'Dallas' }
                     ]
                 };
                 
@@ -709,7 +729,24 @@
             
             let zooListHtml = '';
             zoos.forEach(zoo => {
-                zooListHtml += `<li><a href="${zoo.url}" target="_blank" rel="noopener noreferrer">${zoo.name}</a></li>`;
+                // Handle both old format (just name/url) and new format (with city, etc.)
+                const zooName = zoo.name;
+                const zooUrl = zoo.url;
+                const zooCity = zoo.city || ''; // Fallback for old data format
+                
+                if (zooCity) {
+                    zooListHtml += `
+                        <li>
+                            <a href="${zooUrl}" target="_blank" rel="noopener noreferrer">
+                                <div class="zoo-name">${zooName}</div>
+                                <div class="zoo-city">${zooCity}</div>
+                            </a>
+                        </li>
+                    `;
+                } else {
+                    // Fallback for old format
+                    zooListHtml += `<li><a href="${zooUrl}" target="_blank" rel="noopener noreferrer">${zooName}</a></li>`;
+                }
             });
 
             tile.innerHTML = `
@@ -834,196 +871,3 @@
         async function loadCommentsFromFirebase() {
             // Check if Firebase is configured
             if (!window.firebaseInitialized) {
-                console.log("Firebase not configured, loading from local storage");
-                // Load from local storage
-                const localComments = JSON.parse(localStorage.getItem('zooComments') || '[]');
-                return localComments;
-            }
-
-            try {
-                console.log("Loading comments from Firebase...");
-                const q = window.query(window.collection(window.db, "comments"), window.orderBy("timestamp", "desc"));
-                const querySnapshot = await window.getDocs(q);
-                const comments = [];
-                
-                querySnapshot.forEach((doc) => {
-                    const data = doc.data();
-                    console.log("Comment data:", data);
-                    comments.push({
-                        id: doc.id,
-                        text: data.text,
-                        timestamp: data.created || (data.timestamp?.toDate ? data.timestamp.toDate().toLocaleString() : data.timestamp) || 'Unknown time'
-                    });
-                });
-                
-                console.log(`Loaded ${comments.length} comments from Firebase`);
-                return comments;
-            } catch (e) {
-                console.error("Error loading comments from Firebase: ", e);
-                // Fallback to local storage
-                const localComments = JSON.parse(localStorage.getItem('zooComments') || '[]');
-                console.log(`Fallback: loaded ${localComments.length} comments from local storage`);
-                return localComments;
-            }
-        }
-
-        async function showReviewModal() {
-            const modal = document.getElementById('reviewModal');
-            const commentsList = document.getElementById('commentsList');
-            
-            // Show loading message
-            commentsList.innerHTML = '<p style="text-align: center; color: #666; padding: 20px;">Loading comments...</p>';
-            modal.classList.add('show');
-            
-            // Load comments from Firebase
-            const comments = await loadCommentsFromFirebase();
-            
-            if (comments.length === 0) {
-                commentsList.innerHTML = '<p style="text-align: center; color: #666; padding: 20px;">No comments submitted yet.</p>';
-            } else {
-                let commentsHtml = '';
-                comments.forEach((comment, index) => {
-                    commentsHtml += `
-                        <div class="comment-item">
-                            <div class="comment-timestamp">${comment.timestamp}</div>
-                            <div class="comment-text">${comment.text}</div>
-                        </div>
-                    `;
-                });
-                commentsList.innerHTML = commentsHtml;
-            }
-        }
-
-        function hideReviewModal() {
-            const modal = document.getElementById('reviewModal');
-            modal.classList.remove('show');
-        }
-
-        async function submitComment() {
-            const commentText = document.getElementById('commentText').value.trim();
-            if (!commentText) {
-                showMessage('Please enter your comment before submitting.', true);
-                return;
-            }
-
-            // Show loading state
-            const submitBtn = document.getElementById('submitComment');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Saving...';
-            submitBtn.disabled = true;
-
-            // Save to Firebase
-            const success = await saveCommentToFirebase(commentText);
-            
-            // Reset button
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-
-            if (success) {
-                hideCommentsModal();
-                showMessage('Thank you for your feedback! Your comment has been saved.', false);
-            } else {
-                showMessage('Sorry, there was an error saving your comment. Please try again.', true);
-            }
-        }
-
-        function handleSearch() {
-            const input = document.getElementById('stateInput');
-            const stateName = input.value.trim();
-            
-            if (!stateName) {
-                showMessage('Please enter a state name.', true);
-                return;
-            }
-            
-            addZooTile(stateName);
-        }
-
-        // Event listeners
-        document.addEventListener('DOMContentLoaded', async function() {
-            // Load zoo data first
-            await loadZooData();
-            
-            // Then set up event listeners
-            document.getElementById('searchBtn').addEventListener('click', handleSearch);
-            document.getElementById('clearBtn').addEventListener('click', clearAllTiles);
-            document.getElementById('commentsBtn').addEventListener('click', showCommentsModal);
-            document.getElementById('reviewBtn').addEventListener('click', showReviewModal);
-            document.getElementById('closeModal').addEventListener('click', hideCommentsModal);
-            document.getElementById('closeReviewModal').addEventListener('click', hideReviewModal);
-            document.getElementById('submitComment').addEventListener('click', submitComment);
-            
-            document.getElementById('stateInput').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    e.preventDefault();
-                    const dropdown = document.getElementById('autocompleteDropdown');
-                    
-                    // If autocomplete is showing and an item is highlighted, select it
-                    if (dropdown.classList.contains('show') && selectHighlightedItem()) {
-                        return;
-                    }
-                    
-                    // Otherwise, proceed with normal search
-                    handleSearch();
-                }
-            });
-
-            // Autocomplete input event
-            document.getElementById('stateInput').addEventListener('input', function(e) {
-                const inputValue = e.target.value.trim();
-                showAutocomplete(inputValue);
-            });
-
-            // Keyboard navigation for autocomplete
-            document.getElementById('stateInput').addEventListener('keydown', function(e) {
-                const dropdown = document.getElementById('autocompleteDropdown');
-                
-                if (dropdown.classList.contains('show')) {
-                    if (e.key === 'ArrowDown') {
-                        e.preventDefault();
-                        highlightItem('down');
-                    } else if (e.key === 'ArrowUp') {
-                        e.preventDefault();
-                        highlightItem('up');
-                    } else if (e.key === 'Escape') {
-                        e.preventDefault();
-                        hideAutocomplete();
-                    }
-                }
-            });
-
-            // Hide autocomplete when clicking outside
-            document.addEventListener('click', function(e) {
-                const searchContainer = document.querySelector('.search-container');
-                if (!searchContainer.contains(e.target)) {
-                    hideAutocomplete();
-                }
-            });
-
-            // Close modals when clicking outside of them
-            document.getElementById('commentsModal').addEventListener('click', function(e) {
-                if (e.target === this) {
-                    hideCommentsModal();
-                }
-            });
-
-            document.getElementById('reviewModal').addEventListener('click', function(e) {
-                if (e.target === this) {
-                    hideReviewModal();
-                }
-            });
-            
-            // Close modals with Escape key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    hideCommentsModal();
-                    hideReviewModal();
-                }
-            });
-
-            // Focus on input when page loads
-            document.getElementById('stateInput').focus();
-        });
-    </script>
-</body>
-</html>
