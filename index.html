@@ -613,7 +613,7 @@
         <div id="errorContainer"></div>
 
         <!-- Version Number -->
-        <div class="version-number">v1.6.2</div>
+        <div class="version-number">v1.6.3</div>
     </div>
 
     <!-- Comments Modal -->
@@ -792,29 +792,60 @@
                 return;
             }
 
+            // Show loading state
+            const signInBtn = document.getElementById('signInBtn');
+            const originalText = signInBtn.textContent;
+            signInBtn.textContent = 'Signing in...';
+            signInBtn.disabled = true;
+
             try {
-                // First try to sign in
+                // Try to sign in with existing account
                 await window.signInWithEmailAndPassword(window.auth, email, password);
                 showMessage('Successfully signed in!', false);
             } catch (error) {
-                console.log('Sign in error:', error.code, error.message);
+                console.log('Sign in error details:', {
+                    code: error.code,
+                    message: error.message,
+                    email: email,
+                    authDomain: window.firebaseApp?.options?.authDomain
+                });
                 
-                if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
-                    // Try to create account
-                    if (confirm('Account not found. Would you like to create a new account with this email?')) {
+                if (error.code === 'auth/invalid-credential' || 
+                    error.code === 'auth/user-not-found' || 
+                    error.code === 'auth/wrong-password') {
+                    
+                    // Ask if they want to create a new account
+                    if (confirm(`No account found with email "${email}". Would you like to create a new account?`)) {
                         try {
                             await window.createUserWithEmailAndPassword(window.auth, email, password);
                             showMessage('Account created and signed in successfully!', false);
                         } catch (createError) {
                             console.log('Account creation error:', createError.code, createError.message);
-                            showMessage(`Error creating account: ${createError.message}`, true);
+                            
+                            if (createError.code === 'auth/operation-not-allowed') {
+                                showMessage('Email/password authentication is not enabled in Firebase. Please enable it in Firebase Console > Authentication > Sign-in method.', true);
+                            } else if (createError.code === 'auth/email-already-in-use') {
+                                showMessage('This email is already registered. Please try signing in instead.', true);
+                            } else if (createError.code === 'auth/weak-password') {
+                                showMessage('Password is too weak. Please use at least 6 characters.', true);
+                            } else {
+                                showMessage(`Error creating account: ${createError.message}`, true);
+                            }
                         }
                     }
                 } else if (error.code === 'auth/operation-not-allowed') {
-                    showMessage('Email/password authentication is not enabled. Please contact support.', true);
+                    showMessage('Email/password authentication is not enabled. Please enable it in Firebase Console > Authentication > Sign-in method.', true);
+                } else if (error.code === 'auth/invalid-email') {
+                    showMessage('Invalid email address format.', true);
+                } else if (error.code === 'auth/too-many-requests') {
+                    showMessage('Too many failed attempts. Please try again later.', true);
                 } else {
-                    showMessage(`Sign in error: ${error.message}`, true);
+                    showMessage(`Sign in error: ${error.message}. Please check if Firebase Authentication is properly configured.`, true);
                 }
+            } finally {
+                // Reset button state
+                signInBtn.textContent = originalText;
+                signInBtn.disabled = false;
             }
         }
 
