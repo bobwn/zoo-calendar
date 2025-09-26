@@ -489,19 +489,9 @@
                 font-size: 2rem;
             }
             
-            .header-content {
+            .title {
                 flex-direction: column;
-                gap: 20px;
-            }
-
-            .animal-tile {
-                width: 150px;
-                height: 150px;
-                font-size: 75px;
-            }
-
-            .animal-tile .fallback-emoji {
-                font-size: 75px;
+                gap: 10px;
             }
             
             .tiles-container {
@@ -513,23 +503,9 @@
 <body>
     <div class="container">
         <div class="header">
-            <div class="header-content">
-                <div class="animal-tile left">
-                    <img src="https://images.unsplash.com/photo-1549366021-9f761d040a94?w=500&h=500&fit=crop&crop=center" 
-                         alt="Majestic Tiger" 
-                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="fallback-emoji">🐅</div>
-                </div>
-                <div class="title">
-                    <h1>ZooCalendar.com</h1>
-                    <div class="parrot-emoji">🦜</div>
-                </div>
-                <div class="animal-tile right">
-                    <img src="https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=500&h=500&fit=crop&crop=face" 
-                         alt="African Elephant" 
-                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="fallback-emoji">🐘</div>
-                </div>
+            <div class="title">
+                <h1>ZooCalendar.com</h1>
+                <div class="parrot-emoji">🦜</div>
             </div>
             <p class="byline">Don't miss exciting upcoming zoo events!</p>
             <div class="search-container">
@@ -550,7 +526,7 @@
         <div id="errorContainer"></div>
 
         <!-- Version Number -->
-        <div class="version-number">v1.9.6</div>
+        <div class="version-number">v1.8.0</div>
     </div>
 
     <!-- Comments Modal -->
