@@ -44,64 +44,6 @@
             border-radius: 20px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(10px);
-            position: relative;
-        }
-
-        .header-content {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 20px;
-        }
-
-        .animal-tile {
-            width: 200px;
-            height: 200px;
-            border-radius: 25px;
-            background: var(--soft-gray);
-            border: 5px solid var(--accent-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 100px;
-            box-shadow: 0 8px 25px rgba(127, 176, 105, 0.5);
-            transition: all 0.3s ease;
-            overflow: hidden;
-        }
-
-        .animal-tile img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 20px;
-        }
-
-        .animal-tile .fallback-emoji {
-            font-size: 100px;
-            display: none;
-        }
-
-        .animal-tile:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 8px 25px rgba(127, 176, 105, 0.4);
-        }
-
-        .animal-tile.left {
-            animation-delay: 0s;
-        }
-
-        .animal-tile.right {
-            animation-delay: 1.5s;
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
         }
 
         .title {
@@ -109,7 +51,7 @@
             align-items: center;
             justify-content: center;
             gap: 15px;
-            flex: 1;
+            margin-bottom: 10px;
         }
 
         .title h1 {
@@ -526,7 +468,7 @@
         <div id="errorContainer"></div>
 
         <!-- Version Number -->
-        <div class="version-number">v1.8.0</div>
+        <div class="version-number">v1.7.1</div>
     </div>
 
     <!-- Comments Modal -->
@@ -893,4 +835,45 @@
             // Check if Firebase is configured
             if (!window.firebaseInitialized) {
                 console.log("Firebase not configured, loading from local storage");
-                // Load from
+                // Load from local storage
+                const localComments = JSON.parse(localStorage.getItem('zooComments') || '[]');
+                return localComments;
+            }
+
+            try {
+                console.log("Loading comments from Firebase...");
+                const q = window.query(window.collection(window.db, "comments"), window.orderBy("timestamp", "desc"));
+                const querySnapshot = await window.getDocs(q);
+                const comments = [];
+                
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    console.log("Comment data:", data);
+                    comments.push({
+                        id: doc.id,
+                        text: data.text,
+                        timestamp: data.created || (data.timestamp?.toDate ? data.timestamp.toDate().toLocaleString() : data.timestamp) || 'Unknown time'
+                    });
+                });
+                
+                console.log(`Loaded ${comments.length} comments from Firebase`);
+                return comments;
+            } catch (e) {
+                console.error("Error loading comments from Firebase: ", e);
+                // Fallback to local storage
+                const localComments = JSON.parse(localStorage.getItem('zooComments') || '[]');
+                console.log(`Fallback: loaded ${localComments.length} comments from local storage`);
+                return localComments;
+            }
+        }
+
+        async function showReviewModal() {
+            const modal = document.getElementById('reviewModal');
+            const commentsList = document.getElementById('commentsList');
+            
+            // Show loading message
+            commentsList.innerHTML = '<p style="text-align: center; color: #666; padding: 20px;">Loading comments...</p>';
+            modal.classList.add('show');
+            
+            // Load comments from Firebase
+            const comments = await loadCommentsFromFirebase();
