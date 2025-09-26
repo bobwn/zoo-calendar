@@ -613,7 +613,7 @@
         <div id="errorContainer"></div>
 
         <!-- Version Number -->
-        <div class="version-number">v1.6.0</div>
+        <div class="version-number">v1.6.2</div>
     </div>
 
     <!-- Comments Modal -->
@@ -734,7 +734,10 @@
 
         // Authentication Functions
         function setupAuthStateListener() {
-            if (!window.firebaseInitialized || !window.auth) return;
+            if (!window.firebaseInitialized || !window.auth) {
+                console.log('Firebase Authentication not available');
+                return;
+            }
             
             window.onAuthStateChanged(window.auth, (user) => {
                 currentUser = user;
@@ -770,22 +773,32 @@
         }
 
         async function showSignInPrompt() {
-            if (!window.firebaseInitialized) {
-                showMessage('Authentication service is not available.', true);
+            if (!window.firebaseInitialized || !window.auth) {
+                showMessage('Please wait for Firebase to initialize, then try again.', true);
                 return;
             }
 
             const email = prompt('Enter your email address:');
-            if (!email) return;
+            if (!email || !email.includes('@')) {
+                if (email) showMessage('Please enter a valid email address.', true);
+                return;
+            }
 
-            const password = prompt('Enter your password (or create a new one):');
+            const password = prompt('Enter your password (minimum 6 characters):');
             if (!password) return;
+
+            if (password.length < 6) {
+                showMessage('Password must be at least 6 characters long.', true);
+                return;
+            }
 
             try {
                 // First try to sign in
                 await window.signInWithEmailAndPassword(window.auth, email, password);
                 showMessage('Successfully signed in!', false);
             } catch (error) {
+                console.log('Sign in error:', error.code, error.message);
+                
                 if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
                     // Try to create account
                     if (confirm('Account not found. Would you like to create a new account with this email?')) {
@@ -793,9 +806,12 @@
                             await window.createUserWithEmailAndPassword(window.auth, email, password);
                             showMessage('Account created and signed in successfully!', false);
                         } catch (createError) {
+                            console.log('Account creation error:', createError.code, createError.message);
                             showMessage(`Error creating account: ${createError.message}`, true);
                         }
                     }
+                } else if (error.code === 'auth/operation-not-allowed') {
+                    showMessage('Email/password authentication is not enabled. Please contact support.', true);
                 } else {
                     showMessage(`Sign in error: ${error.message}`, true);
                 }
@@ -804,7 +820,7 @@
 
         async function signOutUser() {
             if (!window.firebaseInitialized || !window.auth) {
-                showMessage('Authentication service is not available.', true);
+                showMessage('Firebase authentication not available.', true);
                 return;
             }
 
@@ -812,6 +828,7 @@
                 await window.signOut(window.auth);
                 showMessage('Successfully signed out!', false);
             } catch (error) {
+                console.log('Sign out error:', error);
                 showMessage(`Error signing out: ${error.message}`, true);
             }
         }
