@@ -446,18 +446,121 @@
             z-index: 100;
         }
 
+        .sign-in-container {
+            background: var(--warm-white);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .user-status {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .user-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .user-email {
+            font-weight: 600;
+            color: #333;
+            font-size: 0.95rem;
+        }
+
+        .user-label {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .sign-in-btn, .sign-out-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .sign-in-btn {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            box-shadow: 0 4px 15px rgba(45, 90, 61, 0.3);
+        }
+
+        .sign-in-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(45, 90, 61, 0.4);
+        }
+
+        .sign-out-btn {
+            background: linear-gradient(45deg, var(--logo-orange), var(--earth-tone));
+            color: white;
+            box-shadow: 0 4px 15px rgba(230, 148, 26, 0.3);
+        }
+
+        .sign-out-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(230, 148, 26, 0.4);
+        }
+
+        .signed-out-message {
+            text-align: center;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .signed-out-message strong {
+            color: var(--primary-color);
+        }
+
+        .auth-benefits {
+            margin-top: 10px;
+            font-size: 0.85rem;
+            color: #888;
+            text-align: center;
+        }
+
         @media (max-width: 768px) {
-            .title h1 {
-                font-size: 2rem;
-            }
-            
-            .title {
+            .user-status {
                 flex-direction: column;
-                gap: 10px;
+                align-items: stretch;
             }
             
-            .tiles-container {
-                grid-template-columns: 1fr;
+            .auth-buttons {
+                justify-content: center;
             }
         }
     </style>
@@ -470,6 +573,28 @@
                 <div class="parrot-emoji">🦜</div>
             </div>
             <p class="byline">Don't miss exciting upcoming zoo events!</p>
+            
+            <!-- User Authentication Section -->
+            <div class="sign-in-container">
+                <div id="userStatus" class="user-status">
+                    <div id="signedOutView" class="signed-out-message">
+                        <strong>Sign in</strong> to save your favorite zoos and get personalized recommendations!
+                        <div class="auth-benefits">Free account • No spam • Enhanced features</div>
+                    </div>
+                    <div id="signedInView" class="user-info" style="display: none;">
+                        <div class="user-avatar" id="userAvatar">U</div>
+                        <div class="user-details">
+                            <div class="user-email" id="userEmail">user@example.com</div>
+                            <div class="user-label">Signed in</div>
+                        </div>
+                    </div>
+                    <div class="auth-buttons">
+                        <button id="signInBtn" class="sign-in-btn">Sign In with Email</button>
+                        <button id="signOutBtn" class="sign-out-btn" style="display: none;">Sign Out</button>
+                    </div>
+                </div>
+            </div>
+
             <div class="search-container">
                 <input type="text" id="stateInput" placeholder="Enter a state name (e.g., California, Texas, Florida)" autocomplete="off">
                 <button id="searchBtn">Search</button>
@@ -488,7 +613,7 @@
         <div id="errorContainer"></div>
 
         <!-- Version Number -->
-        <div class="version-number">v1.5.0</div>
+        <div class="version-number">v1.6.0</div>
     </div>
 
     <!-- Comments Modal -->
@@ -523,6 +648,7 @@
         // Import the functions you need from the SDKs you need
         import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js';
         import { getFirestore, collection, addDoc, getDocs, orderBy, query } from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js';
+        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged, sendPasswordResetEmail } from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js';
 
         // Your Firebase configuration
         const firebaseConfig = {
@@ -536,12 +662,13 @@
         };
 
         // Initialize Firebase
-        let app, db;
+        let app, db, auth;
         let firebaseInitialized = false;
 
         try {
             app = initializeApp(firebaseConfig);
             db = getFirestore(app);
+            auth = getAuth(app);
             firebaseInitialized = true;
             console.log("Firebase initialized successfully");
         } catch (error) {
@@ -549,17 +676,24 @@
             firebaseInitialized = false;
         }
 
-        // Make Firebase functions available globally - FIXED SCOPING
+        // Make Firebase functions available globally
         window.firebaseInitialized = firebaseInitialized;
         window.firebaseApp = app;
         window.firebaseDb = db;
+        window.firebaseAuth = auth;
         if (firebaseInitialized) {
             window.db = db;
+            window.auth = auth;
             window.collection = collection;
             window.addDoc = addDoc;
             window.getDocs = getDocs;
             window.orderBy = orderBy;
             window.query = query;
+            window.signInWithEmailAndPassword = signInWithEmailAndPassword;
+            window.createUserWithEmailAndPassword = createUserWithEmailAndPassword;
+            window.signOut = signOut;
+            window.onAuthStateChanged = onAuthStateChanged;
+            window.sendPasswordResetEmail = sendPasswordResetEmail;
         }
 
         // Also make sure the main script waits for Firebase to initialize
@@ -574,6 +708,7 @@
         let zooData = {}; // Will be loaded from external file
         let stateNames = []; // List of all state names for autocomplete
         let highlightedIndex = -1; // For keyboard navigation
+        let currentUser = null; // Current signed-in user
 
         // Wait for Firebase to initialize before setting up event listeners
         let firebaseReady = false;
@@ -581,6 +716,9 @@
         window.addEventListener('firebaseReady', function(e) {
             firebaseReady = true;
             console.log('Firebase ready event received:', e.detail.initialized);
+            if (window.firebaseInitialized) {
+                setupAuthStateListener();
+            }
         });
 
         // Also check if it's already initialized
@@ -588,8 +726,95 @@
             if (window.firebaseInitialized !== undefined) {
                 firebaseReady = true;
                 console.log('Firebase status checked:', window.firebaseInitialized);
+                if (window.firebaseInitialized) {
+                    setupAuthStateListener();
+                }
             }
         }, 100);
+
+        // Authentication Functions
+        function setupAuthStateListener() {
+            if (!window.firebaseInitialized || !window.auth) return;
+            
+            window.onAuthStateChanged(window.auth, (user) => {
+                currentUser = user;
+                updateUIForAuthState(user);
+                console.log('Auth state changed:', user ? user.email : 'Not signed in');
+            });
+        }
+
+        function updateUIForAuthState(user) {
+            const signedInView = document.getElementById('signedInView');
+            const signedOutView = document.getElementById('signedOutView');
+            const signInBtn = document.getElementById('signInBtn');
+            const signOutBtn = document.getElementById('signOutBtn');
+            const userEmail = document.getElementById('userEmail');
+            const userAvatar = document.getElementById('userAvatar');
+
+            if (user) {
+                // User is signed in
+                signedInView.style.display = 'flex';
+                signedOutView.style.display = 'none';
+                signInBtn.style.display = 'none';
+                signOutBtn.style.display = 'block';
+                
+                userEmail.textContent = user.email;
+                userAvatar.textContent = user.email.charAt(0).toUpperCase();
+            } else {
+                // User is signed out
+                signedInView.style.display = 'none';
+                signedOutView.style.display = 'block';
+                signInBtn.style.display = 'block';
+                signOutBtn.style.display = 'none';
+            }
+        }
+
+        async function showSignInPrompt() {
+            if (!window.firebaseInitialized) {
+                showMessage('Authentication service is not available.', true);
+                return;
+            }
+
+            const email = prompt('Enter your email address:');
+            if (!email) return;
+
+            const password = prompt('Enter your password (or create a new one):');
+            if (!password) return;
+
+            try {
+                // First try to sign in
+                await window.signInWithEmailAndPassword(window.auth, email, password);
+                showMessage('Successfully signed in!', false);
+            } catch (error) {
+                if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+                    // Try to create account
+                    if (confirm('Account not found. Would you like to create a new account with this email?')) {
+                        try {
+                            await window.createUserWithEmailAndPassword(window.auth, email, password);
+                            showMessage('Account created and signed in successfully!', false);
+                        } catch (createError) {
+                            showMessage(`Error creating account: ${createError.message}`, true);
+                        }
+                    }
+                } else {
+                    showMessage(`Sign in error: ${error.message}`, true);
+                }
+            }
+        }
+
+        async function signOutUser() {
+            if (!window.firebaseInitialized || !window.auth) {
+                showMessage('Authentication service is not available.', true);
+                return;
+            }
+
+            try {
+                await window.signOut(window.auth);
+                showMessage('Successfully signed out!', false);
+            } catch (error) {
+                showMessage(`Error signing out: ${error.message}`, true);
+            }
+        }
 
         // Load zoo data from external JSON file
         async function loadZooData() {
@@ -989,6 +1214,10 @@
             document.getElementById('closeModal').addEventListener('click', hideCommentsModal);
             document.getElementById('closeReviewModal').addEventListener('click', hideReviewModal);
             document.getElementById('submitComment').addEventListener('click', submitComment);
+            
+            // Authentication event listeners
+            document.getElementById('signInBtn').addEventListener('click', showSignInPrompt);
+            document.getElementById('signOutBtn').addEventListener('click', signOutUser);
             
             document.getElementById('stateInput').addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
