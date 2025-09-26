@@ -119,8 +119,8 @@
             top: 100%;
             left: 0;
             right: 0;
-            background: var(--warm-white);
-            border: 2px solid var(--primary-color);
+            background: white;
+            border: 2px solid #8B4513;
             border-top: none;
             border-radius: 0 0 15px 15px;
             max-height: 200px;
@@ -144,7 +144,7 @@
 
         .autocomplete-item:hover,
         .autocomplete-item.highlighted {
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(45deg, #8B4513, #A0522D);
             color: white;
         }
 
@@ -372,7 +372,7 @@
         }
 
         .comment-form textarea:focus {
-            border-color: var(--primary-color);
+            border-color: #8B4513;
         }
 
         .modal-buttons {
@@ -393,7 +393,7 @@
         }
 
         .submit-comment {
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(45deg, #8B4513, #A0522D);
             color: white;
         }
 
@@ -404,7 +404,7 @@
 
         .submit-comment:hover {
             transform: translateY(-1px);
-            box-shadow: 0 4px 10px rgba(45, 90, 61, 0.3);
+            box-shadow: 0 4px 10px rgba(139, 69, 19, 0.3);
         }
 
         .close-modal:hover {
@@ -415,7 +415,7 @@
             position: fixed;
             bottom: 20px;
             left: 20px;
-            background: var(--warm-white);
+            background: rgba(255, 255, 255, 0.9);
             color: #666;
             padding: 5px 10px;
             border-radius: 15px;
@@ -468,7 +468,7 @@
         <div id="errorContainer"></div>
 
         <!-- Version Number -->
-        <div class="version-number">v1.7.1</div>
+        <div class="version-number">v1.5.0</div>
     </div>
 
     <!-- Comments Modal -->
@@ -877,3 +877,153 @@
             
             // Load comments from Firebase
             const comments = await loadCommentsFromFirebase();
+            
+            if (comments.length === 0) {
+                commentsList.innerHTML = '<p style="text-align: center; color: #666; padding: 20px;">No comments submitted yet.</p>';
+            } else {
+                let commentsHtml = '';
+                comments.forEach((comment, index) => {
+                    commentsHtml += `
+                        <div class="comment-item">
+                            <div class="comment-timestamp">${comment.timestamp}</div>
+                            <div class="comment-text">${comment.text}</div>
+                        </div>
+                    `;
+                });
+                commentsList.innerHTML = commentsHtml;
+            }
+        }
+
+        function hideReviewModal() {
+            const modal = document.getElementById('reviewModal');
+            modal.classList.remove('show');
+        }
+
+        async function submitComment() {
+            const commentText = document.getElementById('commentText').value.trim();
+            if (!commentText) {
+                showMessage('Please enter your comment before submitting.', true);
+                return;
+            }
+
+            // Show loading state
+            const submitBtn = document.getElementById('submitComment');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Saving...';
+            submitBtn.disabled = true;
+
+            // Save to Firebase
+            const success = await saveCommentToFirebase(commentText);
+            
+            // Reset button
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+
+            if (success) {
+                hideCommentsModal();
+                showMessage('Thank you for your feedback! Your comment has been saved.', false);
+            } else {
+                showMessage('Sorry, there was an error saving your comment. Please try again.', true);
+            }
+        }
+
+        function handleSearch() {
+            const input = document.getElementById('stateInput');
+            const stateName = input.value.trim();
+            
+            if (!stateName) {
+                showMessage('Please enter a state name.', true);
+                return;
+            }
+            
+            addZooTile(stateName);
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Load zoo data first
+            await loadZooData();
+            
+            // Then set up event listeners
+            document.getElementById('searchBtn').addEventListener('click', handleSearch);
+            document.getElementById('clearBtn').addEventListener('click', clearAllTiles);
+            document.getElementById('commentsBtn').addEventListener('click', showCommentsModal);
+            document.getElementById('reviewBtn').addEventListener('click', showReviewModal);
+            document.getElementById('closeModal').addEventListener('click', hideCommentsModal);
+            document.getElementById('closeReviewModal').addEventListener('click', hideReviewModal);
+            document.getElementById('submitComment').addEventListener('click', submitComment);
+            
+            document.getElementById('stateInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    const dropdown = document.getElementById('autocompleteDropdown');
+                    
+                    // If autocomplete is showing and an item is highlighted, select it
+                    if (dropdown.classList.contains('show') && selectHighlightedItem()) {
+                        return;
+                    }
+                    
+                    // Otherwise, proceed with normal search
+                    handleSearch();
+                }
+            });
+
+            // Autocomplete input event
+            document.getElementById('stateInput').addEventListener('input', function(e) {
+                const inputValue = e.target.value.trim();
+                showAutocomplete(inputValue);
+            });
+
+            // Keyboard navigation for autocomplete
+            document.getElementById('stateInput').addEventListener('keydown', function(e) {
+                const dropdown = document.getElementById('autocompleteDropdown');
+                
+                if (dropdown.classList.contains('show')) {
+                    if (e.key === 'ArrowDown') {
+                        e.preventDefault();
+                        highlightItem('down');
+                    } else if (e.key === 'ArrowUp') {
+                        e.preventDefault();
+                        highlightItem('up');
+                    } else if (e.key === 'Escape') {
+                        e.preventDefault();
+                        hideAutocomplete();
+                    }
+                }
+            });
+
+            // Hide autocomplete when clicking outside
+            document.addEventListener('click', function(e) {
+                const searchContainer = document.querySelector('.search-container');
+                if (!searchContainer.contains(e.target)) {
+                    hideAutocomplete();
+                }
+            });
+
+            // Close modals when clicking outside of them
+            document.getElementById('commentsModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    hideCommentsModal();
+                }
+            });
+
+            document.getElementById('reviewModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    hideReviewModal();
+                }
+            });
+            
+            // Close modals with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    hideCommentsModal();
+                    hideReviewModal();
+                }
+            });
+
+            // Focus on input when page loads
+            document.getElementById('stateInput').focus();
+        });
+    </script>
+</body>
+</html>
