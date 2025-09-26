@@ -587,10 +587,13 @@
                             <div class="user-email" id="userEmail">user@example.com</div>
                             <div class="user-label">Signed in</div>
                         </div>
+                        <div class="auth-buttons">
+                            <button id="signOutBtn" class="sign-out-btn">Sign Out</button>
+                        </div>
                     </div>
-                    <div class="auth-buttons">
-                        <button id="signInBtn" class="sign-in-btn">Sign In with Email</button>
-                        <button id="signOutBtn" class="sign-out-btn" style="display: none;">Sign Out</button>
+                    <div id="firebaseui-auth-container" style="display: none;"></div>
+                    <div class="auth-buttons" id="authButtons">
+                        <button id="signInBtn" class="sign-in-btn">Sign In</button>
                     </div>
                 </div>
             </div>
@@ -613,7 +616,7 @@
         <div id="errorContainer"></div>
 
         <!-- Version Number -->
-        <div class="version-number">v1.6.3</div>
+        <div class="version-number">v1.7.0</div>
     </div>
 
     <!-- Comments Modal -->
@@ -644,13 +647,14 @@
     </div>
 
     <!-- Firebase SDK -->
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js';
-        import { getFirestore, collection, addDoc, getDocs, orderBy, query } from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js';
-        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged, sendPasswordResetEmail } from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js';
-
-        // Your Firebase configuration
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.css" />
+    
+    <script>
+        // Initialize Firebase with compat version for Firebase UI
         const firebaseConfig = {
             apiKey: "AIzaSyBlmDQOW9JqC3B2X_TMVER6NqHdmxgb368",
             authDomain: "zoo-calendar-comments.firebaseapp.com",
@@ -662,44 +666,15 @@
         };
 
         // Initialize Firebase
-        let app, db, auth;
-        let firebaseInitialized = false;
-
-        try {
-            app = initializeApp(firebaseConfig);
-            db = getFirestore(app);
-            auth = getAuth(app);
-            firebaseInitialized = true;
-            console.log("Firebase initialized successfully");
-        } catch (error) {
-            console.log("Firebase initialization error:", error.message);
-            firebaseInitialized = false;
-        }
-
-        // Make Firebase functions available globally
-        window.firebaseInitialized = firebaseInitialized;
-        window.firebaseApp = app;
-        window.firebaseDb = db;
-        window.firebaseAuth = auth;
-        if (firebaseInitialized) {
-            window.db = db;
-            window.auth = auth;
-            window.collection = collection;
-            window.addDoc = addDoc;
-            window.getDocs = getDocs;
-            window.orderBy = orderBy;
-            window.query = query;
-            window.signInWithEmailAndPassword = signInWithEmailAndPassword;
-            window.createUserWithEmailAndPassword = createUserWithEmailAndPassword;
-            window.signOut = signOut;
-            window.onAuthStateChanged = onAuthStateChanged;
-            window.sendPasswordResetEmail = sendPasswordResetEmail;
-        }
-
-        // Also make sure the main script waits for Firebase to initialize
-        window.dispatchEvent(new CustomEvent('firebaseReady', { 
-            detail: { initialized: firebaseInitialized } 
-        }));
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+        
+        // Make available globally
+        window.firebaseInitialized = true;
+        window.auth = auth;
+        window.db = db;
+        window.firebase = firebase;
     </script>
 
     <script>
@@ -710,36 +685,43 @@
         let highlightedIndex = -1; // For keyboard navigation
         let currentUser = null; // Current signed-in user
 
-        // Wait for Firebase to initialize before setting up event listeners
-        let firebaseReady = false;
-        
-        window.addEventListener('firebaseReady', function(e) {
-            firebaseReady = true;
-            console.log('Firebase ready event received:', e.detail.initialized);
-            if (window.firebaseInitialized) {
-                setupAuthStateListener();
-            }
-        });
-
-        // Also check if it's already initialized
-        setTimeout(() => {
-            if (window.firebaseInitialized !== undefined) {
-                firebaseReady = true;
-                console.log('Firebase status checked:', window.firebaseInitialized);
-                if (window.firebaseInitialized) {
-                    setupAuthStateListener();
+        // Firebase Auth UI configuration
+        const uiConfig = {
+            callbacks: {
+                signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+                    // User successfully signed in
+                    currentUser = authResult.user;
+                    updateUIForAuthState(authResult.user);
+                    showMessage('Successfully signed in!', false);
+                    // Return false to avoid redirect
+                    return false;
                 }
+            },
+            signInOptions: [
+                {
+                    provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+                    requireDisplayName: false
+                },
+                firebase.auth.GoogleAuthProvider.PROVIDER_ID
+            ],
+            // Terms of service url/callback
+            tosUrl: function() {
+                // Terms of service callback
+                return false;
+            },
+            // Privacy policy url/callback
+            privacyPolicyUrl: function() {
+                // Privacy policy callback
+                return false;
             }
-        }, 100);
+        };
 
-        // Authentication Functions
+        // Initialize Firebase Auth UI
+        const ui = new firebaseui.auth.AuthUI(firebase.auth());
+
+        // Authentication state management
         function setupAuthStateListener() {
-            if (!window.firebaseInitialized || !window.auth) {
-                console.log('Firebase Authentication not available');
-                return;
-            }
-            
-            window.onAuthStateChanged(window.auth, (user) => {
+            firebase.auth().onAuthStateChanged(function(user) {
                 currentUser = user;
                 updateUIForAuthState(user);
                 console.log('Auth state changed:', user ? user.email : 'Not signed in');
@@ -749,8 +731,8 @@
         function updateUIForAuthState(user) {
             const signedInView = document.getElementById('signedInView');
             const signedOutView = document.getElementById('signedOutView');
-            const signInBtn = document.getElementById('signInBtn');
-            const signOutBtn = document.getElementById('signOutBtn');
+            const authButtons = document.getElementById('authButtons');
+            const authContainer = document.getElementById('firebaseui-auth-container');
             const userEmail = document.getElementById('userEmail');
             const userAvatar = document.getElementById('userAvatar');
 
@@ -758,109 +740,59 @@
                 // User is signed in
                 signedInView.style.display = 'flex';
                 signedOutView.style.display = 'none';
-                signInBtn.style.display = 'none';
-                signOutBtn.style.display = 'block';
+                authButtons.style.display = 'none';
+                authContainer.style.display = 'none';
                 
-                userEmail.textContent = user.email;
-                userAvatar.textContent = user.email.charAt(0).toUpperCase();
+                const displayName = user.displayName || user.email;
+                const email = user.email;
+                
+                userEmail.textContent = displayName;
+                userAvatar.textContent = displayName.charAt(0).toUpperCase();
             } else {
                 // User is signed out
                 signedInView.style.display = 'none';
                 signedOutView.style.display = 'block';
-                signInBtn.style.display = 'block';
-                signOutBtn.style.display = 'none';
+                authButtons.style.display = 'block';
+                authContainer.style.display = 'none';
             }
         }
 
-        async function showSignInPrompt() {
-            if (!window.firebaseInitialized || !window.auth) {
-                showMessage('Please wait for Firebase to initialize, then try again.', true);
-                return;
-            }
+        function showSignInUI() {
+            const authContainer = document.getElementById('firebaseui-auth-container');
+            const authButtons = document.getElementById('authButtons');
+            const signedOutView = document.getElementById('signedOutView');
+            
+            // Show the auth container and hide other elements
+            authContainer.style.display = 'block';
+            authButtons.style.display = 'none';
+            signedOutView.style.display = 'none';
+            
+            // Start the Firebase Auth UI
+            ui.start('#firebaseui-auth-container', uiConfig);
+        }
 
-            const email = prompt('Enter your email address:');
-            if (!email || !email.includes('@')) {
-                if (email) showMessage('Please enter a valid email address.', true);
-                return;
-            }
+        function hideSignInUI() {
+            const authContainer = document.getElementById('firebaseui-auth-container');
+            const authButtons = document.getElementById('authButtons');
+            const signedOutView = document.getElementById('signedOutView');
+            
+            // Hide the auth container and show other elements
+            authContainer.style.display = 'none';
+            authButtons.style.display = 'block';
+            signedOutView.style.display = 'block';
+            
+            // Reset the Firebase Auth UI
+            ui.reset();
+        }
 
-            const password = prompt('Enter your password (minimum 6 characters):');
-            if (!password) return;
-
-            if (password.length < 6) {
-                showMessage('Password must be at least 6 characters long.', true);
-                return;
-            }
-
-            // Show loading state
-            const signInBtn = document.getElementById('signInBtn');
-            const originalText = signInBtn.textContent;
-            signInBtn.textContent = 'Signing in...';
-            signInBtn.disabled = true;
-
-            try {
-                // Try to sign in with existing account
-                await window.signInWithEmailAndPassword(window.auth, email, password);
-                showMessage('Successfully signed in!', false);
-            } catch (error) {
-                console.log('Sign in error details:', {
-                    code: error.code,
-                    message: error.message,
-                    email: email,
-                    authDomain: window.firebaseApp?.options?.authDomain
+        function signOutUser() {
+            if (confirm('Are you sure you want to sign out?')) {
+                firebase.auth().signOut().then(function() {
+                    showMessage('Successfully signed out!', false);
+                }).catch(function(error) {
+                    console.error('Sign out error:', error);
+                    showMessage('Error signing out: ' + error.message, true);
                 });
-                
-                if (error.code === 'auth/invalid-credential' || 
-                    error.code === 'auth/user-not-found' || 
-                    error.code === 'auth/wrong-password') {
-                    
-                    // Ask if they want to create a new account
-                    if (confirm(`No account found with email "${email}". Would you like to create a new account?`)) {
-                        try {
-                            await window.createUserWithEmailAndPassword(window.auth, email, password);
-                            showMessage('Account created and signed in successfully!', false);
-                        } catch (createError) {
-                            console.log('Account creation error:', createError.code, createError.message);
-                            
-                            if (createError.code === 'auth/operation-not-allowed') {
-                                showMessage('Email/password authentication is not enabled in Firebase. Please enable it in Firebase Console > Authentication > Sign-in method.', true);
-                            } else if (createError.code === 'auth/email-already-in-use') {
-                                showMessage('This email is already registered. Please try signing in instead.', true);
-                            } else if (createError.code === 'auth/weak-password') {
-                                showMessage('Password is too weak. Please use at least 6 characters.', true);
-                            } else {
-                                showMessage(`Error creating account: ${createError.message}`, true);
-                            }
-                        }
-                    }
-                } else if (error.code === 'auth/operation-not-allowed') {
-                    showMessage('Email/password authentication is not enabled. Please enable it in Firebase Console > Authentication > Sign-in method.', true);
-                } else if (error.code === 'auth/invalid-email') {
-                    showMessage('Invalid email address format.', true);
-                } else if (error.code === 'auth/too-many-requests') {
-                    showMessage('Too many failed attempts. Please try again later.', true);
-                } else {
-                    showMessage(`Sign in error: ${error.message}. Please check if Firebase Authentication is properly configured.`, true);
-                }
-            } finally {
-                // Reset button state
-                signInBtn.textContent = originalText;
-                signInBtn.disabled = false;
-            }
-        }
-
-        async function signOutUser() {
-            if (!window.firebaseInitialized || !window.auth) {
-                showMessage('Firebase authentication not available.', true);
-                return;
-            }
-
-            try {
-                await window.signOut(window.auth);
-                showMessage('Successfully signed out!', false);
-            } catch (error) {
-                console.log('Sign out error:', error);
-                showMessage(`Error signing out: ${error.message}`, true);
             }
         }
 
@@ -1111,14 +1043,16 @@
                 console.log("Attempting to save to Firebase...");
                 const docData = {
                     text: commentText,
-                    timestamp: new Date(),
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
                     created: new Date().toLocaleString(),
                     userAgent: navigator.userAgent,
-                    source: 'firebase'
+                    source: 'firebase',
+                    userId: currentUser ? currentUser.uid : null,
+                    userEmail: currentUser ? currentUser.email : null
                 };
                 console.log("Document data:", docData);
                 
-                const docRef = await window.addDoc(window.collection(window.db, "comments"), docData);
+                const docRef = await db.collection("comments").add(docData);
                 console.log("SUCCESS: Comment saved to Firebase with ID:", docRef.id);
                 return true;
             } catch (e) {
@@ -1152,8 +1086,7 @@
 
             try {
                 console.log("Loading comments from Firebase...");
-                const q = window.query(window.collection(window.db, "comments"), window.orderBy("timestamp", "desc"));
-                const querySnapshot = await window.getDocs(q);
+                const querySnapshot = await db.collection("comments").orderBy("timestamp", "desc").get();
                 const comments = [];
                 
                 querySnapshot.forEach((doc) => {
@@ -1254,6 +1187,9 @@
             // Load zoo data first
             await loadZooData();
             
+            // Set up authentication state listener
+            setupAuthStateListener();
+            
             // Then set up event listeners
             document.getElementById('searchBtn').addEventListener('click', handleSearch);
             document.getElementById('clearBtn').addEventListener('click', clearAllTiles);
@@ -1264,7 +1200,7 @@
             document.getElementById('submitComment').addEventListener('click', submitComment);
             
             // Authentication event listeners
-            document.getElementById('signInBtn').addEventListener('click', showSignInPrompt);
+            document.getElementById('signInBtn').addEventListener('click', showSignInUI);
             document.getElementById('signOutBtn').addEventListener('click', signOutUser);
             
             document.getElementById('stateInput').addEventListener('keypress', function(e) {
