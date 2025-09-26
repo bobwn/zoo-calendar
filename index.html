@@ -63,6 +63,34 @@
             background-clip: text;
         }
 
+        /* Mobile title overrides */
+        @media (max-width: 768px) {
+            .title h1 {
+                font-size: 1.4rem !important;
+                word-break: break-word;
+                hyphens: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title h1 {
+                font-size: 1.2rem !important;
+                line-height: 1.1;
+                word-break: break-word;
+                hyphens: auto;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .title h1 {
+                font-size: 1rem !important;
+                line-height: 1.1;
+                word-break: break-word;
+                letter-spacing: -0.5px;
+            }
+        }
+
         .parrot-emoji {
             font-size: 50px;
             width: 80px;
@@ -616,7 +644,7 @@
         <div id="errorContainer"></div>
 
         <!-- Version Number -->
-        <div class="version-number">v1.7.2</div>
+        <div class="version-number">v1.7.3</div>
     </div>
 
     <!-- Comments Modal -->
