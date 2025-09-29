@@ -743,7 +743,7 @@
         <div id="errorContainer"></div>
 
         <!-- Version Number -->
-        <div class="version-number">v1.8.6</div>
+        <div class="version-number">v1.8.7</div>
     </div>
 
     <!-- Comments Modal -->
@@ -822,14 +822,19 @@
                     showMessage('Successfully signed in!', false);
                     // Return false to avoid redirect
                     return false;
+                },
+                signInFailure: function(error) {
+                    // Handle sign-in errors
+                    console.error('Sign-in error:', error);
+                    showMessage('Sign-in error: ' + error.message, true);
                 }
             },
             signInOptions: [
                 {
                     provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
-                    requireDisplayName: false
-                },
-                firebase.auth.GoogleAuthProvider.PROVIDER_ID
+                    requireDisplayName: false,
+                    signInMethod: firebase.auth.EmailAuthProvider.EMAIL_PASSWORD_SIGN_IN_METHOD
+                }
             ],
             // Terms of service url/callback
             tosUrl: function() {
