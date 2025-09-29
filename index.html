@@ -854,7 +854,7 @@
         <div id="errorContainer"></div>
 
         <!-- Version Number -->
-        <div class="version-number">v2.4</div>
+        <div class="version-number">v2.5</div>
     </div>
 
     <!-- Comments Modal -->
@@ -1021,16 +1021,23 @@
                 document.getElementById('signInPassword').value = '';
             } catch (error) {
                 console.error('Sign in error:', error);
+                console.error('Error code:', error.code);
                 let errorMessage = 'Sign in failed. Please try again.';
+                
                 if (error.code === 'auth/user-not-found') {
-                    errorMessage = 'No account found with this email. Please create an account.';
+                    errorMessage = 'No user found with this email address. Please create an account.';
                 } else if (error.code === 'auth/wrong-password') {
                     errorMessage = 'Incorrect password. Please try again.';
                 } else if (error.code === 'auth/invalid-email') {
-                    errorMessage = 'Invalid email address.';
+                    errorMessage = 'Invalid email address format.';
+                } else if (error.code === 'auth/user-disabled') {
+                    errorMessage = 'This account has been disabled.';
                 } else if (error.code === 'auth/too-many-requests') {
-                    errorMessage = 'Too many failed attempts. Please try again later.';
+                    errorMessage = 'Too many failed login attempts. Please try again later or reset your password.';
+                } else if (error.code === 'auth/invalid-credential') {
+                    errorMessage = 'Invalid email or password. Please check your credentials.';
                 }
+                
                 showAuthError(errorMessage);
             } finally {
                 btn.disabled = false;
