@@ -706,6 +706,27 @@
             </div>
             <p class="byline">Don't miss exciting upcoming zoo events!</p>
 
+            <!-- Hidden User Authentication Section for Menu -->
+            <div class="sign-in-container" id="signInContainer" style="display: none;">
+                <div id="userStatus" class="user-status">
+                    <div id="signedOutView" class="signed-out-message">
+                        <strong>Sign in</strong> to save your favorite zoos and get personalized recommendations!
+                        <div class="auth-benefits">Free account • No spam • Enhanced features</div>
+                    </div>
+                    <div id="signedInView" class="user-info" style="display: none;">
+                        <div class="user-avatar" id="userAvatar">U</div>
+                        <div class="user-details">
+                            <div class="user-email" id="userEmail">user@example.com</div>
+                            <div class="user-label">Signed in</div>
+                        </div>
+                        <div class="auth-buttons">
+                            <button id="signOutBtn" class="sign-out-btn">Sign Out</button>
+                        </div>
+                    </div>
+                    <div id="firebaseui-auth-container"></div>
+                </div>
+            </div>
+
             <div class="search-container">
                 <input type="text" id="stateInput" placeholder="Enter a state name (e.g., California, Texas, Florida)" autocomplete="off">
                 <button id="searchBtn">Search</button>
@@ -722,7 +743,7 @@
         <div id="errorContainer"></div>
 
         <!-- Version Number -->
-        <div class="version-number">v1.9.0</div>
+        <div class="version-number">v1.8.8</div>
     </div>
 
     <!-- Comments Modal -->
@@ -748,27 +769,6 @@
             </div>
             <div class="modal-buttons">
                 <button type="button" class="close-modal" id="closeReviewModal">Close</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Sign In Modal -->
-    <div id="signInModal" class="comments-modal">
-        <div class="modal-content">
-            <div class="modal-header">Sign In / Create Account</div>
-            <div id="firebaseui-auth-container"></div>
-            <div id="userStatusDisplay" style="display: none; text-align: center; padding: 20px;">
-                <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 20px;">
-                    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 600;" id="modalUserAvatar">U</div>
-                    <div>
-                        <div style="font-weight: 600; font-size: 1.1rem; color: #333;" id="modalUserEmail">user@example.com</div>
-                        <div style="font-size: 0.9rem; color: #666;">Signed in successfully</div>
-                    </div>
-                </div>
-                <button type="button" class="submit-comment" id="modalSignOutBtn" style="margin-top: 10px;">Sign Out</button>
-            </div>
-            <div class="modal-buttons">
-                <button type="button" class="close-modal" id="closeSignInModal">Close</button>
             </div>
         </div>
     </div>
@@ -1353,16 +1353,8 @@
             document.getElementById('closeReviewModal').addEventListener('click', hideReviewModal);
             document.getElementById('submitComment').addEventListener('click', submitComment);
             
-            // Sign in modal event listeners
-            document.getElementById('closeSignInModal').addEventListener('click', hideSignInModal);
-            document.getElementById('modalSignOutBtn').addEventListener('click', signOutUser);
-            
-            // Close sign-in modal when clicking outside
-            document.getElementById('signInModal').addEventListener('click', function(e) {
-                if (e.target === this) {
-                    hideSignInModal();
-                }
-            });
+            // Sign out button listener (inside hidden sign-in container)
+            document.getElementById('signOutBtn').addEventListener('click', signOutUser);
             
             // Dropdown menu event listeners
             document.getElementById('menuButton').addEventListener('click', toggleDropdown);
@@ -1372,7 +1364,7 @@
                 if (currentUser) {
                     signOutUser();
                 } else {
-                    showSignInModal();
+                    showSignInUI();
                 }
             });
             document.getElementById('menuAbout').addEventListener('click', function(e) {
