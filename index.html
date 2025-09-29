@@ -556,6 +556,109 @@
             margin-right: 8px;
         }
 
+        .custom-auth-form {
+            margin-top: 20px;
+        }
+
+        .form-toggle {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .toggle-btn {
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-btn.active {
+            border-bottom-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .toggle-btn:hover {
+            color: var(--accent-color);
+        }
+
+        .auth-input {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .auth-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .auth-submit-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .auth-submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(45, 90, 61, 0.4);
+        }
+
+        .auth-submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .auth-error {
+            background: #fee;
+            color: #c33;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .password-reset-link {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        .password-reset-link a {
+            color: var(--primary-color);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .password-reset-link a:hover {
+            text-decoration: underline;
+        }
+
+        #signUpForm, #signInForm {
+            display: none;
+        }
+
+        #signUpForm.active, #signInForm.active {
+            display: block;
+        }
+
         .close-sign-in-modal {
             position: absolute;
             top: 15px;
@@ -751,7 +854,7 @@
         <div id="errorContainer"></div>
 
         <!-- Version Number -->
-        <div class="version-number">v2.3</div>
+        <div class="version-number">v2.4</div>
     </div>
 
     <!-- Comments Modal -->
@@ -797,7 +900,34 @@
                     <li>Sync across devices</li>
                 </ul>
             </div>
-            <div id="firebaseui-auth-container"></div>
+            
+            <!-- Custom Auth Form -->
+            <div class="custom-auth-form">
+                <div class="form-toggle">
+                    <button class="toggle-btn active" id="signInToggle">Sign In</button>
+                    <button class="toggle-btn" id="signUpToggle">Create Account</button>
+                </div>
+                
+                <div id="authError" class="auth-error" style="display: none;"></div>
+                
+                <!-- Sign In Form -->
+                <form id="signInForm" class="active">
+                    <input type="email" class="auth-input" id="signInEmail" placeholder="Email" required>
+                    <input type="password" class="auth-input" id="signInPassword" placeholder="Password" required>
+                    <button type="submit" class="auth-submit-btn" id="signInBtn">Sign In</button>
+                    <div class="password-reset-link">
+                        <a id="forgotPasswordLink">Forgot password?</a>
+                    </div>
+                </form>
+                
+                <!-- Sign Up Form -->
+                <form id="signUpForm">
+                    <input type="email" class="auth-input" id="signUpEmail" placeholder="Email" required>
+                    <input type="password" class="auth-input" id="signUpPassword" placeholder="Password (min 6 characters)" required minlength="6">
+                    <input type="password" class="auth-input" id="signUpPasswordConfirm" placeholder="Confirm Password" required>
+                    <button type="submit" class="auth-submit-btn" id="signUpBtn">Create Account</button>
+                </form>
+            </div>
         </div>
     </div>
 
@@ -805,8 +935,6 @@
     <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.css" />
     
     <script>
         // Initialize Firebase with compat version for Firebase UI
@@ -839,46 +967,151 @@
         let stateNames = []; // List of all state names for autocomplete
         let highlightedIndex = -1; // For keyboard navigation
         let currentUser = null; // Current signed-in user
-        let authUI = null; // FirebaseUI instance
 
-        // Firebase Auth UI configuration
-        function getUIConfig() {
-            return {
-                callbacks: {
-                    signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-                        // User successfully signed in
-                        currentUser = authResult.user;
-                        updateUIForAuthState(authResult.user);
-                        showMessage('Successfully signed in!', false);
-                        hideSignInModal();
-                        // Return false to avoid redirect
-                        return false;
-                    },
-                    signInFailure: function(error) {
-                        // Handle sign-in errors
-                        console.error('Sign-in error:', error);
-                        showMessage('Sign-in error: ' + error.message, true);
-                    }
-                },
-                signInOptions: [
-                    firebase.auth.EmailAuthProvider.PROVIDER_ID
-                ],
-                credentialHelper: firebaseui.auth.CredentialHelper.NONE,
-                // Terms of service url/callback
-                tosUrl: function() {
-                    // Terms of service callback
-                    return false;
-                },
-                // Privacy policy url/callback
-                privacyPolicyUrl: function() {
-                    // Privacy policy callback
-                    return false;
-                }
-            };
+        // Custom Authentication Functions
+        function showAuthError(message) {
+            const errorDiv = document.getElementById('authError');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            setTimeout(() => {
+                errorDiv.style.display = 'none';
+            }, 5000);
         }
 
-        // Initialize Firebase Auth UI
-        // Don't initialize here - we'll create fresh instances each time
+        function toggleAuthForm(showSignIn) {
+            const signInForm = document.getElementById('signInForm');
+            const signUpForm = document.getElementById('signUpForm');
+            const signInToggle = document.getElementById('signInToggle');
+            const signUpToggle = document.getElementById('signUpToggle');
+            const errorDiv = document.getElementById('authError');
+            
+            errorDiv.style.display = 'none';
+            
+            if (showSignIn) {
+                signInForm.classList.add('active');
+                signUpForm.classList.remove('active');
+                signInToggle.classList.add('active');
+                signUpToggle.classList.remove('active');
+            } else {
+                signInForm.classList.remove('active');
+                signUpForm.classList.add('active');
+                signInToggle.classList.remove('active');
+                signUpToggle.classList.add('active');
+            }
+        }
+
+        async function handleSignIn(e) {
+            e.preventDefault();
+            const email = document.getElementById('signInEmail').value;
+            const password = document.getElementById('signInPassword').value;
+            const btn = document.getElementById('signInBtn');
+            
+            btn.disabled = true;
+            btn.textContent = 'Signing in...';
+            
+            try {
+                const userCredential = await firebase.auth().signInWithEmailAndPassword(email, password);
+                currentUser = userCredential.user;
+                updateUIForAuthState(currentUser);
+                showMessage('Successfully signed in!', false);
+                hideSignInModal();
+                
+                // Clear form
+                document.getElementById('signInEmail').value = '';
+                document.getElementById('signInPassword').value = '';
+            } catch (error) {
+                console.error('Sign in error:', error);
+                let errorMessage = 'Sign in failed. Please try again.';
+                if (error.code === 'auth/user-not-found') {
+                    errorMessage = 'No account found with this email. Please create an account.';
+                } else if (error.code === 'auth/wrong-password') {
+                    errorMessage = 'Incorrect password. Please try again.';
+                } else if (error.code === 'auth/invalid-email') {
+                    errorMessage = 'Invalid email address.';
+                } else if (error.code === 'auth/too-many-requests') {
+                    errorMessage = 'Too many failed attempts. Please try again later.';
+                }
+                showAuthError(errorMessage);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Sign In';
+            }
+        }
+
+        async function handleSignUp(e) {
+            e.preventDefault();
+            const email = document.getElementById('signUpEmail').value;
+            const password = document.getElementById('signUpPassword').value;
+            const passwordConfirm = document.getElementById('signUpPasswordConfirm').value;
+            const btn = document.getElementById('signUpBtn');
+            
+            // Validate passwords match
+            if (password !== passwordConfirm) {
+                showAuthError('Passwords do not match.');
+                return;
+            }
+            
+            // Validate password length
+            if (password.length < 6) {
+                showAuthError('Password must be at least 6 characters.');
+                return;
+            }
+            
+            btn.disabled = true;
+            btn.textContent = 'Creating account...';
+            
+            try {
+                const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
+                currentUser = userCredential.user;
+                updateUIForAuthState(currentUser);
+                showMessage('Account created successfully!', false);
+                hideSignInModal();
+                
+                // Clear form
+                document.getElementById('signUpEmail').value = '';
+                document.getElementById('signUpPassword').value = '';
+                document.getElementById('signUpPasswordConfirm').value = '';
+            } catch (error) {
+                console.error('Sign up error:', error);
+                let errorMessage = 'Account creation failed. Please try again.';
+                if (error.code === 'auth/email-already-in-use') {
+                    errorMessage = 'This email is already registered. Please sign in instead.';
+                    // Switch to sign-in form
+                    setTimeout(() => toggleAuthForm(true), 2000);
+                } else if (error.code === 'auth/invalid-email') {
+                    errorMessage = 'Invalid email address.';
+                } else if (error.code === 'auth/weak-password') {
+                    errorMessage = 'Password is too weak. Please use a stronger password.';
+                }
+                showAuthError(errorMessage);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Create Account';
+            }
+        }
+
+        async function handlePasswordReset() {
+            const email = document.getElementById('signInEmail').value;
+            
+            if (!email) {
+                showAuthError('Please enter your email address first.');
+                return;
+            }
+            
+            try {
+                await firebase.auth().sendPasswordResetEmail(email);
+                showAuthError('Password reset email sent! Check your inbox.');
+            } catch (error) {
+                console.error('Password reset error:', error);
+                let errorMessage = 'Failed to send reset email.';
+                if (error.code === 'auth/user-not-found') {
+                    errorMessage = 'No account found with this email.';
+                } else if (error.code === 'auth/invalid-email') {
+                    errorMessage = 'Invalid email address.';
+                }
+                showAuthError(errorMessage);
+            }
+        }
 
         // Authentication state management
         function setupAuthStateListener() {
@@ -914,52 +1147,28 @@
 
         function showSignInModal() {
             const modal = document.getElementById('signInModal');
-            const authContainer = document.getElementById('firebaseui-auth-container');
-            
-            // Clear the container completely
-            authContainer.innerHTML = '';
-            
-            // Delete the old UI instance if it exists
-            if (authUI) {
-                try {
-                    authUI.delete();
-                } catch (e) {
-                    console.log('Error deleting old UI:', e);
-                }
-            }
-            
-            // Create a completely new FirebaseUI instance
-            authUI = new firebaseui.auth.AuthUI(firebase.auth());
-            
             modal.classList.add('show');
             
-            // Small delay to ensure DOM is ready
+            // Default to sign-in form
+            toggleAuthForm(true);
+            
+            // Focus on email input
             setTimeout(() => {
-                // Start the fresh Firebase Auth UI instance
-                authUI.start('#firebaseui-auth-container', getUIConfig());
+                document.getElementById('signInEmail').focus();
             }, 100);
         }
 
         function hideSignInModal() {
             const modal = document.getElementById('signInModal');
-            const authContainer = document.getElementById('firebaseui-auth-container');
-            
             modal.classList.remove('show');
             
-            // Delete the UI instance completely
-            if (authUI) {
-                try {
-                    authUI.delete();
-                    authUI = null;
-                } catch (e) {
-                    console.log('UI delete error (normal):', e);
-                }
-            }
-            
-            // Clear the container after a short delay
-            setTimeout(() => {
-                authContainer.innerHTML = '';
-            }, 300);
+            // Clear all form fields
+            document.getElementById('signInEmail').value = '';
+            document.getElementById('signInPassword').value = '';
+            document.getElementById('signUpEmail').value = '';
+            document.getElementById('signUpPassword').value = '';
+            document.getElementById('signUpPasswordConfirm').value = '';
+            document.getElementById('authError').style.display = 'none';
         }
 
         function signOutUser() {
@@ -1401,6 +1610,13 @@
             
             // Sign-in modal listeners
             document.getElementById('closeSignInModal').addEventListener('click', hideSignInModal);
+            
+            // Custom auth form listeners
+            document.getElementById('signInToggle').addEventListener('click', () => toggleAuthForm(true));
+            document.getElementById('signUpToggle').addEventListener('click', () => toggleAuthForm(false));
+            document.getElementById('signInForm').addEventListener('submit', handleSignIn);
+            document.getElementById('signUpForm').addEventListener('submit', handleSignUp);
+            document.getElementById('forgotPasswordLink').addEventListener('click', handlePasswordReset);
             
             // Dropdown menu event listeners
             document.getElementById('menuButton').addEventListener('click', toggleDropdown);
