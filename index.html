@@ -692,7 +692,8 @@
             <div class="dropdown-content" id="dropdownContent">
                 <a href="#" class="dropdown-item" id="menuSignIn">Sign In</a>
                 <a href="#" class="dropdown-item" id="menuAbout">About</a>
-                <a href="#" class="dropdown-item" id="menuComments">Comments</a>
+                <a href="#" class="dropdown-item" id="menuLeaveComment">Leave Comment</a>
+                <a href="#" class="dropdown-item" id="menuReviewComments">Review Comments</a>
             </div>
         </div>
 
@@ -733,8 +734,6 @@
             </div>
             <div class="controls">
                 <button id="clearBtn" class="clear-btn">Clear All Tiles</button>
-                <button id="commentsBtn" class="comments-btn">Leave Comments</button>
-                <button id="reviewBtn" class="comments-btn">Review Comments</button>
             </div>
         </div>
 
@@ -744,7 +743,7 @@
         <div id="errorContainer"></div>
 
         <!-- Version Number -->
-        <div class="version-number">v1.8.4</div>
+        <div class="version-number">v1.8.5</div>
     </div>
 
     <!-- Comments Modal -->
@@ -1336,8 +1335,6 @@
             // Then set up event listeners
             document.getElementById('searchBtn').addEventListener('click', handleSearch);
             document.getElementById('clearBtn').addEventListener('click', clearAllTiles);
-            document.getElementById('commentsBtn').addEventListener('click', showCommentsModal);
-            document.getElementById('reviewBtn').addEventListener('click', showReviewModal);
             document.getElementById('closeModal').addEventListener('click', hideCommentsModal);
             document.getElementById('closeReviewModal').addEventListener('click', hideReviewModal);
             document.getElementById('submitComment').addEventListener('click', submitComment);
@@ -1361,10 +1358,15 @@
                 toggleDropdown();
                 window.location.href = 'about.html';
             });
-            document.getElementById('menuComments').addEventListener('click', function(e) {
+            document.getElementById('menuLeaveComment').addEventListener('click', function(e) {
                 e.preventDefault();
                 toggleDropdown();
                 showCommentsModal();
+            });
+            document.getElementById('menuReviewComments').addEventListener('click', function(e) {
+                e.preventDefault();
+                toggleDropdown();
+                showReviewModal();
             });
             
             document.getElementById('stateInput').addEventListener('keypress', function(e) {
