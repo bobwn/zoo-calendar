@@ -858,6 +858,7 @@
                     showMessage('Sign-in error: ' + error.message, true);
                 }
             },
+            signInFlow: 'popup',
             signInOptions: [
                 {
                     provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
@@ -865,6 +866,7 @@
                     signInMethod: firebase.auth.EmailAuthProvider.EMAIL_PASSWORD_SIGN_IN_METHOD
                 }
             ],
+            credentialHelper: firebaseui.auth.CredentialHelper.NONE,
             // Terms of service url/callback
             tosUrl: function() {
                 // Terms of service callback
@@ -914,18 +916,42 @@
 
         function showSignInModal() {
             const modal = document.getElementById('signInModal');
+            const authContainer = document.getElementById('firebaseui-auth-container');
+            
+            // Clear the container completely before showing
+            authContainer.innerHTML = '';
+            
             modal.classList.add('show');
             
-            // Start the Firebase Auth UI
-            ui.start('#firebaseui-auth-container', uiConfig);
+            // Small delay to ensure DOM is ready
+            setTimeout(() => {
+                // Check if UI is already rendered, if so reset it
+                if (ui.isPendingRedirect()) {
+                    return;
+                }
+                
+                // Start the Firebase Auth UI fresh
+                ui.start('#firebaseui-auth-container', uiConfig);
+            }, 100);
         }
 
         function hideSignInModal() {
             const modal = document.getElementById('signInModal');
+            const authContainer = document.getElementById('firebaseui-auth-container');
+            
             modal.classList.remove('show');
             
-            // Reset the Firebase Auth UI
-            ui.reset();
+            // Reset the Firebase Auth UI and clear the container
+            try {
+                ui.reset();
+            } catch (e) {
+                console.log('UI reset error (normal):', e);
+            }
+            
+            // Clear the container after a short delay
+            setTimeout(() => {
+                authContainer.innerHTML = '';
+            }, 300);
         }
 
         function signOutUser() {
