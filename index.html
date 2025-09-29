@@ -490,6 +490,88 @@
             backdrop-filter: blur(10px);
         }
 
+        /* Dropdown Menu Styles */
+        .menu-dropdown {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .menu-button {
+            background: linear-gradient(45deg, #FF6600, #FF8833);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(255, 102, 0, 0.4);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .menu-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 102, 0, 0.6);
+        }
+
+        .menu-icon {
+            font-size: 1.2rem;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 50px;
+            background: linear-gradient(135deg, #faf5ed 0%, #f5ede0 100%);
+            min-width: 180px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid var(--primary-color);
+        }
+
+        .dropdown-content.show {
+            display: block;
+            animation: dropdownSlide 0.3s ease-out;
+        }
+
+        @keyframes dropdownSlide {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .dropdown-item {
+            color: #333;
+            padding: 14px 20px;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(45, 90, 61, 0.1);
+        }
+
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-item:hover {
+            background: linear-gradient(45deg, var(--accent-color), var(--light-green));
+            color: white;
+            transform: translateX(-5px);
+        }
+
         .user-status {
             display: flex;
             align-items: center;
@@ -602,6 +684,19 @@
 </head>
 <body>
     <div class="container">
+        <!-- Dropdown Menu -->
+        <div class="menu-dropdown">
+            <button class="menu-button" id="menuButton">
+                <span class="menu-icon">☰</span>
+                Menu
+            </button>
+            <div class="dropdown-content" id="dropdownContent">
+                <a href="#" class="dropdown-item" id="menuSignIn">Sign In</a>
+                <a href="#" class="dropdown-item" id="menuAbout">About</a>
+                <a href="#" class="dropdown-item" id="menuComments">Comments</a>
+            </div>
+        </div>
+
         <div class="header">
             <div class="title">
                 <div class="parrot-emoji">
@@ -610,30 +705,6 @@
                 <h1>ZOOCALENDAR.COM</h1>
             </div>
             <p class="byline">Don't miss exciting upcoming zoo events!</p>
-            
-            <!-- User Authentication Section -->
-            <div class="sign-in-container">
-                <div id="userStatus" class="user-status">
-                    <div id="signedOutView" class="signed-out-message">
-                        <strong>Sign in</strong> to save your favorite zoos and get personalized recommendations!
-                        <div class="auth-benefits">Free account • No spam • Enhanced features</div>
-                    </div>
-                    <div id="signedInView" class="user-info" style="display: none;">
-                        <div class="user-avatar" id="userAvatar">U</div>
-                        <div class="user-details">
-                            <div class="user-email" id="userEmail">user@example.com</div>
-                            <div class="user-label">Signed in</div>
-                        </div>
-                        <div class="auth-buttons">
-                            <button id="signOutBtn" class="sign-out-btn">Sign Out</button>
-                        </div>
-                    </div>
-                    <div id="firebaseui-auth-container" style="display: none;"></div>
-                    <div class="auth-buttons" id="authButtons">
-                        <button id="signInBtn" class="sign-in-btn">Sign In</button>
-                    </div>
-                </div>
-            </div>
 
             <div class="search-container">
                 <input type="text" id="stateInput" placeholder="Enter a state name (e.g., California, Texas, Florida)" autocomplete="off">
@@ -653,7 +724,7 @@
         <div id="errorContainer"></div>
 
         <!-- Version Number -->
-        <div class="version-number">v1.8.1</div>
+        <div class="version-number">v1.8.3</div>
     </div>
 
     <!-- Comments Modal -->
@@ -832,6 +903,22 @@
                 });
             }
         }
+
+        // Dropdown menu functionality
+        function toggleDropdown() {
+            const dropdown = document.getElementById('dropdownContent');
+            dropdown.classList.toggle('show');
+        }
+
+        // Close dropdown when clicking outside
+        window.addEventListener('click', function(event) {
+            if (!event.target.matches('.menu-button') && !event.target.matches('.menu-icon')) {
+                const dropdown = document.getElementById('dropdownContent');
+                if (dropdown.classList.contains('show')) {
+                    dropdown.classList.remove('show');
+                }
+            }
+        });
 
         // Load zoo data from external JSON file
         async function loadZooData() {
@@ -1236,9 +1323,27 @@
             document.getElementById('closeReviewModal').addEventListener('click', hideReviewModal);
             document.getElementById('submitComment').addEventListener('click', submitComment);
             
-            // Authentication event listeners
-            document.getElementById('signInBtn').addEventListener('click', showSignInUI);
-            document.getElementById('signOutBtn').addEventListener('click', signOutUser);
+            // Dropdown menu event listeners
+            document.getElementById('menuButton').addEventListener('click', toggleDropdown);
+            document.getElementById('menuSignIn').addEventListener('click', function(e) {
+                e.preventDefault();
+                toggleDropdown();
+                if (currentUser) {
+                    signOutUser();
+                } else {
+                    showSignInUI();
+                }
+            });
+            document.getElementById('menuAbout').addEventListener('click', function(e) {
+                e.preventDefault();
+                toggleDropdown();
+                window.location.href = 'about.html';
+            });
+            document.getElementById('menuComments').addEventListener('click', function(e) {
+                e.preventDefault();
+                toggleDropdown();
+                showCommentsModal();
+            });
             
             document.getElementById('stateInput').addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
