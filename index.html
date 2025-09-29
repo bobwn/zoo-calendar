@@ -751,7 +751,7 @@
         <div id="errorContainer"></div>
 
         <!-- Version Number -->
-        <div class="version-number">v2.0</div>
+        <div class="version-number">v2.2</div>
     </div>
 
     <!-- Comments Modal -->
@@ -839,48 +839,51 @@
         let stateNames = []; // List of all state names for autocomplete
         let highlightedIndex = -1; // For keyboard navigation
         let currentUser = null; // Current signed-in user
+        let authUI = null; // FirebaseUI instance
 
         // Firebase Auth UI configuration
-        const uiConfig = {
-            callbacks: {
-                signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-                    // User successfully signed in
-                    currentUser = authResult.user;
-                    updateUIForAuthState(authResult.user);
-                    showMessage('Successfully signed in!', false);
-                    hideSignInModal();
-                    // Return false to avoid redirect
+        function getUIConfig() {
+            return {
+                callbacks: {
+                    signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+                        // User successfully signed in
+                        currentUser = authResult.user;
+                        updateUIForAuthState(authResult.user);
+                        showMessage('Successfully signed in!', false);
+                        hideSignInModal();
+                        // Return false to avoid redirect
+                        return false;
+                    },
+                    signInFailure: function(error) {
+                        // Handle sign-in errors
+                        console.error('Sign-in error:', error);
+                        showMessage('Sign-in error: ' + error.message, true);
+                    }
+                },
+                signInFlow: 'popup',
+                signInOptions: [
+                    {
+                        provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+                        requireDisplayName: false,
+                        signInMethod: firebase.auth.EmailAuthProvider.EMAIL_PASSWORD_SIGN_IN_METHOD
+                    }
+                ],
+                credentialHelper: firebaseui.auth.CredentialHelper.NONE,
+                // Terms of service url/callback
+                tosUrl: function() {
+                    // Terms of service callback
                     return false;
                 },
-                signInFailure: function(error) {
-                    // Handle sign-in errors
-                    console.error('Sign-in error:', error);
-                    showMessage('Sign-in error: ' + error.message, true);
+                // Privacy policy url/callback
+                privacyPolicyUrl: function() {
+                    // Privacy policy callback
+                    return false;
                 }
-            },
-            signInFlow: 'popup',
-            signInOptions: [
-                {
-                    provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
-                    requireDisplayName: false,
-                    signInMethod: firebase.auth.EmailAuthProvider.EMAIL_PASSWORD_SIGN_IN_METHOD
-                }
-            ],
-            credentialHelper: firebaseui.auth.CredentialHelper.NONE,
-            // Terms of service url/callback
-            tosUrl: function() {
-                // Terms of service callback
-                return false;
-            },
-            // Privacy policy url/callback
-            privacyPolicyUrl: function() {
-                // Privacy policy callback
-                return false;
-            }
-        };
+            };
+        }
 
         // Initialize Firebase Auth UI
-        const ui = new firebaseui.auth.AuthUI(firebase.auth());
+        // Don't initialize here - we'll create fresh instances each time
 
         // Authentication state management
         function setupAuthStateListener() {
@@ -918,20 +921,27 @@
             const modal = document.getElementById('signInModal');
             const authContainer = document.getElementById('firebaseui-auth-container');
             
-            // Clear the container completely before showing
+            // Clear the container completely
             authContainer.innerHTML = '';
+            
+            // Delete the old UI instance if it exists
+            if (authUI) {
+                try {
+                    authUI.delete();
+                } catch (e) {
+                    console.log('Error deleting old UI:', e);
+                }
+            }
+            
+            // Create a completely new FirebaseUI instance
+            authUI = new firebaseui.auth.AuthUI(firebase.auth());
             
             modal.classList.add('show');
             
             // Small delay to ensure DOM is ready
             setTimeout(() => {
-                // Check if UI is already rendered, if so reset it
-                if (ui.isPendingRedirect()) {
-                    return;
-                }
-                
-                // Start the Firebase Auth UI fresh
-                ui.start('#firebaseui-auth-container', uiConfig);
+                // Start the fresh Firebase Auth UI instance
+                authUI.start('#firebaseui-auth-container', getUIConfig());
             }, 100);
         }
 
@@ -941,11 +951,14 @@
             
             modal.classList.remove('show');
             
-            // Reset the Firebase Auth UI and clear the container
-            try {
-                ui.reset();
-            } catch (e) {
-                console.log('UI reset error (normal):', e);
+            // Delete the UI instance completely
+            if (authUI) {
+                try {
+                    authUI.delete();
+                    authUI = null;
+                } catch (e) {
+                    console.log('UI delete error (normal):', e);
+                }
             }
             
             // Clear the container after a short delay
