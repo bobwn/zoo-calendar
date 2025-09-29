@@ -97,7 +97,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            animation: bounce 2s infinite;
         }
 
         #parrotImage {
@@ -706,6 +705,27 @@
             </div>
             <p class="byline">Don't miss exciting upcoming zoo events!</p>
 
+            <!-- Hidden User Authentication Section for Menu -->
+            <div class="sign-in-container" id="signInContainer" style="display: none;">
+                <div id="userStatus" class="user-status">
+                    <div id="signedOutView" class="signed-out-message">
+                        <strong>Sign in</strong> to save your favorite zoos and get personalized recommendations!
+                        <div class="auth-benefits">Free account • No spam • Enhanced features</div>
+                    </div>
+                    <div id="signedInView" class="user-info" style="display: none;">
+                        <div class="user-avatar" id="userAvatar">U</div>
+                        <div class="user-details">
+                            <div class="user-email" id="userEmail">user@example.com</div>
+                            <div class="user-label">Signed in</div>
+                        </div>
+                        <div class="auth-buttons">
+                            <button id="signOutBtn" class="sign-out-btn">Sign Out</button>
+                        </div>
+                    </div>
+                    <div id="firebaseui-auth-container"></div>
+                </div>
+            </div>
+
             <div class="search-container">
                 <input type="text" id="stateInput" placeholder="Enter a state name (e.g., California, Texas, Florida)" autocomplete="off">
                 <button id="searchBtn">Search</button>
@@ -724,7 +744,7 @@
         <div id="errorContainer"></div>
 
         <!-- Version Number -->
-        <div class="version-number">v1.8.3</div>
+        <div class="version-number">v1.8.4</div>
     </div>
 
     <!-- Comments Modal -->
@@ -866,28 +886,27 @@
         }
 
         function showSignInUI() {
+            const signInContainer = document.getElementById('signInContainer');
             const authContainer = document.getElementById('firebaseui-auth-container');
-            const authButtons = document.getElementById('authButtons');
-            const signedOutView = document.getElementById('signedOutView');
             
-            // Show the auth container and hide other elements
+            // Show the sign-in container
+            signInContainer.style.display = 'block';
             authContainer.style.display = 'block';
-            authButtons.style.display = 'none';
-            signedOutView.style.display = 'none';
             
             // Start the Firebase Auth UI
             ui.start('#firebaseui-auth-container', uiConfig);
+            
+            // Scroll to the sign-in container
+            signInContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
         function hideSignInUI() {
+            const signInContainer = document.getElementById('signInContainer');
             const authContainer = document.getElementById('firebaseui-auth-container');
-            const authButtons = document.getElementById('authButtons');
-            const signedOutView = document.getElementById('signedOutView');
             
-            // Hide the auth container and show other elements
+            // Hide the containers
+            signInContainer.style.display = 'none';
             authContainer.style.display = 'none';
-            authButtons.style.display = 'block';
-            signedOutView.style.display = 'block';
             
             // Reset the Firebase Auth UI
             ui.reset();
@@ -1322,6 +1341,9 @@
             document.getElementById('closeModal').addEventListener('click', hideCommentsModal);
             document.getElementById('closeReviewModal').addEventListener('click', hideReviewModal);
             document.getElementById('submitComment').addEventListener('click', submitComment);
+            
+            // Sign out button listener (inside hidden sign-in container)
+            document.getElementById('signOutBtn').addEventListener('click', signOutUser);
             
             // Dropdown menu event listeners
             document.getElementById('menuButton').addEventListener('click', toggleDropdown);
