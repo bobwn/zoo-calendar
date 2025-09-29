@@ -733,7 +733,7 @@
                 <div id="autocompleteDropdown" class="autocomplete-dropdown"></div>
             </div>
             <div class="controls">
-                <button id="clearBtn" class="clear-btn">Clear All Tiles</button>
+                <button id="clearBtn" class="clear-btn" style="display: none;">Clear All Tiles</button>
             </div>
         </div>
 
@@ -743,7 +743,7 @@
         <div id="errorContainer"></div>
 
         <!-- Version Number -->
-        <div class="version-number">v1.8.5</div>
+        <div class="version-number">v1.8.6</div>
     </div>
 
     <!-- Comments Modal -->
@@ -1135,6 +1135,11 @@
             tilesContainer.appendChild(tile);
             currentTiles.push({ state: normalizedState, element: tile });
             
+            // Show the clear button if we have tiles
+            if (currentTiles.length > 0) {
+                document.getElementById('clearBtn').style.display = 'block';
+            }
+            
             // Clear input
             document.getElementById('stateInput').value = '';
         }
@@ -1143,6 +1148,9 @@
             const tilesContainer = document.getElementById('tilesContainer');
             tilesContainer.innerHTML = '';
             currentTiles = [];
+            
+            // Hide the clear button when no tiles remain
+            document.getElementById('clearBtn').style.display = 'none';
         }
 
         function showCommentsModal() {
