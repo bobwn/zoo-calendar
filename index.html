@@ -571,156 +571,6 @@
             transform: translateX(-5px);
         }
 
-        /* Custom Auth Forms Styles */
-        .auth-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            backdrop-filter: blur(5px);
-        }
-
-        .auth-modal.show {
-            display: flex;
-        }
-
-        .auth-modal-content {
-            background: linear-gradient(135deg, #faf5ed 0%, #f5ede0 100%);
-            padding: 40px;
-            border-radius: 20px;
-            max-width: 450px;
-            width: 90%;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-        }
-
-        .auth-modal-header {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            text-align: center;
-            color: #333;
-        }
-
-        .auth-modal-subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 30px;
-            font-size: 0.95rem;
-        }
-
-        .auth-form-group {
-            margin-bottom: 20px;
-        }
-
-        .auth-form-label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #333;
-            font-size: 0.95rem;
-        }
-
-        .auth-form-input {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-family: inherit;
-            transition: border-color 0.3s ease;
-        }
-
-        .auth-form-input:focus {
-            outline: none;
-            border-color: var(--primary-color);
-        }
-
-        .auth-submit-btn {
-            width: 100%;
-            padding: 14px;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.05rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 10px;
-        }
-
-        .auth-submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(45, 90, 61, 0.4);
-        }
-
-        .auth-submit-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .auth-switch {
-            text-align: center;
-            margin-top: 20px;
-            color: #666;
-            font-size: 0.95rem;
-        }
-
-        .auth-switch-link {
-            color: var(--primary-color);
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        .auth-switch-link:hover {
-            text-decoration: underline;
-        }
-
-        .auth-close-btn {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: #666;
-            cursor: pointer;
-            padding: 5px 10px;
-            line-height: 1;
-        }
-
-        .auth-close-btn:hover {
-            color: #333;
-        }
-
-        .auth-error {
-            background: #fee;
-            color: #c33;
-            padding: 12px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            font-size: 0.9rem;
-            border-left: 4px solid #c33;
-        }
-
-        .auth-success {
-            background: #efe;
-            color: #363;
-            padding: 12px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            font-size: 0.9rem;
-            border-left: 4px solid #363;
-        }
-
         .user-status {
             display: flex;
             align-items: center;
@@ -856,7 +706,12 @@
             </div>
             <p class="byline">Don't miss exciting upcoming zoo events!</p>
 
-            <div class="search-container">="auth-benefits">Free account • No spam • Enhanced features</div>
+            <!-- Hidden User Authentication Section for Menu -->
+            <div class="sign-in-container" id="signInContainer" style="display: none;">
+                <div id="userStatus" class="user-status">
+                    <div id="signedOutView" class="signed-out-message">
+                        <strong>Sign in</strong> to save your favorite zoos and get personalized recommendations!
+                        <div class="auth-benefits">Free account • No spam • Enhanced features</div>
                     </div>
                     <div id="signedInView" class="user-info" style="display: none;">
                         <div class="user-avatar" id="userAvatar">U</div>
@@ -918,83 +773,15 @@
         </div>
     </div>
 
-    <!-- Custom Auth Modal -->
-    <div id="authModal" class="auth-modal">
-        <div class="auth-modal-content" style="position: relative;">
-            <button class="auth-close-btn" id="closeAuthModal">×</button>
-            
-            <!-- Sign In Form -->
-            <div id="signInForm">
-                <h2 class="auth-modal-header">Sign In</h2>
-                <p class="auth-modal-subtitle">Welcome back to ZooCalendar!</p>
-                
-                <div id="signInError" class="auth-error" style="display: none;"></div>
-                
-                <form id="signInFormElement">
-                    <div class="auth-form-group">
-                        <label class="auth-form-label" for="signInEmail">Email Address</label>
-                        <input type="email" id="signInEmail" class="auth-form-input" required>
-                    </div>
-                    <div class="auth-form-group">
-                        <label class="auth-form-label" for="signInPassword">Password</label>
-                        <input type="password" id="signInPassword" class="auth-form-input" required>
-                    </div>
-                    <button type="submit" class="auth-submit-btn" id="signInSubmitBtn">Sign In</button>
-                </form>
-                
-                <div class="auth-switch">
-                    Don't have an account? <a class="auth-switch-link" id="showSignUpForm">Create Account</a>
-                </div>
-            </div>
-            
-            <!-- Sign Up Form -->
-            <div id="signUpForm" style="display: none;">
-                <h2 class="auth-modal-header">Create Account</h2>
-                <p class="auth-modal-subtitle">Join ZooCalendar today!</p>
-                
-                <div id="signUpError" class="auth-error" style="display: none;"></div>
-                
-                <form id="signUpFormElement">
-                    <div class="auth-form-group">
-                        <label class="auth-form-label" for="signUpEmail">Email Address</label>
-                        <input type="email" id="signUpEmail" class="auth-form-input" required>
-                    </div>
-                    <div class="auth-form-group">
-                        <label class="auth-form-label" for="signUpPassword">Password (min 6 characters)</label>
-                        <input type="password" id="signUpPassword" class="auth-form-input" minlength="6" required>
-                    </div>
-                    <div class="auth-form-group">
-                        <label class="auth-form-label" for="signUpPasswordConfirm">Confirm Password</label>
-                        <input type="password" id="signUpPasswordConfirm" class="auth-form-input" minlength="6" required>
-                    </div>
-                    <button type="submit" class="auth-submit-btn" id="signUpSubmitBtn">Create Account</button>
-                </form>
-                
-                <div class="auth-switch">
-                    Already have an account? <a class="auth-switch-link" id="showSignInForm">Sign In</a>
-                </div>
-            </div>
-            
-            <!-- User Info (when signed in) -->
-            <div id="userInfoDisplay" style="display: none;">
-                <h2 class="auth-modal-header">Account</h2>
-                <div style="text-align: center; padding: 20px 0;">
-                    <div style="width: 80px; height: 80px; margin: 0 auto 20px; border-radius: 50%; background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: 600;" id="userDisplayAvatar">U</div>
-                    <div style="font-size: 1.2rem; font-weight: 600; color: #333; margin-bottom: 5px;" id="userDisplayEmail">user@example.com</div>
-                    <div style="font-size: 0.9rem; color: #666; margin-bottom: 25px;">Signed in successfully</div>
-                    <button type="button" class="auth-submit-btn" id="userSignOutBtn">Sign Out</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Firebase SDK - Removing Firebase UI, using only core Firebase -->
+    <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.css" />
     
     <script>
-        // Initialize Firebase with compat version
+        // Initialize Firebase with compat version for Firebase UI
         const firebaseConfig = {
             apiKey: "AIzaSyBlmDQOW9JqC3B2X_TMVER6NqHdmxgb368",
             authDomain: "zoo-calendar-comments.firebaseapp.com",
@@ -1035,19 +822,14 @@
                     showMessage('Successfully signed in!', false);
                     // Return false to avoid redirect
                     return false;
-                },
-                signInFailure: function(error) {
-                    // Handle sign-in errors
-                    console.error('Sign-in error:', error);
-                    showMessage('Sign-in error: ' + error.message, true);
                 }
             },
             signInOptions: [
                 {
                     provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
-                    requireDisplayName: false,
-                    signInMethod: firebase.auth.EmailAuthProvider.EMAIL_PASSWORD_SIGN_IN_METHOD
-                }
+                    requireDisplayName: false
+                },
+                firebase.auth.GoogleAuthProvider.PROVIDER_ID
             ],
             // Terms of service url/callback
             tosUrl: function() {
@@ -1133,7 +915,6 @@
             if (confirm('Are you sure you want to sign out?')) {
                 firebase.auth().signOut().then(function() {
                     showMessage('Successfully signed out!', false);
-                    hideSignInModal();
                 }).catch(function(error) {
                     console.error('Sign out error:', error);
                     showMessage('Error signing out: ' + error.message, true);
@@ -1566,20 +1347,8 @@
             document.getElementById('closeReviewModal').addEventListener('click', hideReviewModal);
             document.getElementById('submitComment').addEventListener('click', submitComment);
             
-            // Custom auth form event listeners
-            document.getElementById('signInFormElement').addEventListener('submit', handleSignIn);
-            document.getElementById('signUpFormElement').addEventListener('submit', handleSignUp);
-            document.getElementById('showSignUpForm').addEventListener('click', showSignUpForm);
-            document.getElementById('showSignInForm').addEventListener('click', showSignInForm);
-            document.getElementById('closeAuthModal').addEventListener('click', hideAuthModal);
-            document.getElementById('userSignOutBtn').addEventListener('click', handleSignOut);
-            
-            // Close auth modal when clicking outside
-            document.getElementById('authModal').addEventListener('click', function(e) {
-                if (e.target === document.getElementById('authModal')) {
-                    hideAuthModal();
-                }
-            });
+            // Sign out button listener (inside hidden sign-in container)
+            document.getElementById('signOutBtn').addEventListener('click', signOutUser);
             
             // Dropdown menu event listeners
             document.getElementById('menuButton').addEventListener('click', toggleDropdown);
@@ -1587,9 +1356,9 @@
                 e.preventDefault();
                 toggleDropdown();
                 if (currentUser) {
-                    handleSignOut();
+                    signOutUser();
                 } else {
-                    showAuthModal();
+                    showSignInUI();
                 }
             });
             document.getElementById('menuAbout').addEventListener('click', function(e) {
