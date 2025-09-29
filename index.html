@@ -62,6 +62,7 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
+        /* Mobile title overrides */
         @media (max-width: 768px) {
             .title h1 {
                 font-size: 2rem !important;
@@ -80,9 +81,19 @@
             }
         }
 
+        @media (max-width: 360px) {
+            .title h1 {
+                font-size: 1.6rem !important;
+                line-height: 1.1;
+                word-break: break-word;
+                letter-spacing: -0.5px;
+            }
+        }
+
         .parrot-emoji {
-            width: 100px;
-            height: 120px;
+            font-size: 50px;
+            width: 80px;
+            height: 80px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -91,7 +102,21 @@
         #parrotImage {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
         }
 
         .byline {
@@ -157,6 +182,10 @@
             color: white;
         }
 
+        .autocomplete-item:last-child {
+            border-bottom: none;
+        }
+
         #searchBtn {
             position: absolute;
             right: 5px;
@@ -185,7 +214,7 @@
             flex-wrap: wrap;
         }
 
-        .clear-btn {
+        .clear-btn, .comments-btn {
             border: none;
             border-radius: 25px;
             padding: 8px 18px;
@@ -193,6 +222,9 @@
             font-weight: 600;
             font-size: 0.85rem;
             transition: all 0.3s ease;
+        }
+
+        .clear-btn {
             background: linear-gradient(45deg, var(--logo-orange), var(--earth-tone));
             color: white;
             box-shadow: 0 4px 15px rgba(230, 148, 26, 0.3);
@@ -201,6 +233,17 @@
         .clear-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(230, 148, 26, 0.4);
+        }
+
+        .comments-btn {
+            background: linear-gradient(45deg, var(--accent-color), var(--light-green));
+            color: white;
+            box-shadow: 0 4px 15px rgba(127, 176, 105, 0.3);
+        }
+
+        .comments-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(127, 176, 105, 0.4);
         }
 
         .tiles-container {
@@ -279,6 +322,7 @@
             line-height: 1.1;
         }
 
+        /* Ensure hover state affects both name and city */
         .zoo-list a:hover .zoo-name,
         .zoo-list a:hover .zoo-city {
             color: white;
@@ -445,6 +489,7 @@
             backdrop-filter: blur(10px);
         }
 
+        /* Dropdown Menu Styles */
         .menu-dropdown {
             position: fixed;
             top: 20px;
@@ -585,6 +630,17 @@
             transition: all 0.3s ease;
         }
 
+        .sign-in-btn {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            box-shadow: 0 4px 15px rgba(45, 90, 61, 0.3);
+        }
+
+        .sign-in-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(45, 90, 61, 0.4);
+        }
+
         .sign-out-btn {
             background: linear-gradient(45deg, var(--logo-orange), var(--earth-tone));
             color: white;
@@ -627,6 +683,7 @@
 </head>
 <body>
     <div class="container">
+        <!-- Dropdown Menu -->
         <div class="menu-dropdown">
             <button class="menu-button" id="menuButton">
                 <span class="menu-icon">☰</span>
@@ -642,11 +699,14 @@
 
         <div class="header">
             <div class="title">
-                <div class="parrot-emoji">🦜</div>
+                <div class="parrot-emoji">
+                    <img src="parrot-logo.jpg" alt="Colorful parrot logo" id="parrotImage">
+                </div>
                 <h1>ZOOCALENDAR.COM</h1>
             </div>
             <p class="byline">Don't miss exciting upcoming zoo events!</p>
 
+            <!-- Hidden User Authentication Section for Menu -->
             <div class="sign-in-container" id="signInContainer" style="display: none;">
                 <div id="userStatus" class="user-status">
                     <div id="signedOutView" class="signed-out-message">
@@ -677,11 +737,16 @@
             </div>
         </div>
 
-        <div class="tiles-container" id="tilesContainer"></div>
+        <div class="tiles-container" id="tilesContainer">
+        </div>
+
         <div id="errorContainer"></div>
-        <div class="version-number">v1.8.7</div>
+
+        <!-- Version Number -->
+        <div class="version-number">v1.8.8</div>
     </div>
 
+    <!-- Comments Modal -->
     <div id="commentsModal" class="comments-modal">
         <div class="modal-content">
             <div class="modal-header">Share Your Feedback</div>
@@ -695,6 +760,7 @@
         </div>
     </div>
 
+    <!-- Review Comments Modal -->
     <div id="reviewModal" class="comments-modal">
         <div class="modal-content">
             <div class="modal-header">Submitted Comments</div>
@@ -707,6 +773,7 @@
         </div>
     </div>
 
+    <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
@@ -714,6 +781,7 @@
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.css" />
     
     <script>
+        // Initialize Firebase with compat version for Firebase UI
         const firebaseConfig = {
             apiKey: "AIzaSyBlmDQOW9JqC3B2X_TMVER6NqHdmxgb368",
             authDomain: "zoo-calendar-comments.firebaseapp.com",
@@ -724,100 +792,115 @@
             measurementId: "G-S0SDSJR9KJ"
         };
 
+        // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
         const db = firebase.firestore();
         
+        // Make available globally
         window.firebaseInitialized = true;
         window.auth = auth;
         window.db = db;
         window.firebase = firebase;
+    </script>
 
+    <script>
         let currentTiles = [];
-        let currentUser = null;
-        let highlightedIndex = -1;
-        
-        const zooData = {
-            'california': [
-                { name: 'San Diego Zoo', url: 'https://zoo.sandiegozoo.org/', city: 'San Diego' },
-                { name: 'Los Angeles Zoo', url: 'https://www.lazoo.org/', city: 'Los Angeles' }
-            ],
-            'florida': [
-                { name: 'Zoo Miami', url: 'https://www.zoomiami.org/', city: 'Miami' }
-            ],
-            'texas': [
-                { name: 'Houston Zoo', url: 'https://www.houstonzoo.org/', city: 'Houston' }
-            ]
-        };
-        
-        const stateNames = Object.keys(zooData).map(s => 
-            s.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
-        ).sort();
+        let submittedComments = [];
+        let zooData = {}; // Will be loaded from external file
+        let stateNames = []; // List of all state names for autocomplete
+        let highlightedIndex = -1; // For keyboard navigation
+        let currentUser = null; // Current signed-in user
 
+        // Firebase Auth UI configuration
         const uiConfig = {
             callbacks: {
-                signInSuccessWithAuthResult: function(authResult) {
+                signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+                    // User successfully signed in
                     currentUser = authResult.user;
                     updateUIForAuthState(authResult.user);
                     showMessage('Successfully signed in!', false);
-                    hideSignInUI();
+                    // Return false to avoid redirect
                     return false;
+                },
+                signInFailure: function(error) {
+                    // Handle sign-in errors
+                    console.error('Sign-in error:', error);
+                    showMessage('Sign-in error: ' + error.message, true);
                 }
             },
             signInOptions: [
                 {
                     provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
-                    requireDisplayName: false
-                },
-                firebase.auth.GoogleAuthProvider.PROVIDER_ID
-            ]
+                    requireDisplayName: false,
+                    signInMethod: firebase.auth.EmailAuthProvider.EMAIL_PASSWORD_SIGN_IN_METHOD
+                }
+            ],
+            // Terms of service url/callback
+            tosUrl: function() {
+                // Terms of service callback
+                return false;
+            },
+            // Privacy policy url/callback
+            privacyPolicyUrl: function() {
+                // Privacy policy callback
+                return false;
+            }
         };
 
+        // Initialize Firebase Auth UI
         const ui = new firebaseui.auth.AuthUI(firebase.auth());
 
+        // Authentication state management
         function setupAuthStateListener() {
             firebase.auth().onAuthStateChanged(function(user) {
                 currentUser = user;
                 updateUIForAuthState(user);
-                updateMenuSignInText(user);
+                console.log('Auth state changed:', user ? user.email : 'Not signed in');
             });
         }
 
         function updateUIForAuthState(user) {
             const signedInView = document.getElementById('signedInView');
             const signedOutView = document.getElementById('signedOutView');
+            const authButtons = document.getElementById('authButtons');
             const authContainer = document.getElementById('firebaseui-auth-container');
             const userEmail = document.getElementById('userEmail');
             const userAvatar = document.getElementById('userAvatar');
 
             if (user) {
+                // User is signed in
                 signedInView.style.display = 'flex';
                 signedOutView.style.display = 'none';
+                authButtons.style.display = 'none';
                 authContainer.style.display = 'none';
                 
                 const displayName = user.displayName || user.email;
+                const email = user.email;
+                
                 userEmail.textContent = displayName;
                 userAvatar.textContent = displayName.charAt(0).toUpperCase();
             } else {
+                // User is signed out
                 signedInView.style.display = 'none';
                 signedOutView.style.display = 'block';
+                authButtons.style.display = 'block';
                 authContainer.style.display = 'none';
             }
-        }
-
-        function updateMenuSignInText(user) {
-            const menuSignIn = document.getElementById('menuSignIn');
-            menuSignIn.textContent = user ? 'Sign Out' : 'Sign In';
         }
 
         function showSignInUI() {
             const signInContainer = document.getElementById('signInContainer');
             const authContainer = document.getElementById('firebaseui-auth-container');
             
+            // Show the sign-in container
             signInContainer.style.display = 'block';
             authContainer.style.display = 'block';
             
+            // Start the Firebase Auth UI
             ui.start('#firebaseui-auth-container', uiConfig);
+            
+            // Scroll to the sign-in container
             signInContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
@@ -825,26 +908,33 @@
             const signInContainer = document.getElementById('signInContainer');
             const authContainer = document.getElementById('firebaseui-auth-container');
             
+            // Hide the containers
             signInContainer.style.display = 'none';
             authContainer.style.display = 'none';
+            
+            // Reset the Firebase Auth UI
             ui.reset();
         }
 
         function signOutUser() {
             if (confirm('Are you sure you want to sign out?')) {
                 firebase.auth().signOut().then(function() {
-                    hideSignInUI();
                     showMessage('Successfully signed out!', false);
+                    hideSignInModal();
                 }).catch(function(error) {
+                    console.error('Sign out error:', error);
                     showMessage('Error signing out: ' + error.message, true);
                 });
             }
         }
 
+        // Dropdown menu functionality
         function toggleDropdown() {
-            document.getElementById('dropdownContent').classList.toggle('show');
+            const dropdown = document.getElementById('dropdownContent');
+            dropdown.classList.toggle('show');
         }
 
+        // Close dropdown when clicking outside
         window.addEventListener('click', function(event) {
             if (!event.target.matches('.menu-button') && !event.target.matches('.menu-icon')) {
                 const dropdown = document.getElementById('dropdownContent');
@@ -854,10 +944,134 @@
             }
         });
 
+        // Load zoo data from external JSON file
+        async function loadZooData() {
+            try {
+                const response = await fetch('zooData.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                zooData = data;
+                
+                // Create array of state names for autocomplete
+                stateNames = Object.keys(zooData).map(state => {
+                    return state.split(' ').map(word => 
+                        word.charAt(0).toUpperCase() + word.slice(1)
+                    ).join(' ');
+                }).sort();
+                
+                console.log('Zoo data loaded successfully:', Object.keys(zooData).length, 'states');
+                return true;
+            } catch (error) {
+                console.error('Error loading zoo data from external file:', error);
+                console.log('Falling back to embedded data...');
+                // Fallback to embedded data (keep a few states as backup)
+                zooData = {
+                    'california': [
+                        { name: 'San Diego Zoo', url: 'https://zoo.sandiegozoo.org/', city: 'San Diego' },
+                        { name: 'Los Angeles Zoo', url: 'https://www.lazoo.org/', city: 'Los Angeles' }
+                    ],
+                    'florida': [
+                        { name: 'Zoo Miami', url: 'https://www.zoomiami.org/', city: 'Miami' },
+                        { name: 'Busch Gardens Tampa Bay', url: 'https://buschgardens.com/tampa/', city: 'Tampa' }
+                    ],
+                    'texas': [
+                        { name: 'Houston Zoo', url: 'https://www.houstonzoo.org/', city: 'Houston' },
+                        { name: 'Dallas Zoo', url: 'https://www.dallaszoo.com/', city: 'Dallas' }
+                    ]
+                };
+                
+                // Create fallback state names
+                stateNames = ['California', 'Florida', 'Texas'];
+                return false;
+            }
+        }
+
+        // Autocomplete functionality
+        function showAutocomplete(inputValue) {
+            const dropdown = document.getElementById('autocompleteDropdown');
+            const filteredStates = stateNames.filter(state => 
+                state.toLowerCase().includes(inputValue.toLowerCase())
+            ).slice(0, 8); // Show max 8 suggestions
+
+            if (filteredStates.length === 0 || inputValue.length < 1) {
+                dropdown.classList.remove('show');
+                return;
+            }
+
+            let dropdownHtml = '';
+            filteredStates.forEach((state, index) => {
+                dropdownHtml += `<div class="autocomplete-item" data-state="${state}" data-index="${index}">${state}</div>`;
+            });
+
+            dropdown.innerHTML = dropdownHtml;
+            dropdown.classList.add('show');
+            highlightedIndex = -1;
+
+            // Add click listeners to autocomplete items
+            dropdown.querySelectorAll('.autocomplete-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    selectState(this.dataset.state);
+                });
+            });
+        }
+
+        function hideAutocomplete() {
+            const dropdown = document.getElementById('autocompleteDropdown');
+            dropdown.classList.remove('show');
+            highlightedIndex = -1;
+        }
+
+        function selectState(stateName) {
+            const input = document.getElementById('stateInput');
+            input.value = stateName;
+            hideAutocomplete();
+            addZooTile(stateName);
+        }
+
+        function highlightItem(direction) {
+            const dropdown = document.getElementById('autocompleteDropdown');
+            const items = dropdown.querySelectorAll('.autocomplete-item');
+            
+            if (items.length === 0) return;
+
+            // Remove previous highlight
+            if (highlightedIndex >= 0 && highlightedIndex < items.length) {
+                items[highlightedIndex].classList.remove('highlighted');
+            }
+
+            // Update index
+            if (direction === 'down') {
+                highlightedIndex = (highlightedIndex + 1) % items.length;
+            } else if (direction === 'up') {
+                highlightedIndex = highlightedIndex <= 0 ? items.length - 1 : highlightedIndex - 1;
+            }
+
+            // Highlight new item
+            if (highlightedIndex >= 0 && highlightedIndex < items.length) {
+                items[highlightedIndex].classList.add('highlighted');
+                items[highlightedIndex].scrollIntoView({ block: 'nearest' });
+            }
+        }
+
+        function selectHighlightedItem() {
+            const dropdown = document.getElementById('autocompleteDropdown');
+            const highlightedItem = dropdown.querySelector('.autocomplete-item.highlighted');
+            if (highlightedItem) {
+                selectState(highlightedItem.dataset.state);
+                return true;
+            }
+            return false;
+        }
+
         function showMessage(message, isError = true) {
             const errorContainer = document.getElementById('errorContainer');
-            errorContainer.innerHTML = `<div class="${isError ? 'error-message' : 'success-message'}">${message}</div>`;
-            setTimeout(() => { errorContainer.innerHTML = ''; }, 4000);
+            const messageClass = isError ? 'error-message' : 'success-message';
+            errorContainer.innerHTML = `<div class="${messageClass}">${message}</div>`;
+            setTimeout(() => {
+                errorContainer.innerHTML = '';
+            }, 4000);
         }
 
         function createZooTile(stateName, zoos) {
@@ -868,9 +1082,10 @@
             
             let zooListHtml = '';
             zoos.forEach(zoo => {
+                // Handle both old format (just name/url) and new format (with city, etc.)
                 const zooName = zoo.name;
                 const zooUrl = zoo.url;
-                const zooCity = zoo.city || '';
+                const zooCity = zoo.city || ''; // Fallback for old data format
                 
                 if (zooCity) {
                     zooListHtml += `
@@ -882,6 +1097,7 @@
                         </li>
                     `;
                 } else {
+                    // Fallback for old format
                     zooListHtml += `<li><a href="${zooUrl}" target="_blank" rel="noopener noreferrer">${zooName}</a></li>`;
                 }
             });
@@ -900,10 +1116,11 @@
             const normalizedState = stateName.toLowerCase().trim();
             
             if (!zooData[normalizedState]) {
-                showMessage('Please enter a valid US state name.', true);
+                showMessage('Please enter a valid US state name and we\'ll show you zoos in that state.', true);
                 return;
             }
 
+            // Check if this state is already displayed
             if (currentTiles.some(tile => tile.state === normalizedState)) {
                 showMessage(`${stateName} is already displayed!`, true);
                 return;
@@ -914,77 +1131,57 @@
             
             const tilesContainer = document.getElementById('tilesContainer');
             
+            // If we have 3 tiles, remove the first one
             if (currentTiles.length >= 3) {
                 const firstTile = currentTiles.shift();
                 firstTile.element.remove();
             }
             
+            // Add new tile
             tilesContainer.appendChild(tile);
             currentTiles.push({ state: normalizedState, element: tile });
             
+            // Show the clear button if we have tiles
             if (currentTiles.length > 0) {
                 document.getElementById('clearBtn').style.display = 'block';
             }
             
+            // Clear input
             document.getElementById('stateInput').value = '';
         }
 
         function clearAllTiles() {
-            document.getElementById('tilesContainer').innerHTML = '';
+            const tilesContainer = document.getElementById('tilesContainer');
+            tilesContainer.innerHTML = '';
             currentTiles = [];
+            
+            // Hide the clear button when no tiles remain
             document.getElementById('clearBtn').style.display = 'none';
         }
 
-        function showAutocomplete(inputValue) {
-            const dropdown = document.getElementById('autocompleteDropdown');
-            const filteredStates = stateNames.filter(state => 
-                state.toLowerCase().includes(inputValue.toLowerCase())
-            ).slice(0, 8);
-
-            if (filteredStates.length === 0 || inputValue.length < 1) {
-                dropdown.classList.remove('show');
-                return;
-            }
-
-            let dropdownHtml = '';
-            filteredStates.forEach((state, index) => {
-                dropdownHtml += `<div class="autocomplete-item" data-state="${state}" data-index="${index}">${state}</div>`;
-            });
-
-            dropdown.innerHTML = dropdownHtml;
-            dropdown.classList.add('show');
-            highlightedIndex = -1;
-
-            dropdown.querySelectorAll('.autocomplete-item').forEach(item => {
-                item.addEventListener('click', function() {
-                    selectState(this.dataset.state);
-                });
-            });
-        }
-
-        function hideAutocomplete() {
-            document.getElementById('autocompleteDropdown').classList.remove('show');
-            highlightedIndex = -1;
-        }
-
-        function selectState(stateName) {
-            document.getElementById('stateInput').value = stateName;
-            hideAutocomplete();
-            addZooTile(stateName);
-        }
-
         function showCommentsModal() {
-            document.getElementById('commentsModal').classList.add('show');
+            const modal = document.getElementById('commentsModal');
+            modal.classList.add('show');
             document.getElementById('commentText').focus();
         }
 
         function hideCommentsModal() {
-            document.getElementById('commentsModal').classList.remove('show');
+            const modal = document.getElementById('commentsModal');
+            modal.classList.remove('show');
             document.getElementById('commentText').value = '';
         }
 
+        // Firebase functions with fallback to local storage
         async function saveCommentToFirebase(commentText) {
+            console.log("=== SAVING COMMENT ===");
+            console.log("Firebase initialized:", window.firebaseInitialized);
+            console.log("User agent:", navigator.userAgent);
+            console.log("Comment text:", commentText);
+
+            // Check if Firebase is configured
             if (!window.firebaseInitialized) {
+                console.log("Firebase not configured, saving locally");
+                // Fallback to local storage
                 const comment = {
                     text: commentText,
                     timestamp: new Date().toLocaleString(),
@@ -994,56 +1191,78 @@
                 let localComments = JSON.parse(localStorage.getItem('zooComments') || '[]');
                 localComments.unshift(comment);
                 localStorage.setItem('zooComments', JSON.stringify(localComments));
+                console.log("Saved to local storage:", comment);
                 return true;
             }
 
             try {
+                console.log("Attempting to save to Firebase...");
                 const docData = {
                     text: commentText,
                     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
                     created: new Date().toLocaleString(),
+                    userAgent: navigator.userAgent,
                     source: 'firebase',
                     userId: currentUser ? currentUser.uid : null,
                     userEmail: currentUser ? currentUser.email : null
                 };
+                console.log("Document data:", docData);
                 
-                await db.collection("comments").add(docData);
+                const docRef = await db.collection("comments").add(docData);
+                console.log("SUCCESS: Comment saved to Firebase with ID:", docRef.id);
                 return true;
             } catch (e) {
+                console.error("FIREBASE ERROR - Falling back to local storage:", e);
+                console.error("Error details:", e.message, e.code);
+                
+                // Fallback to local storage
                 const comment = {
                     text: commentText,
                     timestamp: new Date().toLocaleString(),
                     id: Date.now().toString(),
-                    source: 'local-storage-fallback'
+                    source: 'local-storage-fallback',
+                    error: e.message
                 };
                 let localComments = JSON.parse(localStorage.getItem('zooComments') || '[]');
                 localComments.unshift(comment);
                 localStorage.setItem('zooComments', JSON.stringify(localComments));
+                console.log("Saved to local storage as fallback:", comment);
                 return true;
             }
         }
 
         async function loadCommentsFromFirebase() {
+            // Check if Firebase is configured
             if (!window.firebaseInitialized) {
-                return JSON.parse(localStorage.getItem('zooComments') || '[]');
+                console.log("Firebase not configured, loading from local storage");
+                // Load from local storage
+                const localComments = JSON.parse(localStorage.getItem('zooComments') || '[]');
+                return localComments;
             }
 
             try {
+                console.log("Loading comments from Firebase...");
                 const querySnapshot = await db.collection("comments").orderBy("timestamp", "desc").get();
                 const comments = [];
                 
                 querySnapshot.forEach((doc) => {
                     const data = doc.data();
+                    console.log("Comment data:", data);
                     comments.push({
                         id: doc.id,
                         text: data.text,
-                        timestamp: data.created || (data.timestamp?.toDate ? data.timestamp.toDate().toLocaleString() : 'Unknown time')
+                        timestamp: data.created || (data.timestamp?.toDate ? data.timestamp.toDate().toLocaleString() : data.timestamp) || 'Unknown time'
                     });
                 });
                 
+                console.log(`Loaded ${comments.length} comments from Firebase`);
                 return comments;
             } catch (e) {
-                return JSON.parse(localStorage.getItem('zooComments') || '[]');
+                console.error("Error loading comments from Firebase: ", e);
+                // Fallback to local storage
+                const localComments = JSON.parse(localStorage.getItem('zooComments') || '[]');
+                console.log(`Fallback: loaded ${localComments.length} comments from local storage`);
+                return localComments;
             }
         }
 
@@ -1051,16 +1270,18 @@
             const modal = document.getElementById('reviewModal');
             const commentsList = document.getElementById('commentsList');
             
+            // Show loading message
             commentsList.innerHTML = '<p style="text-align: center; color: #666; padding: 20px;">Loading comments...</p>';
             modal.classList.add('show');
             
+            // Load comments from Firebase
             const comments = await loadCommentsFromFirebase();
             
             if (comments.length === 0) {
                 commentsList.innerHTML = '<p style="text-align: center; color: #666; padding: 20px;">No comments submitted yet.</p>';
             } else {
                 let commentsHtml = '';
-                comments.forEach((comment) => {
+                comments.forEach((comment, index) => {
                     commentsHtml += `
                         <div class="comment-item">
                             <div class="comment-timestamp">${comment.timestamp}</div>
@@ -1073,7 +1294,8 @@
         }
 
         function hideReviewModal() {
-            document.getElementById('reviewModal').classList.remove('show');
+            const modal = document.getElementById('reviewModal');
+            modal.classList.remove('show');
         }
 
         async function submitComment() {
@@ -1083,45 +1305,59 @@
                 return;
             }
 
+            // Show loading state
             const submitBtn = document.getElementById('submitComment');
             const originalText = submitBtn.textContent;
             submitBtn.textContent = 'Saving...';
             submitBtn.disabled = true;
 
+            // Save to Firebase
             const success = await saveCommentToFirebase(commentText);
             
+            // Reset button
             submitBtn.textContent = originalText;
             submitBtn.disabled = false;
 
             if (success) {
                 hideCommentsModal();
-                showMessage('Thank you for your feedback!', false);
+                showMessage('Thank you for your feedback! Your comment has been saved.', false);
             } else {
-                showMessage('Error saving comment. Please try again.', true);
+                showMessage('Sorry, there was an error saving your comment. Please try again.', true);
             }
         }
 
         function handleSearch() {
-            const stateName = document.getElementById('stateInput').value.trim();
+            const input = document.getElementById('stateInput');
+            const stateName = input.value.trim();
+            
             if (!stateName) {
                 showMessage('Please enter a state name.', true);
                 return;
             }
+            
             addZooTile(stateName);
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Load zoo data first
+            await loadZooData();
+            
+            // Set up authentication state listener
             setupAuthStateListener();
             
+            // Then set up event listeners
             document.getElementById('searchBtn').addEventListener('click', handleSearch);
             document.getElementById('clearBtn').addEventListener('click', clearAllTiles);
             document.getElementById('closeModal').addEventListener('click', hideCommentsModal);
             document.getElementById('closeReviewModal').addEventListener('click', hideReviewModal);
             document.getElementById('submitComment').addEventListener('click', submitComment);
+            
+            // Sign out button listener (inside hidden sign-in container)
             document.getElementById('signOutBtn').addEventListener('click', signOutUser);
             
+            // Dropdown menu event listeners
             document.getElementById('menuButton').addEventListener('click', toggleDropdown);
-            
             document.getElementById('menuSignIn').addEventListener('click', function(e) {
                 e.preventDefault();
                 toggleDropdown();
@@ -1131,19 +1367,16 @@
                     showSignInUI();
                 }
             });
-            
             document.getElementById('menuAbout').addEventListener('click', function(e) {
                 e.preventDefault();
                 toggleDropdown();
-                alert('ZooCalendar - Find zoos across the United States!\n\nVersion 1.9.0');
+                window.location.href = 'about.html';
             });
-            
             document.getElementById('menuLeaveComment').addEventListener('click', function(e) {
                 e.preventDefault();
                 toggleDropdown();
                 showCommentsModal();
             });
-            
             document.getElementById('menuReviewComments').addEventListener('click', function(e) {
                 e.preventDefault();
                 toggleDropdown();
@@ -1153,14 +1386,43 @@
             document.getElementById('stateInput').addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
                     e.preventDefault();
+                    const dropdown = document.getElementById('autocompleteDropdown');
+                    
+                    // If autocomplete is showing and an item is highlighted, select it
+                    if (dropdown.classList.contains('show') && selectHighlightedItem()) {
+                        return;
+                    }
+                    
+                    // Otherwise, proceed with normal search
                     handleSearch();
                 }
             });
 
+            // Autocomplete input event
             document.getElementById('stateInput').addEventListener('input', function(e) {
-                showAutocomplete(e.target.value.trim());
+                const inputValue = e.target.value.trim();
+                showAutocomplete(inputValue);
             });
 
+            // Keyboard navigation for autocomplete
+            document.getElementById('stateInput').addEventListener('keydown', function(e) {
+                const dropdown = document.getElementById('autocompleteDropdown');
+                
+                if (dropdown.classList.contains('show')) {
+                    if (e.key === 'ArrowDown') {
+                        e.preventDefault();
+                        highlightItem('down');
+                    } else if (e.key === 'ArrowUp') {
+                        e.preventDefault();
+                        highlightItem('up');
+                    } else if (e.key === 'Escape') {
+                        e.preventDefault();
+                        hideAutocomplete();
+                    }
+                }
+            });
+
+            // Hide autocomplete when clicking outside
             document.addEventListener('click', function(e) {
                 const searchContainer = document.querySelector('.search-container');
                 if (!searchContainer.contains(e.target)) {
@@ -1168,22 +1430,28 @@
                 }
             });
 
+            // Close modals when clicking outside of them
             document.getElementById('commentsModal').addEventListener('click', function(e) {
-                if (e.target === this) hideCommentsModal();
+                if (e.target === this) {
+                    hideCommentsModal();
+                }
             });
 
             document.getElementById('reviewModal').addEventListener('click', function(e) {
-                if (e.target === this) hideReviewModal();
+                if (e.target === this) {
+                    hideReviewModal();
+                }
             });
             
+            // Close modals with Escape key
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') {
                     hideCommentsModal();
                     hideReviewModal();
-                    hideSignInUI();
                 }
             });
 
+            // Focus on input when page loads
             document.getElementById('stateInput').focus();
         });
     </script>
