@@ -6,8 +6,17 @@
       "city": "Birmingham",
       "type": "zoo",
       "size": "medium",
-      "notable_features": ["Red Diamond Splash Pad", "Alabama Wilds", "Trails of Africa"],
-      "admission_required": true
+      "notable_features": [
+        "Red Diamond Splash Pad",
+        "Alabama Wilds",
+        "Trails of Africa"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Montgomery Zoo",
@@ -15,8 +24,17 @@
       "city": "Montgomery",
       "type": "zoo",
       "size": "medium",
-      "notable_features": ["Mann Wildlife Learning Museum", "Overlook Cafe", "Train rides"],
-      "admission_required": true
+      "notable_features": [
+        "Mann Wildlife Learning Museum",
+        "Overlook Cafe",
+        "Train rides"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Gulf Coast Zoo",
@@ -24,8 +42,16 @@
       "city": "Gulf Shores",
       "type": "zoo",
       "size": "small",
-      "notable_features": ["Interactive experiences", "Educational programs"],
-      "admission_required": true
+      "notable_features": [
+        "Interactive experiences",
+        "Educational programs"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "alaska": [
@@ -35,8 +61,17 @@
       "city": "Anchorage",
       "type": "zoo",
       "size": "medium",
-      "notable_features": ["Polar bears", "Arctic animals", "Brown bears"],
-      "admission_required": true
+      "notable_features": [
+        "Polar bears",
+        "Arctic animals",
+        "Brown bears"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Alaska Wildlife Conservation Center",
@@ -44,8 +79,17 @@
       "city": "Girdwood",
       "type": "wildlife_park",
       "size": "large",
-      "notable_features": ["Wildlife rehabilitation", "Drive-through viewing", "Native Alaskan species"],
-      "admission_required": true
+      "notable_features": [
+        "Wildlife rehabilitation",
+        "Drive-through viewing",
+        "Native Alaskan species"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "arizona": [
@@ -55,8 +99,17 @@
       "city": "Phoenix",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["Desert animals", "Conservation programs", "ZooLights winter event"],
-      "admission_required": true
+      "notable_features": [
+        "Desert animals",
+        "Conservation programs",
+        "ZooLights winter event"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Reid Park Zoo",
@@ -64,8 +117,17 @@
       "city": "Tucson",
       "type": "zoo",
       "size": "medium",
-      "notable_features": ["Elephant care center", "African animals", "Conservation education"],
-      "admission_required": true
+      "notable_features": [
+        "Elephant care center",
+        "African animals",
+        "Conservation education"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Arizona-Sonora Desert Museum",
@@ -73,8 +135,17 @@
       "city": "Tucson",
       "type": "wildlife_park",
       "size": "large",
-      "notable_features": ["Desert ecosystem", "Natural habitat exhibits", "Outdoor trails"],
-      "admission_required": true
+      "notable_features": [
+        "Desert ecosystem",
+        "Natural habitat exhibits",
+        "Outdoor trails"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Wildlife World Zoo",
@@ -82,8 +153,17 @@
       "city": "Litchfield Park",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["Aquarium", "Safari train", "Skyride"],
-      "admission_required": true
+      "notable_features": [
+        "Aquarium",
+        "Safari train",
+        "Skyride"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "arkansas": [
@@ -93,8 +173,17 @@
       "city": "Little Rock",
       "type": "zoo",
       "size": "medium",
-      "notable_features": ["Arkansas Carousel", "Great Ape House", "Penguin Pointe"],
-      "admission_required": true
+      "notable_features": [
+        "Arkansas Carousel",
+        "Great Ape House",
+        "Penguin Pointe"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Turpentine Creek Wildlife Refuge",
@@ -102,8 +191,17 @@
       "city": "Eureka Springs",
       "type": "wildlife_refuge",
       "size": "large",
-      "notable_features": ["Big cat sanctuary", "Rescue operations", "Educational tours"],
-      "admission_required": true
+      "notable_features": [
+        "Big cat sanctuary",
+        "Rescue operations",
+        "Educational tours"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "california": [
@@ -113,8 +211,18 @@
       "city": "San Diego",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["World famous", "Conservation research", "Pandas", "Skyfari gondolas"],
-      "admission_required": true
+      "notable_features": [
+        "World famous",
+        "Conservation research",
+        "Pandas",
+        "Skyfari gondolas"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "San Diego Zoo Safari Park",
@@ -122,8 +230,17 @@
       "city": "Escondido",
       "type": "safari_park",
       "size": "large",
-      "notable_features": ["Open-range exhibits", "Safari tours", "Breeding programs"],
-      "admission_required": true
+      "notable_features": [
+        "Open-range exhibits",
+        "Safari tours",
+        "Breeding programs"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Los Angeles Zoo",
@@ -131,8 +248,17 @@
       "city": "Los Angeles",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["Griffith Park location", "LAIR exhibit", "California condors"],
-      "admission_required": true
+      "notable_features": [
+        "Griffith Park location",
+        "LAIR exhibit",
+        "California condors"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "San Francisco Zoo",
@@ -140,8 +266,17 @@
       "city": "San Francisco",
       "type": "zoo",
       "size": "medium",
-      "notable_features": ["Ocean views", "Penguin exhibit", "Historic carousel"],
-      "admission_required": true
+      "notable_features": [
+        "Ocean views",
+        "Penguin exhibit",
+        "Historic carousel"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Oakland Zoo",
@@ -149,8 +284,17 @@
       "city": "Oakland",
       "type": "zoo",
       "size": "medium",
-      "notable_features": ["Gondola ride", "California Trail", "Conservation programs"],
-      "admission_required": true
+      "notable_features": [
+        "Gondola ride",
+        "California Trail",
+        "Conservation programs"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Sacramento Zoo",
@@ -158,8 +302,17 @@
       "city": "Sacramento",
       "type": "zoo",
       "size": "small",
-      "notable_features": ["Fairytale Town nearby", "Reptile house", "Education center"],
-      "admission_required": true
+      "notable_features": [
+        "Fairytale Town nearby",
+        "Reptile house",
+        "Education center"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Fresno Chaffee Zoo",
@@ -167,8 +320,17 @@
       "city": "Fresno",
       "type": "zoo",
       "size": "medium",
-      "notable_features": ["African Adventure", "Sea Lion Cove", "Reptile house"],
-      "admission_required": true
+      "notable_features": [
+        "African Adventure",
+        "Sea Lion Cove",
+        "Reptile house"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "colorado": [
@@ -178,8 +340,17 @@
       "city": "Denver",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["City Park location", "Conservation research", "Interactive exhibits"],
-      "admission_required": true
+      "notable_features": [
+        "City Park location",
+        "Conservation research",
+        "Interactive exhibits"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Cheyenne Mountain Zoo",
@@ -187,8 +358,17 @@
       "city": "Colorado Springs",
       "type": "zoo",
       "size": "medium",
-      "notable_features": ["Mountain location", "Giraffe feeding", "Scenic chairlift"],
-      "admission_required": true
+      "notable_features": [
+        "Mountain location",
+        "Giraffe feeding",
+        "Scenic chairlift"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Pueblo Zoo",
@@ -196,8 +376,17 @@
       "city": "Pueblo",
       "type": "zoo",
       "size": "small",
-      "notable_features": ["Eco-Center", "Native wildlife", "Educational programs"],
-      "admission_required": true
+      "notable_features": [
+        "Eco-Center",
+        "Native wildlife",
+        "Educational programs"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "connecticut": [
@@ -207,8 +396,17 @@
       "city": "Bridgeport",
       "type": "zoo",
       "size": "small",
-      "notable_features": ["New England farmyard", "South American rainforest", "Carousel"],
-      "admission_required": true
+      "notable_features": [
+        "New England farmyard",
+        "South American rainforest",
+        "Carousel"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Mystic Aquarium",
@@ -216,8 +414,17 @@
       "city": "Mystic",
       "type": "aquarium",
       "size": "medium",
-      "notable_features": ["Beluga whales", "Sea lions", "Marine research"],
-      "admission_required": true
+      "notable_features": [
+        "Beluga whales",
+        "Sea lions",
+        "Marine research"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "delaware": [
@@ -227,8 +434,17 @@
       "city": "Wilmington",
       "type": "zoo",
       "size": "small",
-      "notable_features": ["River otters", "Andean bears", "Conservation focus"],
-      "admission_required": true
+      "notable_features": [
+        "River otters",
+        "Andean bears",
+        "Conservation focus"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "district of columbia": [
@@ -238,8 +454,18 @@
       "city": "Washington",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["Giant pandas", "Free admission", "Conservation research", "Smithsonian Institution"],
-      "admission_required": false
+      "notable_features": [
+        "Giant pandas",
+        "Free admission",
+        "Conservation research",
+        "Smithsonian Institution"
+      ],
+      "admission_required": false,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "florida": [
@@ -249,8 +475,17 @@
       "city": "Miami",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["Cageless exhibits", "Monorail", "Amazon rainforest exhibit"],
-      "admission_required": true
+      "notable_features": [
+        "Cageless exhibits",
+        "Monorail",
+        "Amazon rainforest exhibit"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Busch Gardens Tampa Bay",
@@ -258,8 +493,17 @@
       "city": "Tampa",
       "type": "theme_park_zoo",
       "size": "large",
-      "notable_features": ["Roller coasters", "African animals", "SeaWorld partnership"],
-      "admission_required": true
+      "notable_features": [
+        "Roller coasters",
+        "African animals",
+        "SeaWorld partnership"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Central Florida Zoo",
@@ -267,8 +511,17 @@
       "city": "Sanford",
       "type": "zoo",
       "size": "medium",
-      "notable_features": ["Zoom Air adventure course", "Barnyard Buddies", "Conservation programs"],
-      "admission_required": true
+      "notable_features": [
+        "Zoom Air adventure course",
+        "Barnyard Buddies",
+        "Conservation programs"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Jacksonville Zoo",
@@ -276,8 +529,17 @@
       "city": "Jacksonville",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["Range of the Jaguar", "Gardens", "Splash Ground"],
-      "admission_required": true
+      "notable_features": [
+        "Range of the Jaguar",
+        "Gardens",
+        "Splash Ground"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Palm Beach Zoo",
@@ -285,8 +547,17 @@
       "city": "West Palm Beach",
       "type": "zoo",
       "size": "medium",
-      "notable_features": ["Interactive fountain", "Malayan tiger exhibit", "Conservation programs"],
-      "admission_required": true
+      "notable_features": [
+        "Interactive fountain",
+        "Malayan tiger exhibit",
+        "Conservation programs"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "ZooTampa at Lowry Park",
@@ -294,8 +565,17 @@
       "city": "Tampa",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["Manatee rescue", "Roaring Springs", "Florida wildlife"],
-      "admission_required": true
+      "notable_features": [
+        "Manatee rescue",
+        "Roaring Springs",
+        "Florida wildlife"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "georgia": [
@@ -305,8 +585,17 @@
       "city": "Atlanta",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["Giant pandas", "Gorilla breeding program", "Conservation research"],
-      "admission_required": true
+      "notable_features": [
+        "Giant pandas",
+        "Gorilla breeding program",
+        "Conservation research"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Wild Adventures",
@@ -314,8 +603,17 @@
       "city": "Valdosta",
       "type": "theme_park_zoo",
       "size": "medium",
-      "notable_features": ["Roller coasters", "Water park", "Animal exhibits"],
-      "admission_required": true
+      "notable_features": [
+        "Roller coasters",
+        "Water park",
+        "Animal exhibits"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "hawaii": [
@@ -325,8 +623,17 @@
       "city": "Honolulu",
       "type": "zoo",
       "size": "medium",
-      "notable_features": ["Waikiki location", "Pacific islands animals", "Keiki Zoo"],
-      "admission_required": true
+      "notable_features": [
+        "Waikiki location",
+        "Pacific islands animals",
+        "Keiki Zoo"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "idaho": [
@@ -336,8 +643,17 @@
       "city": "Boise",
       "type": "zoo",
       "size": "small",
-      "notable_features": ["Native Idaho animals", "Conservation education", "Playground"],
-      "admission_required": true
+      "notable_features": [
+        "Native Idaho animals",
+        "Conservation education",
+        "Playground"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Tautphaus Park Zoo",
@@ -345,8 +661,17 @@
       "city": "Idaho Falls",
       "type": "zoo",
       "size": "small",
-      "notable_features": ["Family friendly", "Local wildlife focus", "Educational programs"],
-      "admission_required": true
+      "notable_features": [
+        "Family friendly",
+        "Local wildlife focus",
+        "Educational programs"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "illinois": [
@@ -356,8 +681,18 @@
       "city": "Chicago",
       "type": "zoo",
       "size": "medium",
-      "notable_features": ["Free admission", "Urban location", "Great apes", "Farm-in-the-Zoo"],
-      "admission_required": false
+      "notable_features": [
+        "Free admission",
+        "Urban location",
+        "Great apes",
+        "Farm-in-the-Zoo"
+      ],
+      "admission_required": false,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Brookfield Zoo",
@@ -365,8 +700,17 @@
       "city": "Brookfield",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["Desert Dome", "Great Bear Wilderness", "Conservation research"],
-      "admission_required": true
+      "notable_features": [
+        "Desert Dome",
+        "Great Bear Wilderness",
+        "Conservation research"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Miller Park Zoo",
@@ -374,8 +718,17 @@
       "city": "Bloomington",
       "type": "zoo",
       "size": "small",
-      "notable_features": ["ZooLab discovery center", "Wallaby walkabout", "Educational focus"],
-      "admission_required": true
+      "notable_features": [
+        "ZooLab discovery center",
+        "Wallaby walkabout",
+        "Educational focus"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "indiana": [
@@ -385,8 +738,17 @@
       "city": "Indianapolis",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["Dolphin pavilion", "Simon Skjodt International Orangutan Center", "White River Gardens"],
-      "admission_required": true
+      "notable_features": [
+        "Dolphin pavilion",
+        "Simon Skjodt International Orangutan Center",
+        "White River Gardens"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Fort Wayne Children's Zoo",
@@ -394,8 +756,17 @@
       "city": "Fort Wayne",
       "type": "zoo",
       "size": "medium",
-      "notable_features": ["Children focused", "Interactive experiences", "Australian Adventure"],
-      "admission_required": true
+      "notable_features": [
+        "Children focused",
+        "Interactive experiences",
+        "Australian Adventure"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Mesker Park Zoo",
@@ -403,8 +774,17 @@
       "city": "Evansville",
       "type": "zoo",
       "size": "medium",
-      "notable_features": ["Amazonia", "Botanic Garden", "Conservation programs"],
-      "admission_required": true
+      "notable_features": [
+        "Amazonia",
+        "Botanic Garden",
+        "Conservation programs"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "iowa": [
@@ -414,8 +794,17 @@
       "city": "Des Moines",
       "type": "zoo",
       "size": "medium",
-      "notable_features": ["Sea lion shows", "Discovery Center", "Train rides"],
-      "admission_required": true
+      "notable_features": [
+        "Sea lion shows",
+        "Discovery Center",
+        "Train rides"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "kansas": [
@@ -425,8 +814,17 @@
       "city": "Wichita",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["Downing Gorilla Forest", "Koch Penguin & Sea Lion Cove", "Conservation research"],
-      "admission_required": true
+      "notable_features": [
+        "Downing Gorilla Forest",
+        "Koch Penguin & Sea Lion Cove",
+        "Conservation research"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Topeka Zoo",
@@ -434,8 +832,17 @@
       "city": "Topeka",
       "type": "zoo",
       "size": "small",
-      "notable_features": ["Tropical Rain Forest", "Lions Pride", "Conservation education"],
-      "admission_required": true
+      "notable_features": [
+        "Tropical Rain Forest",
+        "Lions Pride",
+        "Conservation education"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "kentucky": [
@@ -445,8 +852,17 @@
       "city": "Louisville",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["African Outpost", "Glacier Run", "HerpAquarium"],
-      "admission_required": true
+      "notable_features": [
+        "African Outpost",
+        "Glacier Run",
+        "HerpAquarium"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Newport Aquarium",
@@ -454,8 +870,17 @@
       "city": "Newport",
       "type": "aquarium",
       "size": "medium",
-      "notable_features": ["Shark Ray Bay Theater", "Surrounded by Sharks tunnel", "Interactive exhibits"],
-      "admission_required": true
+      "notable_features": [
+        "Shark Ray Bay Theater",
+        "Surrounded by Sharks tunnel",
+        "Interactive exhibits"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "louisiana": [
@@ -465,8 +890,17 @@
       "city": "New Orleans",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["Louisiana Swamp exhibit", "Jaguar Jungle", "World of Primates"],
-      "admission_required": true
+      "notable_features": [
+        "Louisiana Swamp exhibit",
+        "Jaguar Jungle",
+        "World of Primates"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Alexandria Zoo",
@@ -474,8 +908,17 @@
       "city": "Alexandria",
       "type": "zoo",
       "size": "small",
-      "notable_features": ["Louisiana Habitat Trail", "Educational programs", "Native species focus"],
-      "admission_required": true
+      "notable_features": [
+        "Louisiana Habitat Trail",
+        "Educational programs",
+        "Native species focus"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "maine": [
@@ -485,8 +928,17 @@
       "city": "Gray",
       "type": "wildlife_park",
       "size": "small",
-      "notable_features": ["Native Maine animals", "Wildlife rehabilitation", "Educational programs"],
-      "admission_required": true
+      "notable_features": [
+        "Native Maine animals",
+        "Wildlife rehabilitation",
+        "Educational programs"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "maryland": [
@@ -496,8 +948,17 @@
       "city": "Baltimore",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["African Journey", "Polar Bear Watch", "Conservation programs"],
-      "admission_required": true
+      "notable_features": [
+        "African Journey",
+        "Polar Bear Watch",
+        "Conservation programs"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "National Aquarium",
@@ -505,8 +966,17 @@
       "city": "Baltimore",
       "type": "aquarium",
       "size": "large",
-      "notable_features": ["Blacktip Reef", "Rainforest exhibit", "Marine conservation"],
-      "admission_required": true
+      "notable_features": [
+        "Blacktip Reef",
+        "Rainforest exhibit",
+        "Marine conservation"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "massachusetts": [
@@ -516,8 +986,17 @@
       "city": "Boston",
       "type": "zoo",
       "size": "medium",
-      "notable_features": ["Tropical Forest", "Outback Trail", "Giraffe Savannah"],
-      "admission_required": true
+      "notable_features": [
+        "Tropical Forest",
+        "Outback Trail",
+        "Giraffe Savannah"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Stone Zoo",
@@ -525,8 +1004,17 @@
       "city": "Stoneham",
       "type": "zoo",
       "size": "small",
-      "notable_features": ["Yukon Creek", "Himalayan Bears", "Conservation focus"],
-      "admission_required": true
+      "notable_features": [
+        "Yukon Creek",
+        "Himalayan Bears",
+        "Conservation focus"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "michigan": [
@@ -536,8 +1024,17 @@
       "city": "Royal Oak",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["Arctic Ring of Life", "Great Apes of Harambee", "Amphibiville"],
-      "admission_required": true
+      "notable_features": [
+        "Arctic Ring of Life",
+        "Great Apes of Harambee",
+        "Amphibiville"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Potter Park Zoo",
@@ -545,8 +1042,17 @@
       "city": "Lansing",
       "type": "zoo",
       "size": "medium",
-      "notable_features": ["Black rhinos", "Snow leopards", "Conservation education"],
-      "admission_required": true
+      "notable_features": [
+        "Black rhinos",
+        "Snow leopards",
+        "Conservation education"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "John Ball Zoo",
@@ -554,8 +1060,17 @@
       "city": "Grand Rapids",
       "type": "zoo",
       "size": "medium",
-      "notable_features": ["Zip line adventure", "Living Shores Aquarium", "Conservation programs"],
-      "admission_required": true
+      "notable_features": [
+        "Zip line adventure",
+        "Living Shores Aquarium",
+        "Conservation programs"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "minnesota": [
@@ -565,8 +1080,17 @@
       "city": "Apple Valley",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["Northern Trail", "Tropics Trail", "Conservation research"],
-      "admission_required": true
+      "notable_features": [
+        "Northern Trail",
+        "Tropics Trail",
+        "Conservation research"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Como Park Zoo",
@@ -574,8 +1098,17 @@
       "city": "Saint Paul",
       "type": "zoo",
       "size": "medium",
-      "notable_features": ["Free admission", "Conservatory attached", "Marjorie McNeely Conservatory"],
-      "admission_required": false
+      "notable_features": [
+        "Free admission",
+        "Conservatory attached",
+        "Marjorie McNeely Conservatory"
+      ],
+      "admission_required": false,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "mississippi": [
@@ -585,8 +1118,17 @@
       "city": "Jackson",
       "type": "zoo",
       "size": "medium",
-      "notable_features": ["Mississippi wilderness", "Discovery Zone", "Conservation programs"],
-      "admission_required": true
+      "notable_features": [
+        "Mississippi wilderness",
+        "Discovery Zone",
+        "Conservation programs"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Hattiesburg Zoo",
@@ -594,8 +1136,17 @@
       "city": "Hattiesburg",
       "type": "zoo",
       "size": "small",
-      "notable_features": ["Train rides", "Carousel", "Educational programs"],
-      "admission_required": true
+      "notable_features": [
+        "Train rides",
+        "Carousel",
+        "Educational programs"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "missouri": [
@@ -605,8 +1156,17 @@
       "city": "Saint Louis",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["Free admission", "Penguin & Puffin Coast", "World-class reputation"],
-      "admission_required": false
+      "notable_features": [
+        "Free admission",
+        "Penguin & Puffin Coast",
+        "World-class reputation"
+      ],
+      "admission_required": false,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Kansas City Zoo",
@@ -614,8 +1174,17 @@
       "city": "Kansas City",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["Africa exhibit", "Stingray Bay", "Conservation Carousel"],
-      "admission_required": true
+      "notable_features": [
+        "Africa exhibit",
+        "Stingray Bay",
+        "Conservation Carousel"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "montana": [
@@ -625,8 +1194,17 @@
       "city": "Billings",
       "type": "zoo",
       "size": "small",
-      "notable_features": ["Native Montana animals", "Sensory garden", "Educational focus"],
-      "admission_required": true
+      "notable_features": [
+        "Native Montana animals",
+        "Sensory garden",
+        "Educational focus"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "nebraska": [
@@ -636,8 +1214,18 @@
       "city": "Omaha",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["Desert Dome", "Rainforest", "Aquarium", "World's largest indoor desert"],
-      "admission_required": true
+      "notable_features": [
+        "Desert Dome",
+        "Rainforest",
+        "Aquarium",
+        "World's largest indoor desert"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Lincoln Children's Zoo",
@@ -645,8 +1233,17 @@
       "city": "Lincoln",
       "type": "zoo",
       "size": "small",
-      "notable_features": ["Children focused", "Interactive experiences", "Educational programs"],
-      "admission_required": true
+      "notable_features": [
+        "Children focused",
+        "Interactive experiences",
+        "Educational programs"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "nevada": [
@@ -656,8 +1253,17 @@
       "city": "Reno",
       "type": "zoo",
       "size": "small",
-      "notable_features": ["Walk-through exhibits", "Educational programs", "Local wildlife focus"],
-      "admission_required": true
+      "notable_features": [
+        "Walk-through exhibits",
+        "Educational programs",
+        "Local wildlife focus"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "new hampshire": [
@@ -667,8 +1273,17 @@
       "city": "Candia",
       "type": "farm_zoo",
       "size": "small",
-      "notable_features": ["Petting zoo", "Farm animals", "Educational programs"],
-      "admission_required": true
+      "notable_features": [
+        "Petting zoo",
+        "Farm animals",
+        "Educational programs"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "new jersey": [
@@ -678,8 +1293,17 @@
       "city": "West Orange",
       "type": "zoo",
       "size": "medium",
-      "notable_features": ["Essex County Turtle Back Zoo", "Sea Lion training", "Carousel"],
-      "admission_required": true
+      "notable_features": [
+        "Essex County Turtle Back Zoo",
+        "Sea Lion training",
+        "Carousel"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Cape May County Zoo",
@@ -687,8 +1311,17 @@
       "city": "Cape May Court House",
       "type": "zoo",
       "size": "medium",
-      "notable_features": ["Free admission", "African Savanna", "World of Birds"],
-      "admission_required": false
+      "notable_features": [
+        "Free admission",
+        "African Savanna",
+        "World of Birds"
+      ],
+      "admission_required": false,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "new mexico": [
@@ -698,8 +1331,17 @@
       "city": "Albuquerque",
       "type": "zoo",
       "size": "medium",
-      "notable_features": ["Desert animals", "Aquarium attached", "Conservation programs"],
-      "admission_required": true
+      "notable_features": [
+        "Desert animals",
+        "Aquarium attached",
+        "Conservation programs"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "new york": [
@@ -709,8 +1351,17 @@
       "city": "Bronx",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["Congo Gorilla Forest", "Tiger Mountain", "World's largest metropolitan zoo"],
-      "admission_required": true
+      "notable_features": [
+        "Congo Gorilla Forest",
+        "Tiger Mountain",
+        "World's largest metropolitan zoo"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Central Park Zoo",
@@ -718,8 +1369,17 @@
       "city": "New York",
       "type": "zoo",
       "size": "small",
-      "notable_features": ["Manhattan location", "Tisch Children's Zoo", "Sea lion pool"],
-      "admission_required": true
+      "notable_features": [
+        "Manhattan location",
+        "Tisch Children's Zoo",
+        "Sea lion pool"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Buffalo Zoo",
@@ -727,8 +1387,17 @@
       "city": "Buffalo",
       "type": "zoo",
       "size": "medium",
-      "notable_features": ["Arctic Edge", "Vanishing Animals exhibit", "Historic carousel"],
-      "admission_required": true
+      "notable_features": [
+        "Arctic Edge",
+        "Vanishing Animals exhibit",
+        "Historic carousel"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Seneca Park Zoo",
@@ -736,8 +1405,17 @@
       "city": "Rochester",
       "type": "zoo",
       "size": "small",
-      "notable_features": ["Rocky Coasts", "A Step Into Africa", "Conservation focus"],
-      "admission_required": true
+      "notable_features": [
+        "Rocky Coasts",
+        "A Step Into Africa",
+        "Conservation focus"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "north carolina": [
@@ -747,8 +1425,17 @@
       "city": "Asheboro",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["World's largest natural habitat zoo", "Africa and North America regions", "Tram system"],
-      "admission_required": true
+      "notable_features": [
+        "World's largest natural habitat zoo",
+        "Africa and North America regions",
+        "Tram system"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "north dakota": [
@@ -758,8 +1445,17 @@
       "city": "Minot",
       "type": "zoo",
       "size": "small",
-      "notable_features": ["Northern plains animals", "Conservation education", "Family friendly"],
-      "admission_required": true
+      "notable_features": [
+        "Northern plains animals",
+        "Conservation education",
+        "Family friendly"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "ohio": [
@@ -769,8 +1465,17 @@
       "city": "Cincinnati",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["Historic zoo", "Hippo Cove", "Conservation research center"],
-      "admission_required": true
+      "notable_features": [
+        "Historic zoo",
+        "Hippo Cove",
+        "Conservation research center"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Cleveland Metroparks Zoo",
@@ -778,8 +1483,17 @@
       "city": "Cleveland",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["RainForest", "African Savanna", "Australian Adventure"],
-      "admission_required": true
+      "notable_features": [
+        "RainForest",
+        "African Savanna",
+        "Australian Adventure"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Columbus Zoo",
@@ -787,8 +1501,17 @@
       "city": "Powell",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["Heart of Africa", "Adventure Cove", "Jack Hanna association"],
-      "admission_required": true
+      "notable_features": [
+        "Heart of Africa",
+        "Adventure Cove",
+        "Jack Hanna association"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Toledo Zoo",
@@ -796,8 +1519,17 @@
       "city": "Toledo",
       "type": "zoo",
       "size": "medium",
-      "notable_features": ["Aquarium", "Kingdom of the Apes", "Historic Works Progress Administration architecture"],
-      "admission_required": true
+      "notable_features": [
+        "Aquarium",
+        "Kingdom of the Apes",
+        "Historic Works Progress Administration architecture"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "oklahoma": [
@@ -807,8 +1539,17 @@
       "city": "Oklahoma City",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["Great EscApe", "Cat Forest", "Sanctuary Asia"],
-      "admission_required": true
+      "notable_features": [
+        "Great EscApe",
+        "Cat Forest",
+        "Sanctuary Asia"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Tulsa Zoo",
@@ -816,8 +1557,17 @@
       "city": "Tulsa",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["Conservation research", "Children's Zoo International", "Oxley Nature Center"],
-      "admission_required": true
+      "notable_features": [
+        "Conservation research",
+        "Children's Zoo International",
+        "Oxley Nature Center"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "oregon": [
@@ -827,8 +1577,17 @@
       "city": "Portland",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["Elephant Lands", "Predators of the Serengeti", "Conservation programs"],
-      "admission_required": true
+      "notable_features": [
+        "Elephant Lands",
+        "Predators of the Serengeti",
+        "Conservation programs"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "pennsylvania": [
@@ -838,8 +1597,17 @@
       "city": "Philadelphia",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["America's first zoo", "Zoo360 animal exploration trails", "KidZooU"],
-      "admission_required": true
+      "notable_features": [
+        "America's first zoo",
+        "Zoo360 animal exploration trails",
+        "KidZooU"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Pittsburgh Zoo",
@@ -847,8 +1615,17 @@
       "city": "Pittsburgh",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["PPG Aquarium", "Polar Bear & Penguin Point", "Highland Park location"],
-      "admission_required": true
+      "notable_features": [
+        "PPG Aquarium",
+        "Polar Bear & Penguin Point",
+        "Highland Park location"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Erie Zoo",
@@ -856,8 +1633,17 @@
       "city": "Erie",
       "type": "zoo",
       "size": "small",
-      "notable_features": ["Children's zoo", "Tiger exhibit", "Conservation education"],
-      "admission_required": true
+      "notable_features": [
+        "Children's zoo",
+        "Tiger exhibit",
+        "Conservation education"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "rhode island": [
@@ -867,8 +1653,17 @@
       "city": "Providence",
       "type": "zoo",
       "size": "medium",
-      "notable_features": ["Farmyard", "Marco Polo's Adventure Trek", "Conservation programs"],
-      "admission_required": true
+      "notable_features": [
+        "Farmyard",
+        "Marco Polo's Adventure Trek",
+        "Conservation programs"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "south carolina": [
@@ -878,8 +1673,17 @@
       "city": "Columbia",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["Riverbanks Botanical Garden", "Gorilla Base Camp", "Conservation research"],
-      "admission_required": true
+      "notable_features": [
+        "Riverbanks Botanical Garden",
+        "Gorilla Base Camp",
+        "Conservation research"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Greenville Zoo",
@@ -887,8 +1691,17 @@
       "city": "Greenville",
       "type": "zoo",
       "size": "small",
-      "notable_features": ["Cleveland Park location", "Reptile building", "Conservation focus"],
-      "admission_required": true
+      "notable_features": [
+        "Cleveland Park location",
+        "Reptile building",
+        "Conservation focus"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "south dakota": [
@@ -898,8 +1711,17 @@
       "city": "Sioux Falls",
       "type": "zoo",
       "size": "medium",
-      "notable_features": ["Delbridge Museum", "Conservation research", "Children's zoo"],
-      "admission_required": true
+      "notable_features": [
+        "Delbridge Museum",
+        "Conservation research",
+        "Children's zoo"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "tennessee": [
@@ -909,8 +1731,17 @@
       "city": "Nashville",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["Grassmere Historic Home", "Jungle Gym", "Conservation programs"],
-      "admission_required": true
+      "notable_features": [
+        "Grassmere Historic Home",
+        "Jungle Gym",
+        "Conservation programs"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Memphis Zoo",
@@ -918,8 +1749,17 @@
       "city": "Memphis",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["Giant pandas", "Teton Trek", "Cat Country"],
-      "admission_required": true
+      "notable_features": [
+        "Giant pandas",
+        "Teton Trek",
+        "Cat Country"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Knoxville Zoo",
@@ -927,8 +1767,17 @@
       "city": "Knoxville",
       "type": "zoo",
       "size": "medium",
-      "notable_features": ["Clayton Family Kids Cove", "Red panda habitat", "Conservation programs"],
-      "admission_required": true
+      "notable_features": [
+        "Clayton Family Kids Cove",
+        "Red panda habitat",
+        "Conservation programs"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "texas": [
@@ -938,8 +1787,17 @@
       "city": "Houston",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["African Forest", "Kipp Aquarium", "Conservation research"],
-      "admission_required": true
+      "notable_features": [
+        "African Forest",
+        "Kipp Aquarium",
+        "Conservation research"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Dallas Zoo",
@@ -947,8 +1805,17 @@
       "city": "Dallas",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["Giants of the Savanna", "Wilds of Africa", "Children's Aquarium"],
-      "admission_required": true
+      "notable_features": [
+        "Giants of the Savanna",
+        "Wilds of Africa",
+        "Children's Aquarium"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "San Antonio Zoo",
@@ -956,8 +1823,17 @@
       "city": "San Antonio",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["Brackenridge Park location", "Big Cat Valley", "Amazonia"],
-      "admission_required": true
+      "notable_features": [
+        "Brackenridge Park location",
+        "Big Cat Valley",
+        "Amazonia"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Fort Worth Zoo",
@@ -965,8 +1841,17 @@
       "city": "Fort Worth",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["Museum of Living Art", "African Savanna", "Texas Wild!"],
-      "admission_required": true
+      "notable_features": [
+        "Museum of Living Art",
+        "African Savanna",
+        "Texas Wild!"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Austin Zoo",
@@ -974,8 +1859,17 @@
       "city": "Austin",
       "type": "wildlife_rescue",
       "size": "medium",
-      "notable_features": ["Animal rescue focus", "Train rides", "Educational programs"],
-      "admission_required": true
+      "notable_features": [
+        "Animal rescue focus",
+        "Train rides",
+        "Educational programs"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "utah": [
@@ -985,8 +1879,17 @@
       "city": "Salt Lake City",
       "type": "zoo",
       "size": "medium",
-      "notable_features": ["Rocky Shores", "African Savanna", "Conservation programs"],
-      "admission_required": true
+      "notable_features": [
+        "Rocky Shores",
+        "African Savanna",
+        "Conservation programs"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "vermont": [
@@ -996,8 +1899,17 @@
       "city": "Quechee",
       "type": "nature_center",
       "size": "small",
-      "notable_features": ["Birds of prey", "Wildlife rehabilitation", "Educational programs"],
-      "admission_required": true
+      "notable_features": [
+        "Birds of prey",
+        "Wildlife rehabilitation",
+        "Educational programs"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "virginia": [
@@ -1007,8 +1919,17 @@
       "city": "Norfolk",
       "type": "zoo",
       "size": "medium",
-      "notable_features": ["Trail of the Tiger", "Africa - Okavango Delta", "Conservation programs"],
-      "admission_required": true
+      "notable_features": [
+        "Trail of the Tiger",
+        "Africa - Okavango Delta",
+        "Conservation programs"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Metro Richmond Zoo",
@@ -1016,8 +1937,17 @@
       "city": "Moseley",
       "type": "zoo",
       "size": "medium",
-      "notable_features": ["Safari village", "Snow leopards", "Giraffe feeding"],
-      "admission_required": true
+      "notable_features": [
+        "Safari village",
+        "Snow leopards",
+        "Giraffe feeding"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "washington": [
@@ -1027,8 +1957,17 @@
       "city": "Seattle",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["Trail of Vines", "Northern Trail", "Tropical Rain Forest"],
-      "admission_required": true
+      "notable_features": [
+        "Trail of Vines",
+        "Northern Trail",
+        "Tropical Rain Forest"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Point Defiance Zoo",
@@ -1036,8 +1975,17 @@
       "city": "Tacoma",
       "type": "zoo",
       "size": "medium",
-      "notable_features": ["Pacific Seas Aquarium", "Asian Forest Sanctuary", "Red Wolf Woods"],
-      "admission_required": true
+      "notable_features": [
+        "Pacific Seas Aquarium",
+        "Asian Forest Sanctuary",
+        "Red Wolf Woods"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "west virginia": [
@@ -1047,8 +1995,17 @@
       "city": "Wheeling",
       "type": "zoo",
       "size": "small",
-      "notable_features": ["Train rides", "Conservation education", "Benedum Planetarium nearby"],
-      "admission_required": true
+      "notable_features": [
+        "Train rides",
+        "Conservation education",
+        "Benedum Planetarium nearby"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ],
   "wisconsin": [
@@ -1058,8 +2015,17 @@
       "city": "Milwaukee",
       "type": "zoo",
       "size": "large",
-      "notable_features": ["Humboldt penguins", "Adventure Africa", "Zoomobile tours"],
-      "admission_required": true
+      "notable_features": [
+        "Humboldt penguins",
+        "Adventure Africa",
+        "Zoomobile tours"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     },
     {
       "name": "Menominee Zoo",
@@ -1067,8 +2033,17 @@
       "city": "Menominee",
       "type": "zoo",
       "size": "small",
-      "notable_features": ["Native American cultural connection", "Wolf exhibit", "Educational focus"],
-      "admission_required": true
+      "notable_features": [
+        "Native American cultural connection",
+        "Wolf exhibit",
+        "Educational focus"
+      ],
+      "admission_required": true,
+      "hours": "",
+      "phone": "",
+      "admission_price": "",
+      "website_events_url": "",
+      "annual_attendance": null
     }
   ]
 }
