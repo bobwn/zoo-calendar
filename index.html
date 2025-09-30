@@ -465,6 +465,121 @@
             color: var(--primary-color);
         }
 
+        /* Footer Styles */
+        .footer {
+            background: linear-gradient(135deg, #faf5ed 0%, #f5ede0 100%);
+            padding: 30px 20px;
+            margin-top: 60px;
+            border-radius: 20px;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .social-media {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .social-media-label {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 1rem;
+            margin-right: 5px;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: white;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-icon.facebook:hover {
+            background: #1877f2;
+            color: white;
+        }
+
+        .social-icon.twitter:hover {
+            background: #1da1f2;
+            color: white;
+        }
+
+        .social-icon.instagram:hover {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: white;
+        }
+
+        .social-icon.youtube:hover {
+            background: #ff0000;
+            color: white;
+        }
+
+        .footer-info {
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .footer {
+                margin-top: 40px;
+                padding: 20px;
+            }
+
+            .social-media {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .social-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+        }
+
         .modal-header {
             font-size: 1.5rem;
             font-weight: 700;
@@ -913,8 +1028,41 @@
 
         <div id="errorContainer"></div>
 
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="social-media">
+                    <span class="social-media-label">Follow Us:</span>
+                    <a href="https://facebook.com/zoocalendar" target="_blank" rel="noopener noreferrer" class="social-icon facebook" title="Facebook">
+                        <span>f</span>
+                    </a>
+                    <a href="https://twitter.com/zoocalendar" target="_blank" rel="noopener noreferrer" class="social-icon twitter" title="Twitter/X">
+                        <span>𝕏</span>
+                    </a>
+                    <a href="https://instagram.com/zoocalendar" target="_blank" rel="noopener noreferrer" class="social-icon instagram" title="Instagram">
+                        <span>📷</span>
+                    </a>
+                    <a href="https://youtube.com/@zoocalendar" target="_blank" rel="noopener noreferrer" class="social-icon youtube" title="YouTube">
+                        <span>▶</span>
+                    </a>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="about.html" class="footer-link">About</a>
+                    <a href="#" class="footer-link" id="footerPrivacy">Privacy Policy</a>
+                    <a href="#" class="footer-link" id="footerTerms">Terms of Service</a>
+                    <a href="#" class="footer-link" id="footerContact">Contact</a>
+                </div>
+                
+                <div class="footer-info">
+                    <p>&copy; 2025 ZooCalendar.com. All rights reserved.</p>
+                    <p>Your gateway to exciting zoo adventures!</p>
+                </div>
+            </div>
+        </footer>
+
         <!-- Version Number -->
-        <div class="version-number">v3.2</div>
+        <div class="version-number">v3.3</div>
     </div>
 
     <!-- Comments Modal -->
