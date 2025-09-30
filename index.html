@@ -423,6 +423,48 @@
             color: #333;
         }
 
+        .comment-reactions {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #ddd;
+        }
+
+        .reaction-btn {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 20px;
+            padding: 5px 12px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .reaction-btn:hover {
+            background: #f5f5f5;
+            border-color: var(--accent-color);
+            transform: scale(1.05);
+        }
+
+        .reaction-btn.reacted {
+            background: linear-gradient(135deg, rgba(127, 176, 105, 0.2) 0%, rgba(139, 195, 74, 0.2) 100%);
+            border-color: var(--accent-color);
+        }
+
+        .reaction-count {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #666;
+        }
+
+        .reaction-btn.reacted .reaction-count {
+            color: var(--primary-color);
+        }
+
         .modal-header {
             font-size: 1.5rem;
             font-weight: 700;
@@ -872,7 +914,7 @@
         <div id="errorContainer"></div>
 
         <!-- Version Number -->
-        <div class="version-number">v3.0</div>
+        <div class="version-number">v3.1</div>
     </div>
 
     <!-- Comments Modal -->
@@ -1615,7 +1657,8 @@
                     comments.push({
                         id: doc.id,
                         text: data.text,
-                        timestamp: data.created || (data.timestamp?.toDate ? data.timestamp.toDate().toLocaleString() : data.timestamp) || 'Unknown time'
+                        timestamp: data.created || (data.timestamp?.toDate ? data.timestamp.toDate().toLocaleString() : data.timestamp) || 'Unknown time',
+                        reactions: data.reactions || { heart: 0, thumbsUp: 0, clap: 0, smile: 0 }
                     });
                 });
                 
@@ -1627,6 +1670,47 @@
                 const localComments = JSON.parse(localStorage.getItem('zooComments') || '[]');
                 console.log(`Fallback: loaded ${localComments.length} comments from local storage`);
                 return localComments;
+            }
+        }
+
+        async function handleReaction(commentId, reactionType) {
+            // Get user's reactions from localStorage
+            const userReactions = JSON.parse(localStorage.getItem('userReactions') || '{}');
+            const reactionKey = `${commentId}_${reactionType}`;
+            
+            // Check if user already reacted with this emoji
+            const hasReacted = userReactions[reactionKey];
+            
+            if (!window.firebaseInitialized) {
+                console.log("Firebase not configured, reactions not saved");
+                return;
+            }
+
+            try {
+                const commentRef = db.collection("comments").doc(commentId);
+                const doc = await commentRef.get();
+                
+                if (doc.exists) {
+                    const data = doc.data();
+                    const reactions = data.reactions || { heart: 0, thumbsUp: 0, clap: 0, smile: 0 };
+                    
+                    // Toggle reaction
+                    if (hasReacted) {
+                        reactions[reactionType] = Math.max(0, reactions[reactionType] - 1);
+                        delete userReactions[reactionKey];
+                    } else {
+                        reactions[reactionType] = (reactions[reactionType] || 0) + 1;
+                        userReactions[reactionKey] = true;
+                    }
+                    
+                    await commentRef.update({ reactions });
+                    localStorage.setItem('userReactions', JSON.stringify(userReactions));
+                    
+                    // Refresh the comments display
+                    showReviewModal();
+                }
+            } catch (e) {
+                console.error("Error updating reaction:", e);
             }
         }
 
@@ -1644,12 +1728,31 @@
             if (comments.length === 0) {
                 commentsList.innerHTML = '<p style="text-align: center; color: #666; padding: 20px;">No comments submitted yet.</p>';
             } else {
+                // Get user's reactions from localStorage
+                const userReactions = JSON.parse(localStorage.getItem('userReactions') || '{}');
+                
                 let commentsHtml = '';
                 comments.forEach((comment, index) => {
+                    const reactions = comment.reactions || { heart: 0, thumbsUp: 0, clap: 0, smile: 0 };
+                    
                     commentsHtml += `
                         <div class="comment-item">
                             <div class="comment-timestamp">${comment.timestamp}</div>
                             <div class="comment-text">${comment.text}</div>
+                            <div class="comment-reactions">
+                                <button class="reaction-btn ${userReactions[comment.id + '_heart'] ? 'reacted' : ''}" onclick="handleReaction('${comment.id}', 'heart')">
+                                    ❤️ <span class="reaction-count">${reactions.heart || 0}</span>
+                                </button>
+                                <button class="reaction-btn ${userReactions[comment.id + '_thumbsUp'] ? 'reacted' : ''}" onclick="handleReaction('${comment.id}', 'thumbsUp')">
+                                    👍 <span class="reaction-count">${reactions.thumbsUp || 0}</span>
+                                </button>
+                                <button class="reaction-btn ${userReactions[comment.id + '_clap'] ? 'reacted' : ''}" onclick="handleReaction('${comment.id}', 'clap')">
+                                    👏 <span class="reaction-count">${reactions.clap || 0}</span>
+                                </button>
+                                <button class="reaction-btn ${userReactions[comment.id + '_smile'] ? 'reacted' : ''}" onclick="handleReaction('${comment.id}', 'smile')">
+                                    😊 <span class="reaction-count">${reactions.smile || 0}</span>
+                                </button>
+                            </div>
                         </div>
                     `;
                 });
