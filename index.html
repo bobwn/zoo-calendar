@@ -839,7 +839,7 @@
             <p class="byline">Your gateway to exciting zoo adventures!</p>
 
             <div class="search-container">
-                <input type="text" id="stateInput" placeholder="Enter a state name (e.g., California, Texas, Florida)" autocomplete="off">
+                <input type="text" id="stateInput" placeholder="Enter a state or city name (e.g., California, San Diego)" autocomplete="off">
                 <button id="searchBtn">Search</button>
                 <div id="autocompleteDropdown" class="autocomplete-dropdown"></div>
             </div>
@@ -854,7 +854,7 @@
         <div id="errorContainer"></div>
 
         <!-- Version Number -->
-        <div class="version-number">v2.6</div>
+        <div class="version-number">v2.7</div>
     </div>
 
     <!-- Comments Modal -->
@@ -965,6 +965,7 @@
         let submittedComments = [];
         let zooData = {}; // Will be loaded from external file
         let stateNames = []; // List of all state names for autocomplete
+        let cityToStateMap = {}; // Map of city names to their states
         let highlightedIndex = -1; // For keyboard navigation
         let currentUser = null; // Current signed-in user
 
@@ -1223,7 +1224,25 @@
                     ).join(' ');
                 }).sort();
                 
+                // Build city-to-state mapping
+                cityToStateMap = {};
+                Object.keys(zooData).forEach(state => {
+                    zooData[state].forEach(zoo => {
+                        if (zoo.city) {
+                            const cityLower = zoo.city.toLowerCase();
+                            if (!cityToStateMap[cityLower]) {
+                                cityToStateMap[cityLower] = [];
+                            }
+                            cityToStateMap[cityLower].push({
+                                state: state,
+                                zoo: zoo
+                            });
+                        }
+                    });
+                });
+                
                 console.log('Zoo data loaded successfully:', Object.keys(zooData).length, 'states');
+                console.log('City mapping created:', Object.keys(cityToStateMap).length, 'cities');
                 return true;
             } catch (error) {
                 console.error('Error loading zoo data from external file:', error);
@@ -1244,8 +1263,16 @@
                     ]
                 };
                 
-                // Create fallback state names
+                // Create fallback state names and city map
                 stateNames = ['California', 'Florida', 'Texas'];
+                cityToStateMap = {
+                    'san diego': [{state: 'california', zoo: zooData.california[0]}],
+                    'los angeles': [{state: 'california', zoo: zooData.california[1]}],
+                    'miami': [{state: 'florida', zoo: zooData.florida[0]}],
+                    'tampa': [{state: 'florida', zoo: zooData.florida[1]}],
+                    'houston': [{state: 'texas', zoo: zooData.texas[0]}],
+                    'dallas': [{state: 'texas', zoo: zooData.texas[1]}]
+                };
                 return false;
             }
         }
@@ -1253,18 +1280,29 @@
         // Autocomplete functionality
         function showAutocomplete(inputValue) {
             const dropdown = document.getElementById('autocompleteDropdown');
-            const filteredStates = stateNames.filter(state => 
-                state.toLowerCase().includes(inputValue.toLowerCase())
+            
+            // Combine states and cities for autocomplete
+            const allLocations = [
+                ...stateNames,
+                ...Object.keys(cityToStateMap).map(city => 
+                    city.split(' ').map(word => 
+                        word.charAt(0).toUpperCase() + word.slice(1)
+                    ).join(' ')
+                )
+            ].sort();
+            
+            const filteredLocations = allLocations.filter(location => 
+                location.toLowerCase().includes(inputValue.toLowerCase())
             ).slice(0, 8); // Show max 8 suggestions
 
-            if (filteredStates.length === 0 || inputValue.length < 1) {
+            if (filteredLocations.length === 0 || inputValue.length < 1) {
                 dropdown.classList.remove('show');
                 return;
             }
 
             let dropdownHtml = '';
-            filteredStates.forEach((state, index) => {
-                dropdownHtml += `<div class="autocomplete-item" data-state="${state}" data-index="${index}">${state}</div>`;
+            filteredLocations.forEach((location, index) => {
+                dropdownHtml += `<div class="autocomplete-item" data-state="${location}" data-index="${index}">${location}</div>`;
             });
 
             dropdown.innerHTML = dropdownHtml;
@@ -1374,42 +1412,88 @@
             return tile;
         }
 
-        function addZooTile(stateName) {
-            const normalizedState = stateName.toLowerCase().trim();
+        function addZooTile(searchTerm) {
+            const normalizedSearch = searchTerm.toLowerCase().trim();
             
-            if (!zooData[normalizedState]) {
-                showMessage('Please enter a valid US state name and we\'ll show you zoos in that state.', true);
+            // First, try to match as a state
+            if (zooData[normalizedSearch]) {
+                // Check if this state is already displayed
+                if (currentTiles.some(tile => tile.state === normalizedSearch)) {
+                    showMessage(`${searchTerm} is already displayed!`, true);
+                    return;
+                }
+                
+                const zoos = zooData[normalizedSearch];
+                const tile = createZooTile(normalizedSearch, zoos);
+                
+                const tilesContainer = document.getElementById('tilesContainer');
+                
+                // If we have 3 tiles, remove the first one
+                if (currentTiles.length >= 3) {
+                    const firstTile = currentTiles.shift();
+                    firstTile.element.remove();
+                }
+                
+                // Add new tile
+                tilesContainer.appendChild(tile);
+                currentTiles.push({ state: normalizedSearch, element: tile });
+                
+                // Show the clear button if we have tiles
+                if (currentTiles.length > 0) {
+                    document.getElementById('clearBtn').style.display = 'block';
+                }
+                
+                // Clear input
+                document.getElementById('stateInput').value = '';
                 return;
             }
-
-            // Check if this state is already displayed
-            if (currentTiles.some(tile => tile.state === normalizedState)) {
-                showMessage(`${stateName} is already displayed!`, true);
-                return;
+            
+            // Try to match as a city
+            if (cityToStateMap[normalizedSearch]) {
+                const cityData = cityToStateMap[normalizedSearch];
+                
+                // Get unique states for this city
+                const states = [...new Set(cityData.map(item => item.state))];
+                
+                // If the city exists in only one state, show that state's zoos
+                if (states.length === 1) {
+                    const state = states[0];
+                    
+                    // Check if this state is already displayed
+                    if (currentTiles.some(tile => tile.state === state)) {
+                        showMessage(`Zoos from ${searchTerm}'s state are already displayed!`, true);
+                        return;
+                    }
+                    
+                    const zoos = zooData[state];
+                    const tile = createZooTile(state, zoos);
+                    
+                    const tilesContainer = document.getElementById('tilesContainer');
+                    
+                    // If we have 3 tiles, remove the first one
+                    if (currentTiles.length >= 3) {
+                        const firstTile = currentTiles.shift();
+                        firstTile.element.remove();
+                    }
+                    
+                    // Add new tile
+                    tilesContainer.appendChild(tile);
+                    currentTiles.push({ state: state, element: tile });
+                    
+                    // Show the clear button if we have tiles
+                    if (currentTiles.length > 0) {
+                        document.getElementById('clearBtn').style.display = 'block';
+                    }
+                    
+                    // Clear input
+                    document.getElementById('stateInput').value = '';
+                    showMessage(`Found zoos in ${searchTerm}!`, false);
+                    return;
+                }
             }
-
-            const zoos = zooData[normalizedState];
-            const tile = createZooTile(normalizedState, zoos);
             
-            const tilesContainer = document.getElementById('tilesContainer');
-            
-            // If we have 3 tiles, remove the first one
-            if (currentTiles.length >= 3) {
-                const firstTile = currentTiles.shift();
-                firstTile.element.remove();
-            }
-            
-            // Add new tile
-            tilesContainer.appendChild(tile);
-            currentTiles.push({ state: normalizedState, element: tile });
-            
-            // Show the clear button if we have tiles
-            if (currentTiles.length > 0) {
-                document.getElementById('clearBtn').style.display = 'block';
-            }
-            
-            // Clear input
-            document.getElementById('stateInput').value = '';
+            // Neither state nor city found
+            showMessage(`No zoos found for "${searchTerm}". Please try a valid US state or city name.`, true);
         }
 
         function clearAllTiles() {
@@ -1590,14 +1674,14 @@
 
         function handleSearch() {
             const input = document.getElementById('stateInput');
-            const stateName = input.value.trim();
+            const searchTerm = input.value.trim();
             
-            if (!stateName) {
-                showMessage('Please enter a state name.', true);
+            if (!searchTerm) {
+                showMessage('Please enter a state or city name.', true);
                 return;
             }
             
-            addZooTile(stateName);
+            addZooTile(searchTerm);
         }
 
         // Event listeners
