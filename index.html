@@ -1064,7 +1064,7 @@
         </footer>
 
         <!-- Version Number -->
-        <div class="version-number">v3.5</div>
+        <div class="version-number">v3.6</div>
     </div>
 
     <!-- Comments Modal -->
@@ -1501,8 +1501,9 @@
                 )
             ].sort();
             
+            // Filter to only show locations that START with the input value
             const filteredLocations = allLocations.filter(location => 
-                location.toLowerCase().includes(inputValue.toLowerCase())
+                location.toLowerCase().startsWith(inputValue.toLowerCase())
             ).slice(0, 8); // Show max 8 suggestions
 
             if (filteredLocations.length === 0 || inputValue.length < 1) {
