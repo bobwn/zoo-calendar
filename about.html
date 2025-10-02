@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - ZooCalendar.com</title>
+    <style>
+        :root {
+            --primary-color: #2d5a3d;
+            --secondary-color: #4a7c59;
+            --accent-color: #7fb069;
+            --light-green: #8bc34a;
+            --warm-white: #fefefe;
+            --soft-gray: #f8f9fa;
+            --earth-tone: #8b5a2b;
+            --logo-orange: #e6941a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #faf5ed 0%, #f5ede0 100%);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
+            flex-direction: column;
+        }
+
+        .giraffe-logo {
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #giraffeImage {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .byline {
+            font-size: 1.2rem;
+            color: #666;
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        .content-section {
+            background: linear-gradient(135deg, #faf5ed 0%, #f5ede0 100%);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            line-height: 1.8;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #FF6600;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: var(--secondary-color);
+            font-size: 1.4rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            color: #444;
+        }
+
+        ul {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            color: #444;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #FF6600, #FF8833);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 102, 0, 0.4);
+            margin-bottom: 20px;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 102, 0, 0.6);
+        }
+
+        .highlight {
+            background: linear-gradient(45deg, var(--accent-color), var(--light-green));
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+
+        .contact-info {
+            background: var(--soft-gray);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border-left: 4px solid #FF6600;
+        }
+
+        @media (max-width: 768px) {
+            .giraffe-logo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .content-section {
+                padding: 25px;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title">
+                <div class="giraffe-logo">
+                    <img src="giraffe1-logo.PNG" alt="Giraffe holding a calendar with parrots" id="giraffeImage">
+                </div>
+                <p class="byline">Your gateway to exciting zoo adventures!</p>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-button">← Back to Home</a>
+
+        <div class="content-section">
+            <h2>About ZooCalendar</h2>
+            
+            <p>Welcome to ZooCalendar.com – your comprehensive guide to discovering amazing zoo experiences across the United States!</p>
+
+            <h3>Our Mission</h3>
+            <p>ZooCalendar is dedicated to connecting animal enthusiasts, families, and wildlife lovers with zoos and wildlife parks throughout America. We believe that zoos play a vital role in conservation, education, and inspiring the next generation of wildlife advocates.</p>
+
+            <div class="highlight">
+                <p><strong>Our goal is simple:</strong> Make it easy for everyone to discover, explore, and visit incredible zoos in their state and beyond. Whether you're planning a family vacation, looking for a weekend adventure, or searching for educational experiences, ZooCalendar is your trusted companion.</p>
+            </div>
+
+            <h3>What We Offer</h3>
+            <ul>
+                <li><strong>Comprehensive Zoo Directory:</strong> Browse zoos in all 50 states plus Washington D.C., with direct links to official websites</li>
+                <li><strong>Easy Search:</strong> Quickly find zoos by state or city with our intuitive search feature and autocomplete functionality</li>
+                <li><strong>Detailed Information:</strong> Learn about each zoo's location, size, and notable features</li>
+                <li><strong>User Community:</strong> Share your experiences and read feedback from fellow zoo enthusiasts</li>
+                <li><strong>Personalized Experience:</strong> Create an account to save your favorite zoos and get personalized recommendations</li>
+            </ul>
+
+            <h3>Why Visit Zoos?</h3>
+            <p>Modern zoos are centers of conservation, research, and education. They provide:</p>
+            <ul>
+                <li>Safe havens for endangered species and breeding programs</li>
+                <li>Educational opportunities to learn about wildlife and ecosystems</li>
+                <li>Research facilities advancing our understanding of animal behavior and conservation</li>
+                <li>Community gathering spaces that inspire environmental stewardship</li>
+                <li>Memorable family experiences and connections with nature</li>
+            </ul>
+
+            <h3>Our Commitment</h3>
+            <p>We are committed to providing accurate, up-to-date information about zoos across the country. We continuously update our database to ensure you have access to the latest information about facilities, exhibits, and special events.</p>
+
+            <p>ZooCalendar supports responsible wildlife tourism and encourages visitors to:</p>
+            <ul>
+                <li>Support AZA-accredited institutions (Association of Zoos and Aquariums)</li>
+                <li>Participate in conservation education programs</li>
+                <li>Respect wildlife and follow zoo guidelines</li>
+                <li>Support conservation efforts through zoo membership and donations</li>
+            </ul>
+
+            <h3>Looking Ahead</h3>
+            <p>We're continuously working to enhance your experience with features like:</p>
+            <ul>
+                <li>Event calendars for special zoo programs and exhibits</li>
+                <li>User reviews and ratings</li>
+                <li>Interactive maps and directions</li>
+                <li>Mobile app for on-the-go zoo discovery</li>
+                <li>Educational resources and wildlife facts</li>
+            </ul>
+
+            <div class="contact-info">
+                <h3>Get in Touch</h3>
+                <p>Have questions, suggestions, or want to report missing information? We'd love to hear from you! Use our comments feature on the main page to share your feedback.</p>
+                <p><strong>Together, we can help people discover the wonder of wildlife and support conservation efforts nationwide.</strong></p>
+            </div>
+
+            <p style="margin-top: 30px; text-align: center; font-size: 1.1rem; color: var(--primary-color);">
+                <strong>Thank you for being part of the ZooCalendar community!</strong>
+            </p>
+        </div>
+
+        <a href="index.html" class="back-button">← Back to Home</a>
+    </div>
+</body>
+</html>
