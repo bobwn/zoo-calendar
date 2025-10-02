@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Collaboration - ZooCalendar</title>
+    <style>
+        :root {
+            --primary-color: #2d5a3d;
+            --secondary-color: #4a7c59;
+            --accent-color: #7fb069;
+            --light-green: #8bc34a;
+            --warm-white: #fefefe;
+            --soft-gray: #f8f9fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #faf5ed 0%, #f5ede0 100%);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            text-align: center;
+            color: #666;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: var(--primary-color);
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent-color);
+        }
+
+        .auth-required {
+            background: linear-gradient(135deg, #faf5ed 0%, #f5ede0 100%);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .auth-required h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .auth-required p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .sign-in-button {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .sign-in-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(45, 90, 61, 0.4);
+        }
+
+        .collab-content {
+            display: none;
+        }
+
+        .post-form {
+            background: linear-gradient(135deg, #faf5ed 0%, #f5ede0 100%);
+            padding: 25px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .post-form h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .file-input {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .file-input:hover {
+            border-color: var(--accent-color);
+            background: #f9f9f9;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(45, 90, 61, 0.4);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .posts-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .post-item {
+            background: linear-gradient(135deg, #faf5ed 0%, #f5ede0 100%);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid var(--accent-color);
+        }
+
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .post-author {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .post-timestamp {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .post-text {
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .post-image {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .error-message {
+            background: #fee;
+            color: #c33;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link" style="color: white;">← Back to ZooCalendar</a>
+
+        <div class="header">
+            <h1>Team Collaboration</h1>
+            <p>Share feedback, screenshots, and ideas for improving ZooCalendar</p>
+        </div>
+
+        <!-- Show this if not signed in -->
+        <div id="authRequired" class="auth-required">
+            <h2>Sign In Required</h2>
+            <p>Please sign in to access the collaboration workspace.</p>
+            <a href="index.html" class="sign-in-button">Go to Sign In</a>
+        </div>
+
+        <!-- Show this if signed in -->
+        <div id="collabContent" class="collab-content">
+            <div class="post-form">
+                <h2>Share Your Feedback</h2>
+                <div id="errorContainer"></div>
+                <form id="postForm">
+                    <div class="form-group">
+                        <label for="postText">Message or Feedback:</label>
+                        <textarea id="postText" placeholder="Share your thoughts, bug reports, suggestions, or questions..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="imageUpload">Attach Image (optional):</label>
+                        <input type="file" id="imageUpload" accept="image/*" class="file-input">
+                    </div>
+                    <button type="submit" class="submit-btn" id="submitBtn">Post Feedback</button>
+                </form>
+            </div>
+
+            <div class="posts-container" id="postsContainer">
+                <div class="loading">Loading collaboration posts...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-storage-compat.js"></script>
+
+    <script>
+        // Initialize Firebase (same config as main site)
+        const firebaseConfig = {
+            apiKey: "AIzaSyBlmDQOW9JqC3B2X_TMVER6NqHdmxgb368",
+            authDomain: "zoo-calendar-comments.firebaseapp.com",
+            projectId: "zoo-calendar-comments",
+            storageBucket: "zoo-calendar-comments.firebasestorage.app",
+            messagingSenderId: "175044718591",
+            appId: "1:175044718591:web:4ef209b44210cbac4081ca",
+            measurementId: "G-S0SDSJR9KJ"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+        const storage = firebase.storage();
+
+        let currentUser = null;
+
+        // Check authentication
+        auth.onAuthStateChanged(function(user) {
+            currentUser = user;
+            if (user) {
+                // User is signed in
+                document.getElementById('authRequired').style.display = 'none';
+                document.getElementById('collabContent').style.display = 'block';
+                loadPosts();
+            } else {
+                // User is not signed in
+                document.getElementById('authRequired').style.display = 'block';
+                document.getElementById('collabContent').style.display = 'none';
+            }
+        });
+
+        // Show error message
+        function showError(message) {
+            const errorContainer = document.getElementById('errorContainer');
+            errorContainer.innerHTML = `<div class="error-message">${message}</div>`;
+            setTimeout(() => {
+                errorContainer.innerHTML = '';
+            }, 5000);
+        }
+
+        // Upload image to Firebase Storage
+        async function uploadImage(file) {
+            if (!file) return null;
+            
+            try {
+                const timestamp = Date.now();
+                const fileName = `collaboration/${currentUser.uid}/${timestamp}_${file.name}`;
+                const storageRef = storage.ref(fileName);
+                
+                await storageRef.put(file);
+                const downloadURL = await storageRef.getDownloadURL();
+                return downloadURL;
+            } catch (error) {
+                console.error('Error uploading image:', error);
+                throw error;
+            }
+        }
+
+        // Submit post
+        document.getElementById('postForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const postText = document.getElementById('postText').value.trim();
+            const imageFile = document.getElementById('imageUpload').files[0];
+            const submitBtn = document.getElementById('submitBtn');
+            
+            if (!postText) {
+                showError('Please enter a message');
+                return;
+            }
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Posting...';
+            
+            try {
+                let imageURL = null;
+                if (imageFile) {
+                    submitBtn.textContent = 'Uploading image...';
+                    imageURL = await uploadImage(imageFile);
+                }
+                
+                submitBtn.textContent = 'Saving post...';
+                await db.collection('collaboration').add({
+                    text: postText,
+                    imageURL: imageURL,
+                    authorEmail: currentUser.email,
+                    authorId: currentUser.uid,
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                    created: new Date().toLocaleString()
+                });
+                
+                // Clear form
+                document.getElementById('postText').value = '';
+                document.getElementById('imageUpload').value = '';
+                
+                // Reload posts
+                await loadPosts();
+                
+            } catch (error) {
+                console.error('Error posting:', error);
+                showError('Error posting feedback: ' + error.message);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Post Feedback';
+            }
+        });
+
+        // Load posts
+        async function loadPosts() {
+            const container = document.getElementById('postsContainer');
+            container.innerHTML = '<div class="loading">Loading posts...</div>';
+            
+            try {
+                const snapshot = await db.collection('collaboration')
+                    .orderBy('timestamp', 'desc')
+                    .get();
+                
+                if (snapshot.empty) {
+                    container.innerHTML = '<div class="loading">No posts yet. Be the first to share!</div>';
+                    return;
+                }
+                
+                let postsHTML = '';
+                snapshot.forEach(doc => {
+                    const data = doc.data();
+                    const timestamp = data.created || 'Unknown time';
+                    
+                    postsHTML += `
+                        <div class="post-item">
+                            <div class="post-header">
+                                <span class="post-author">${data.authorEmail}</span>
+                                <span class="post-timestamp">${timestamp}</span>
+                            </div>
+                            <div class="post-text">${data.text}</div>
+                            ${data.imageURL ? `<img src="${data.imageURL}" alt="Attached image" class="post-image">` : ''}
+                        </div>
+                    `;
+                });
+                
+                container.innerHTML = postsHTML;
+                
+            } catch (error) {
+                console.error('Error loading posts:', error);
+                container.innerHTML = '<div class="error-message">Error loading posts: ' + error.message + '</div>';
+            }
+        }
+    </script>
+</body>
+</html>
