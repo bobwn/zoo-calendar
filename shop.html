@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - ZooCalendar Merchandise</title>
+    <style>
+        :root {
+            --primary-color: #2d5a3d;
+            --secondary-color: #4a7c59;
+            --accent-color: #7fb069;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #faf5ed 0%, #f5ede0 100%);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #FF6600, #FF8833);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 102, 0, 0.4);
+            margin-bottom: 30px;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 102, 0, 0.6);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .product-card {
+            background: linear-gradient(135deg, #faf5ed 0%, #f5ede0 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            background: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .product-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .product-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #FF6600;
+            margin-bottom: 15px;
+        }
+
+        .buy-button {
+            display: block;
+            width: 100%;
+            background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .buy-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(45, 90, 61, 0.4);
+        }
+
+        .info-section {
+            background: linear-gradient(135deg, #faf5ed 0%, #f5ede0 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-section h2 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .info-section p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>ZooCalendar Shop</h1>
+            <p>Show your love for zoos with our exclusive merchandise!</p>
+        </div>
+
+        <a href="index.html" class="back-button">← Back to Home</a>
+
+        <div class="products-grid">
+            <!-- Product 1: T-Shirt -->
+            <div class="product-card">
+                <div class="product-image">👕</div>
+                <div class="product-info">
+                    <div class="product-name">ZooCalendar T-Shirt</div>
+                    <div class="product-description">
+                        Premium cotton t-shirt featuring our iconic giraffe logo. Available in multiple colors and sizes.
+                    </div>
+                    <div class="product-price">$24.99</div>
+                    <a href="YOUR_PRINTFUL_TSHIRT_LINK" target="_blank" rel="noopener noreferrer" class="buy-button">
+                        Shop Now
+                    </a>
+                </div>
+            </div>
+
+            <!-- Product 2: Mug -->
+            <div class="product-card">
+                <div class="product-image">☕</div>
+                <div class="product-info">
+                    <div class="product-name">ZooCalendar Mug</div>
+                    <div class="product-description">
+                        Start your day with wildlife! Ceramic mug with vibrant giraffe design. Dishwasher safe.
+                    </div>
+                    <div class="product-price">$14.99</div>
+                    <a href="YOUR_PRINTFUL_MUG_LINK" target="_blank" rel="noopener noreferrer" class="buy-button">
+                        Shop Now
+                    </a>
+                </div>
+            </div>
+
+            <!-- Product 3: Sticker Pack -->
+            <div class="product-card">
+                <div class="product-image">🎨</div>
+                <div class="product-info">
+                    <div class="product-name">Zoo Sticker Pack</div>
+                    <div class="product-description">
+                        Set of 5 waterproof vinyl stickers featuring zoo animals and our giraffe mascot.
+                    </div>
+                    <div class="product-price">$8.99</div>
+                    <a href="YOUR_PRINTFUL_STICKER_LINK" target="_blank" rel="noopener noreferrer" class="buy-button">
+                        Shop Now
+                    </a>
+                </div>
+            </div>
+
+            <!-- Product 4: Tote Bag -->
+            <div class="product-card">
+                <div class="product-image">🛍️</div>
+                <div class="product-info">
+                    <div class="product-name">Canvas Tote Bag</div>
+                    <div class="product-description">
+                        Eco-friendly canvas bag perfect for zoo trips. Spacious and durable with giraffe print.
+                    </div>
+                    <div class="product-price">$18.99</div>
+                    <a href="YOUR_PRINTFUL_TOTE_LINK" target="_blank" rel="noopener noreferrer" class="buy-button">
+                        Shop Now
+                    </a>
+                </div>
+            </div>
+
+            <!-- Product 5: Hat -->
+            <div class="product-card">
+                <div class="product-image">🧢</div>
+                <div class="product-info">
+                    <div class="product-name">ZooCalendar Cap</div>
+                    <div class="product-description">
+                        Adjustable baseball cap with embroidered logo. Perfect for sunny zoo days.
+                    </div>
+                    <div class="product-price">$19.99</div>
+                    <a href="YOUR_PRINTFUL_HAT_LINK" target="_blank" rel="noopener noreferrer" class="buy-button">
+                        Shop Now
+                    </a>
+                </div>
+            </div>
+
+            <!-- Product 6: Phone Case -->
+            <div class="product-card">
+                <div class="product-image">📱</div>
+                <div class="product-info">
+                    <div class="product-name">Phone Case</div>
+                    <div class="product-description">
+                        Protective phone case with giraffe design. Available for iPhone and Samsung models.
+                    </div>
+                    <div class="product-price">$16.99</div>
+                    <a href="YOUR_PRINTFUL_CASE_LINK" target="_blank" rel="noopener noreferrer" class="buy-button">
+                        Shop Now
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h2>About Our Merchandise</h2>
+            <p>
+                All ZooCalendar merchandise is produced on-demand by our trusted partner, Printful. This means:
+            </p>
+            <ul style="margin-left: 20px; color: #666; line-height: 1.8;">
+                <li>High-quality products made when you order</li>
+                <li>Eco-friendly approach with no waste inventory</li>
+                <li>Fast shipping directly to your door</li>
+                <li>Secure payment processing</li>
+                <li>30-day return policy for quality issues</li>
+            </ul>
+            <p style="margin-top: 15px;">
+                <strong>Note:</strong> Shipping times vary by location, typically 5-10 business days within the US.
+            </p>
+        </div>
+
+        <a href="index.html" class="back-button" style="margin-top: 30px;">← Back to Home</a>
+    </div>
+</body>
+</html>
