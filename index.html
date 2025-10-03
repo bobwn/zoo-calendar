@@ -1357,18 +1357,25 @@
         }
 
         async function handlePasswordReset() {
+            console.log("=== Password reset function called ===");
             const email = document.getElementById('signInEmail').value;
+            console.log("Email value:", email);
             
             if (!email) {
+                console.log("No email entered - showing error");
                 showAuthError('Please enter your email address first.');
                 return;
             }
             
             try {
+                console.log("Attempting to send reset email to:", email);
                 await firebase.auth().sendPasswordResetEmail(email);
+                console.log("Firebase sendPasswordResetEmail completed successfully");
                 showAuthError('Password reset email sent! Check your inbox.');
             } catch (error) {
                 console.error('Password reset error:', error);
+                console.error('Error code:', error.code);
+                console.error('Error message:', error.message);
                 let errorMessage = 'Failed to send reset email.';
                 if (error.code === 'auth/user-not-found') {
                     errorMessage = 'No account found with this email.';
