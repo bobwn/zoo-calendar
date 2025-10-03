@@ -1044,6 +1044,7 @@
                 <!-- Menu items -->
                 <a href="#" class="dropdown-item" id="menuAuth">Sign In</a>
                 <a href="#" class="dropdown-item" id="menuCollaboration">Team Collaboration</a>
+                <a href="#" class="dropdown-item" id="menuShop">Shop</a>
                 <a href="#" class="dropdown-item" id="menuAbout">About</a>
                 <a href="#" class="dropdown-item" id="menuLeaveComment">Leave Comment</a>
                 <a href="#" class="dropdown-item" id="menuReviewComments">Review Comments</a>
@@ -1107,7 +1108,7 @@
         </footer>
 
         <!-- Version Number -->
-        <div class="version-number">v4.2</div>
+        <div class="version-number">v4.4</div>
     </div>
 
     <!-- Comments Modal -->
@@ -2079,6 +2080,11 @@
                 e.preventDefault();
                 toggleDropdown();
                 window.location.href = 'collaboration.html';
+            });
+            document.getElementById('menuShop').addEventListener('click', function(e) {
+                e.preventDefault();
+                toggleDropdown();
+                window.location.href = 'shop.html';
             });
             document.getElementById('menuAbout').addEventListener('click', function(e) {
                 e.preventDefault();
