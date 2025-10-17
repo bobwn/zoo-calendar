@@ -12,11 +12,12 @@
         "Trails of Africa"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "Today's Regular Hours: 9:00 am - 5:00 pm",
+      "phone": "205-879-0409",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     },
     {
       "name": "Montgomery Zoo",
@@ -30,11 +31,12 @@
         "Train rides"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "ZOO OPEN DAILY 9:30am - 4:30pm, LAST entry 3:30pm Wildlife adventure, family fun, and educational experiences daily at the Montgomery Zoo and Mann Wildlife Learning Museum. Open daily 9:30am - 4:30pm,...",
+      "phone": "334-625-4900",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     },
     {
       "name": "Gulf Coast Zoo",
@@ -51,7 +53,8 @@
       "phone": "",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "alaska": [
@@ -68,10 +71,11 @@
       ],
       "admission_required": true,
       "hours": "",
-      "phone": "",
+      "phone": "(907) 346-2133",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": "1969"
     },
     {
       "name": "Alaska Wildlife Conservation Center",
@@ -85,11 +89,12 @@
         "Native Alaskan species"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "March & April Open 7 days per week10am \u2013 6pmLast entry at 5pm May - September 15 Open 7 days per week8:30am \u2013 7pmLast entry at 6pm",
+      "phone": "907-783-0058",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "arizona": [
@@ -106,10 +111,11 @@
       ],
       "admission_required": true,
       "hours": "",
-      "phone": "",
+      "phone": "602.286.3800",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": "1962"
     },
     {
       "name": "Reid Park Zoo",
@@ -124,10 +130,11 @@
       ],
       "admission_required": true,
       "hours": "",
-      "phone": "",
+      "phone": "(520) 791-3204",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": "1965"
     },
     {
       "name": "Arizona-Sonora Desert Museum",
@@ -141,11 +148,12 @@
         "Outdoor trails"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "OPEN TODAY 8:30 AM TO 5:00 PM",
+      "phone": "520.883.2702",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": "1952"
     },
     {
       "name": "Wildlife World Zoo",
@@ -159,11 +167,12 @@
         "Skyride"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "Zoo: 8:00 am - 4:00 pm Aquarium: 8:00 am - 5:00 pmZoo MapCLICK HERE For a Money Saving Coupon!Welcome to Wildlife World Zoo, where visitors will experience a safari-like adventure like no other. Our p...",
+      "phone": "623-935-9453",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "arkansas": [
@@ -179,11 +188,12 @@
         "Penguin Pointe"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "1 Zoo DriveLittle Rock, AR 72205 Tel:501-661-7200 Hours of Operation 9:00 a.m. \u2013 4:00 p.m. Last Admission 3:30 pm Zoo grounds close 4:00pm",
+      "phone": "501-661-7200",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": "1924"
     },
     {
       "name": "Turpentine Creek Wildlife Refuge",
@@ -197,11 +207,12 @@
         "Educational tours"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "General Hours9:00am4:00pm General Hours (DST)9:00am5:00pm",
+      "phone": "(479) 253-5841",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": "1992"
     }
   ],
   "california": [
@@ -218,11 +229,12 @@
         "Skyfari gondolas"
       ],
       "admission_required": true,
-      "hours": "",
+      "hours": "ZOO HOURS\u25b8TODAY: 9:00 am \u2013 6:00 pm",
       "phone": "",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     },
     {
       "name": "San Diego Zoo Safari Park",
@@ -240,7 +252,8 @@
       "phone": "",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     },
     {
       "name": "Los Angeles Zoo",
@@ -255,10 +268,11 @@
       ],
       "admission_required": true,
       "hours": "",
-      "phone": "",
+      "phone": "(323) 644-4200",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     },
     {
       "name": "San Francisco Zoo",
@@ -272,11 +286,12 @@
         "Historic carousel"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "Print or view a Zoo Map before your visit Hours 10:00 a.m. \u2013 5:00 p.m. Last Entry 4:00 pm",
+      "phone": "(415) 753-7080",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     },
     {
       "name": "Oakland Zoo",
@@ -290,11 +305,12 @@
         "Conservation programs"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "Advanced ticket reservations to visit Oakland Zoo are required for General Admission. LEARN MORE >>TicketsDonateSearchVisitTicketsHours and PricingBecome a MemberGroup ReservationsExplore the ZooDinin...",
+      "phone": "(510) 632-9525",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     },
     {
       "name": "Sacramento Zoo",
@@ -308,11 +324,12 @@
         "Education center"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "Zoo Hours Entry: 9 am to 4 pm Grounds open until 5 pm NOTE for Oct. 26: The zoo will close early at 1:30 pm for event preparations. Winter Hours:The zoo will close early at 3 pm from Nov. 3 through Ja...",
+      "phone": "916-808-5888",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": "1975"
     },
     {
       "name": "Fresno Chaffee Zoo",
@@ -326,11 +343,12 @@
         "Reptile house"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "Get directions Our office hours are from 8am to 5:00pm Monday through Friday. Questions?",
+      "phone": "1810644736",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": "1929"
     }
   ],
   "colorado": [
@@ -346,11 +364,12 @@
         "Interactive exhibits"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "Denver Zoo Directory For general questions, comments, membership questions and other inquiries, please email guestcare@denverzoo.org, call 720-337-1400 or use our Chat With Us services on this website...",
+      "phone": "1808322958",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": "1996"
     },
     {
       "name": "Cheyenne Mountain Zoo",
@@ -364,11 +383,12 @@
         "Scenic chairlift"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "Zoo Holiday Hours: 9 a.m. \u2013 3 p.m. \u2022 Thanksgiving Day: 9 a.m. \u2013 3 p.m., last timed tickets 1 p.m., last Sky Ride (if open) 1:30 p.m., Shrine is closed. \u2022 Christmas Eve: 9 a.m. \u2013 3 p.m., last timed tic...",
+      "phone": "(719) 633-9925",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": "1937"
     },
     {
       "name": "Pueblo Zoo",
@@ -382,11 +402,12 @@
         "Educational programs"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "Presented by:Click here for tickets and information!Anchor 1NEWS & ACTIVITIES\u200b\u200b\u200b Fall and Winter hours are now in effect. Open 7 days a week, 9 AM to 4 PM, last admission at 3 PM. ZooBoo tickets are n...",
+      "phone": "719-561-1452",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "connecticut": [
@@ -402,11 +423,12 @@
         "Carousel"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "The Zoo is open daily from 9:00am - 4:00pm.(Last ticket sold at 3:00 PM) PURCHASE ZOO TICKETS",
+      "phone": "203-394-6565",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     },
     {
       "name": "Mystic Aquarium",
@@ -421,10 +443,11 @@
       ],
       "admission_required": true,
       "hours": "",
-      "phone": "",
+      "phone": "(860) 572-5955",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "delaware": [
@@ -440,11 +463,12 @@
         "Conservation focus"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "The Brandywine Zoo is less than five acres and located in Wilmington, Delaware, along the Brandywine River in beautiful Brandywine Park. The Zoo is open 10am to 4pm (last admission at 3:30pm). The Bra...",
+      "phone": "302-571-7788",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "district of columbia": [
@@ -462,10 +486,11 @@
       ],
       "admission_required": false,
       "hours": "",
-      "phone": "",
+      "phone": "202-633-2614",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": "1889"
     }
   ],
   "florida": [
@@ -482,10 +507,11 @@
       ],
       "admission_required": true,
       "hours": "",
-      "phone": "",
+      "phone": "(305) 251-0400",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     },
     {
       "name": "Busch Gardens Tampa Bay",
@@ -503,7 +529,8 @@
       "phone": "",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     },
     {
       "name": "Central Florida Zoo",
@@ -518,10 +545,11 @@
       ],
       "admission_required": true,
       "hours": "",
-      "phone": "",
+      "phone": "407.323.4450",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     },
     {
       "name": "Jacksonville Zoo",
@@ -535,11 +563,12 @@
         "Splash Ground"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "Hours: 9 a.m. \u2013 5 p.m. daily (With the exception of Thanksgiving Day and Christmas Day.) Day-of ticket sales close at 4 p.m. Last entry allowed at 4:30 p.m.",
+      "phone": "2940213623",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": "1914"
     },
     {
       "name": "Palm Beach Zoo",
@@ -553,11 +582,12 @@
         "Conservation programs"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "Hours We are open from 9:00am - 5:00pm every day of the year except Christmas and Thanksgiving Day. The Last Ticket is Sold at 4:15pm",
+      "phone": "(561) 547-9453",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     },
     {
       "name": "ZooTampa at Lowry Park",
@@ -575,7 +605,8 @@
       "phone": "",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "georgia": [
@@ -591,11 +622,12 @@
         "Conservation research"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "Zoo Atlanta is open all year long, closed only on Thanksgiving and Christmas. Zoo Hours (through October 31, 2025): Monday \u2013 Friday: 9 a.m. \u2013 5 p.m. Last entry is 3:30 p.m. Saturday and Sunday: 9 a.m....",
+      "phone": "404-624-9453",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": "1995"
     },
     {
       "name": "Wild Adventures",
@@ -613,7 +645,8 @@
       "phone": "",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "hawaii": [
@@ -629,11 +662,12 @@
         "Keiki Zoo"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "About UsHonolulu Zoo is the only zoo in the US that originatedin a King's grant of royal lands.Address151 Kapahulu AvenueHonolulu, Hawaii 96815Google Map LinkContactsHZS Office Hours: 9:00 am - 4:30 p...",
+      "phone": "(808) 926-3191",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "idaho": [
@@ -650,10 +684,11 @@
       ],
       "admission_required": true,
       "hours": "",
-      "phone": "",
+      "phone": "(208) 608-7760",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     },
     {
       "name": "Tautphaus Park Zoo",
@@ -667,11 +702,12 @@
         "Educational programs"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "Hours M - F 5:00 AM \u2014 11:00 PM",
+      "phone": "(208) 612-8580",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "illinois": [
@@ -688,11 +724,12 @@
         "Farm-in-the-Zoo"
       ],
       "admission_required": false,
-      "hours": "",
-      "phone": "",
+      "hours": "Current Hours Daily Hours 8 a.m. \u2013 Gates and Farm-in-the-Zoo open 10 a.m. \u2013 Buildings open 4:30 p.m. \u2013 Buildings and Farm-in-the-Zoo close",
+      "phone": "312-742-2000",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": "1868"
     },
     {
       "name": "Brookfield Zoo",
@@ -706,11 +743,12 @@
         "Conservation research"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "Welcome! Our current hours are 10:00 a.m. to 5:00 p.m. on weekdays and 10:00 a.m. to 6:00 p.m. on weekends. purchase TICKETS",
+      "phone": "312-836-7000",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     },
     {
       "name": "Miller Park Zoo",
@@ -728,7 +766,8 @@
       "phone": "",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "indiana": [
@@ -745,10 +784,11 @@
       ],
       "admission_required": true,
       "hours": "",
-      "phone": "",
+      "phone": "(317) 630-2001",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": "2020"
     },
     {
       "name": "Fort Wayne Children's Zoo",
@@ -762,11 +802,12 @@
         "Australian Adventure"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "Thursday, Oct 16 Open 9:00 a.m. to 5:00 p.m. Today's Online Ticket Price $20",
+      "phone": "(260) 427-6800",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     },
     {
       "name": "Mesker Park Zoo",
@@ -780,11 +821,12 @@
         "Conservation programs"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "To ensure your visit to Mesker Park Zoo is as enjoyable as possible, here are some recommendations: Check the Weather: Indiana weather can be unpredictable. Dress in layers and bring sunscreen, hats, ...",
+      "phone": "1800615844",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "iowa": [
@@ -801,10 +843,11 @@
       ],
       "admission_required": true,
       "hours": "",
-      "phone": "",
+      "phone": "515.285.4722",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "kansas": [
@@ -820,11 +863,12 @@
         "Conservation research"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "Do you have a gift shop? Yes! Our Zoo Store is located in the entry plaza. We offer a full selection of Sedgwick County Zoo merchandise, plush, books, educational toys and much more. Open 8:30 AM to 5...",
+      "phone": "(316) 660-9453",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     },
     {
       "name": "Topeka Zoo",
@@ -838,11 +882,12 @@
         "Conservation education"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "General Hours of Operation 9 a.m. to 5 p.m. Hours subject to change during Zoo Lights. No admission after 4:30 p.m.",
+      "phone": "785-368-9180",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "kentucky": [
@@ -858,11 +903,12 @@
         "HerpAquarium"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "Home | Louisville Zoo English Thanks for visiting the Louisville Zoo website!We see you're using Internet Explorer to browse. For the best website navigation and functionality, we recommend switching ...",
+      "phone": "(502) 459-2181",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     },
     {
       "name": "Newport Aquarium",
@@ -877,10 +923,11 @@
       ],
       "admission_required": true,
       "hours": "",
-      "phone": "",
+      "phone": "800-406-3474",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": "1999"
     }
   ],
   "louisiana": [
@@ -896,11 +943,12 @@
         "World of Primates"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "Hours \ud83d\udd14 Winter Hours Now in Effect Open Thursday \u2013 Monday 10AM - 5PMLast ticket sold at 4:00PMClosed Tuesday \u2013 Wednesday See all Hours",
+      "phone": "800-774-7394",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     },
     {
       "name": "Alexandria Zoo",
@@ -914,11 +962,12 @@
         "Native species focus"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "Regular Hours MON Oct 13 9 AM - 5 PM Last Entry 4:30 PM",
+      "phone": "318 441 6810",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "maine": [
@@ -935,10 +984,11 @@
       ],
       "admission_required": true,
       "hours": "",
-      "phone": "",
+      "phone": "(207) 822-6460",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "maryland": [
@@ -954,11 +1004,12 @@
         "Conservation programs"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "Closed Now Opens Fri., Oct. 17th Open 10:00AM to 4:00PM 10AM Open",
+      "phone": "410-396-7102",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     },
     {
       "name": "National Aquarium",
@@ -973,10 +1024,11 @@
       ],
       "admission_required": true,
       "hours": "",
-      "phone": "",
+      "phone": "410-576-3800",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": "1873"
     }
   ],
   "massachusetts": [
@@ -992,11 +1044,12 @@
         "Giraffe Savannah"
       ],
       "admission_required": true,
-      "hours": "",
+      "hours": "Today at the Zoo Zoo Hours: 9am - 4pm | Boston Lights 5 - 10:30pm Franklin Farm Chat",
       "phone": "",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     },
     {
       "name": "Stone Zoo",
@@ -1014,7 +1067,8 @@
       "phone": "",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "michigan": [
@@ -1034,7 +1088,8 @@
       "phone": "",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     },
     {
       "name": "Potter Park Zoo",
@@ -1049,10 +1104,11 @@
       ],
       "admission_required": true,
       "hours": "",
-      "phone": "",
+      "phone": "(517) 483-4222",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     },
     {
       "name": "John Ball Zoo",
@@ -1070,7 +1126,8 @@
       "phone": "",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "minnesota": [
@@ -1086,11 +1143,12 @@
         "Conservation research"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "Fall Fun Jack-O-Lantern Spectacular A Fall tradition like no other! Thousands of glowing pumpkins light up the newly expanded trail! Do not miss! Fall In Love with the Minnesota Zoo Crisp air, golden ...",
+      "phone": "952.431.9200",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     },
     {
       "name": "Como Park Zoo",
@@ -1104,11 +1162,12 @@
         "Marjorie McNeely Conservatory"
       ],
       "admission_required": false,
-      "hours": "",
-      "phone": "",
+      "hours": "Opening Hours Monday 10:00 am \u2013 4:00 pm",
+      "phone": "651-487-8201",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "mississippi": [
@@ -1128,7 +1187,8 @@
       "phone": "",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     },
     {
       "name": "Hattiesburg Zoo",
@@ -1146,7 +1206,8 @@
       "phone": "",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "missouri": [
@@ -1166,7 +1227,8 @@
       "phone": "",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     },
     {
       "name": "Kansas City Zoo",
@@ -1180,11 +1242,12 @@
         "Conservation Carousel"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "Home | Kansas City Zoo & AquariumVisitZoo MapTicketsDiningRides & TransportationHours, Locations & ParkingAccessibilityGuest ServicesZoo PoliciesAnimalsAnimals A-ZSobela Ocean AquariumHelzberg Penguin...",
+      "phone": "(816) 595-1234",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "montana": [
@@ -1200,11 +1263,12 @@
         "Educational focus"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "Welcome to ZooMontanaTake a Walk on the Wild SideRated a Top 10 Zoo in the Country!Hours:Fall Hours (October):Saturday-Sunday: 10:00am - 4:00pmMonday-Friday: 10:00am - 2:00pmWinter Hours (November-Mar...",
+      "phone": "406-652-8100",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": "2017"
     }
   ],
   "nebraska": [
@@ -1222,10 +1286,11 @@
       ],
       "admission_required": true,
       "hours": "",
-      "phone": "",
+      "phone": "(402) 733-8401",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     },
     {
       "name": "Lincoln Children's Zoo",
@@ -1240,10 +1305,11 @@
       ],
       "admission_required": true,
       "hours": "",
-      "phone": "",
+      "phone": "(402) 475-6741",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "nevada": [
@@ -1263,7 +1329,8 @@
       "phone": "",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "new hampshire": [
@@ -1283,7 +1350,8 @@
       "phone": "",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "new jersey": [
@@ -1299,11 +1367,12 @@
         "Carousel"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "Open from 10:00am - 4:00pm Last admission : 4pm",
+      "phone": "973-731-5800",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": "2011"
     },
     {
       "name": "Cape May County Zoo",
@@ -1321,7 +1390,8 @@
       "phone": "",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": "1978"
     }
   ],
   "new mexico": [
@@ -1341,7 +1411,8 @@
       "phone": "",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "new york": [
@@ -1357,11 +1428,12 @@
         "World's largest metropolitan zoo"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "Monday - FridayWeekends & Federal HolidaysZoo Opens10:00am10:00amAnimal Exhibits Close4:30pm5:00pmZoo Closes5:00pm5:30pm November 2, 2025 \u2014 April 1, 2026",
+      "phone": "(718) 220-5100",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     },
     {
       "name": "Central Park Zoo",
@@ -1376,10 +1448,11 @@
       ],
       "admission_required": true,
       "hours": "",
-      "phone": "",
+      "phone": "(212) 439-6500",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     },
     {
       "name": "Buffalo Zoo",
@@ -1393,11 +1466,12 @@
         "Historic carousel"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "The Buffalo Zoo | Animal Experiences & Event Spaces | Buffalo, NY Tickets Membership Donate Adopt An Animal Job Openings The Buffalo Zoo Celebrating 150 Years Tickets Membership Donate Adopt Jobs Togg...",
+      "phone": "(716) 837-3900",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": "1875"
     },
     {
       "name": "Seneca Park Zoo",
@@ -1411,11 +1485,12 @@
         "Conservation focus"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "The Zoo opens at 9:30 a.m. for Zoo members.Open all year long. Closed on Thanksgiving Day, Christmas Day, and New Year\u2019s Day.",
+      "phone": "585.336.7200",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "north carolina": [
@@ -1431,11 +1506,12 @@
         "Tram system"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "The North Carolina Zoo - Asheboro, NC | North Carolina Zoo Skip to main content Search Open Today: 9 A.M. - 5 P.M. Location map Learn Saving Wildlife Membership Give Tickets Visit Plan Your Visit Tick...",
+      "phone": "800-488-0444",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "north dakota": [
@@ -1455,7 +1531,8 @@
       "phone": "",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "ohio": [
@@ -1471,11 +1548,12 @@
         "Conservation research center"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "Where to Stay Celebrate the Cincinnati Zoo & Botanical Garden\u2019s 150th anniversary and plan a visit today! Today at the ZooToday\u2019s Hours: 10:00am \u2013 5:00pm Early Entry for Members begin at 9:00am Hours ...",
+      "phone": "(513) 281-4700",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": "1978"
     },
     {
       "name": "Cleveland Metroparks Zoo",
@@ -1490,10 +1568,11 @@
       ],
       "admission_required": true,
       "hours": "",
-      "phone": "",
+      "phone": "440.331.5530",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     },
     {
       "name": "Columbus Zoo",
@@ -1508,10 +1587,11 @@
       ],
       "admission_required": true,
       "hours": "",
-      "phone": "",
+      "phone": "(614) 645-3400",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     },
     {
       "name": "Toledo Zoo",
@@ -1525,11 +1605,12 @@
         "Historic Works Progress Administration architecture"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "Open dailyMon. - Wed., Sat., Sun admission 10 a.m. \u2013 4 p.m., Zoo closes at 5 p.m.Thurs. & Fri. admission 10 a.m. \u2013 8 p.m., Zoo closes at 9 p.m.Zoo closing at 5 p.m. on Thurs, Oct. 23. Member Mornings,...",
+      "phone": "419-385-5721",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "oklahoma": [
@@ -1545,11 +1626,12 @@
         "Sanctuary Asia"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "Today's Hours 9:00 AM - 5:00 PM",
+      "phone": "405-424-3344",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     },
     {
       "name": "Tulsa Zoo",
@@ -1563,11 +1645,12 @@
         "Oxley Nature Center"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "Attraction Hoursadd ONEOK Safari Train: 9 am - 4:45 pm Arvest Wildlife Carousel: 9 am - 4:45 pm Hardesty Gem Dig & Sluice: 9 am - 4:45 pm Giraffe Feedings: Closed",
+      "phone": "(918) 669-6600",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "oregon": [
@@ -1583,11 +1666,12 @@
         "Conservation programs"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "Today's hours: 9:30 a.m. to 4:30 p.m. (last entry 3:30 p.m.)",
+      "phone": "503.226.1561",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": "1888"
     }
   ],
   "pennsylvania": [
@@ -1603,11 +1687,12 @@
         "KidZooU"
       ],
       "admission_required": true,
-      "hours": "",
+      "hours": "Explore the Naturehood The Zoo is currently open daily from 9:30 AM to 5 PM. Please note that while we work to improve your Zoo, some pathways may temporarily shift, some areas may be closed, and some...",
       "phone": "",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     },
     {
       "name": "Pittsburgh Zoo",
@@ -1621,11 +1706,12 @@
         "Highland Park location"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "scheduleToday's Zoo Hours: 9:30 AM - 5:30 PM Last Admission: 4:30 pm Main MenuPlan Your Visit",
+      "phone": "412-665-3640",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": "1967"
     },
     {
       "name": "Erie Zoo",
@@ -1639,11 +1725,12 @@
         "Conservation education"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "Visitor Info at a Glance HOURS ZOO GROUNDSOpen Daily 10am-5pm (last admission 4:15pm) from March 1st-November 30th The Zoo will be closing at 2pm on Thursday, September 25th for a private event and at...",
+      "phone": "(814) 864-4091",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "rhode island": [
@@ -1659,11 +1746,12 @@
         "Conservation programs"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "Today's Zoo Hours 10:00 AM - 4:00 PM",
+      "phone": "(401) 785-3510",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "south carolina": [
@@ -1679,11 +1767,12 @@
         "Conservation research"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "Today\u2019s Hours :9:00am \u2013 5:00pm Tickets",
+      "phone": "803.779.8717",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": "1973"
     },
     {
       "name": "Greenville Zoo",
@@ -1701,7 +1790,8 @@
       "phone": "",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "south dakota": [
@@ -1721,7 +1811,8 @@
       "phone": "",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "tennessee": [
@@ -1737,11 +1828,12 @@
         "Conservation programs"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "Hours of Operation October 14, 2025 - March 5, 2026 | 9:00 am - 4:00 pmMarch 6, 2026 - October 12, 2026 | 9:00 am - 6:00 pm Learn More",
+      "phone": "615-833-1534",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     },
     {
       "name": "Memphis Zoo",
@@ -1759,7 +1851,8 @@
       "phone": "",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     },
     {
       "name": "Knoxville Zoo",
@@ -1774,10 +1867,11 @@
       ],
       "admission_required": true,
       "hours": "",
-      "phone": "",
+      "phone": "865.637.5331",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "texas": [
@@ -1793,11 +1887,12 @@
         "Conservation research"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "Daytime Admission Hours The Houston Zoo is open from 9:00 a.m. \u2013 5:00 p.m. Last entry is at 4:00 p.m. Open 7 days a week Online reservations for timed tickets are required for all non-member guests. M...",
+      "phone": "713-533-6500",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     },
     {
       "name": "Dallas Zoo",
@@ -1812,10 +1907,11 @@
       ],
       "admission_required": true,
       "hours": "",
-      "phone": "",
+      "phone": "469.554.7500",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": "1888"
     },
     {
       "name": "San Antonio Zoo",
@@ -1830,10 +1926,11 @@
       ],
       "admission_required": true,
       "hours": "",
-      "phone": "",
+      "phone": "(210)734-7184",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": "1966"
     },
     {
       "name": "Fort Worth Zoo",
@@ -1848,10 +1945,11 @@
       ],
       "admission_required": true,
       "hours": "",
-      "phone": "",
+      "phone": "(817) 759-7555",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     },
     {
       "name": "Austin Zoo",
@@ -1869,7 +1967,8 @@
       "phone": "",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "utah": [
@@ -1886,10 +1985,11 @@
       ],
       "admission_required": true,
       "hours": "",
-      "phone": "",
+      "phone": "(801) 584-1700",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": "1979"
     }
   ],
   "vermont": [
@@ -1905,11 +2005,12 @@
         "Educational programs"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "Center for Wild Bird Rehabilitation Hours & Details The Center for Wild Bird Rehabilitation is open to receive injured birds from 8:00am \u2013 4:00pm daily. Please call to alert staff that you are bringin...",
+      "phone": "802.359.5000",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": "1972"
     }
   ],
   "virginia": [
@@ -1925,11 +2026,12 @@
         "Conservation programs"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "Open daily from 9:30am - 4pm 3500 Granby St Norfolk, VA 23504 (757) 441-2374",
+      "phone": "(757) 441-2374",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": "1987"
     },
     {
       "name": "Metro Richmond Zoo",
@@ -1943,11 +2045,12 @@
         "Giraffe feeding"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "} Hours The zoo is open Monday-Saturday from 9:30 AM to 5:00 PM. We are closed on Sundays.",
+      "phone": "(804) 739-5666",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "washington": [
@@ -1963,11 +2066,12 @@
         "Tropical Rain Forest"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "OPEN DAILY 9:30 a.m. \u2013 4:00 p.m.",
+      "phone": "206.548.2500",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": "1899"
     },
     {
       "name": "Point Defiance Zoo",
@@ -1985,7 +2089,8 @@
       "phone": "",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "west virginia": [
@@ -2005,7 +2110,8 @@
       "phone": "",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ],
   "wisconsin": [
@@ -2021,11 +2127,12 @@
         "Zoomobile tours"
       ],
       "admission_required": true,
-      "hours": "",
-      "phone": "",
+      "hours": "9:30 AM-4:30 PM WEEKDAYS9:30 AM-4:30 PM WEEKENDSSEE ALL HOURS",
+      "phone": "1805580023",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     },
     {
       "name": "Menominee Zoo",
@@ -2043,7 +2150,8 @@
       "phone": "",
       "admission_price": "",
       "website_events_url": "",
-      "annual_attendance": null
+      "annual_attendance": null,
+      "founded_year": ""
     }
   ]
 }
