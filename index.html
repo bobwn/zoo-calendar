@@ -1043,8 +1043,6 @@
                 
                 <!-- Menu items -->
                 <a href="#" class="dropdown-item" id="menuAuth">Sign In</a>
-                <a href="#" class="dropdown-item" id="menuCollaboration">Team Collaboration</a>
-                <a href="#" class="dropdown-item" id="menuShop">Shop</a>
                 <a href="#" class="dropdown-item" id="menuAbout">About</a>
                 <a href="#" class="dropdown-item" id="menuLeaveComment">Leave Comment</a>
                 <a href="#" class="dropdown-item" id="menuReviewComments">Review Comments</a>
@@ -1077,7 +1075,7 @@
         <!-- Footer -->
         <footer class="footer">
             <div class="footer-content">
-                <div class="social-media">
+                <div class="social-media" style="display:none;">
                     <span class="social-media-label">Follow Us:</span>
                     <a href="https://facebook.com/zoocalendar" target="_blank" rel="noopener noreferrer" class="social-icon facebook" title="Facebook">
                         <span>f</span>
@@ -2075,16 +2073,6 @@
                 } else {
                     showSignInModal();
                 }
-            });
-            document.getElementById('menuCollaboration').addEventListener('click', function(e) {
-                e.preventDefault();
-                toggleDropdown();
-                window.location.href = 'collaboration.html';
-            });
-            document.getElementById('menuShop').addEventListener('click', function(e) {
-                e.preventDefault();
-                toggleDropdown();
-                window.location.href = 'shop.html';
             });
             document.getElementById('menuAbout').addEventListener('click', function(e) {
                 e.preventDefault();
