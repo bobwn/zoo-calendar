@@ -1285,8 +1285,14 @@
                 <!-- Sign Up Form -->
                 <form id="signUpForm">
                     <input type="email" class="auth-input" id="signUpEmail" placeholder="Email" required>
-                    <input type="password" class="auth-input" id="signUpPassword" placeholder="Password (min 6 characters)" required minlength="6">
-                    <input type="password" class="auth-input" id="signUpPasswordConfirm" placeholder="Confirm Password" required>
+                    <div class="password-input-wrapper">
+                        <input type="password" class="auth-input" id="signUpPassword" placeholder="Password (min 6 characters)" required minlength="6">
+                        <button type="button" class="password-toggle" id="signUpPasswordToggle" aria-label="Toggle password visibility">👁️</button>
+                    </div>
+                    <div class="password-input-wrapper">
+                        <input type="password" class="auth-input" id="signUpPasswordConfirm" placeholder="Confirm Password" required>
+                        <button type="button" class="password-toggle" id="signUpPasswordConfirmToggle" aria-label="Toggle confirm password visibility">👁️</button>
+                    </div>
                     <button type="submit" class="auth-submit-btn" id="signUpBtn">Create Account</button>
                 </form>
             </div>
@@ -2303,6 +2309,29 @@
                 saveUserPreferences(true);
             });
             
+            // Password visibility toggles for sign-up
+            document.getElementById('signUpPasswordToggle').addEventListener('click', function() {
+                const passwordInput = document.getElementById('signUpPassword');
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    this.textContent = '👁️‍🗨️';
+                } else {
+                    passwordInput.type = 'password';
+                    this.textContent = '👁️';
+                }
+            });
+
+            document.getElementById('signUpPasswordConfirmToggle').addEventListener('click', function() {
+                const passwordInput = document.getElementById('signUpPasswordConfirm');
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    this.textContent = '👁️‍🗨️';
+                } else {
+                    passwordInput.type = 'password';
+                    this.textContent = '👁️';
+                }
+            });
+
             // Password visibility toggle for sign-in
             document.getElementById('signInPasswordToggle').addEventListener('click', function() {
                 const passwordInput = document.getElementById('signInPassword');
