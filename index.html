@@ -1045,7 +1045,6 @@
                 <a href="#" class="dropdown-item" id="menuAuth">Sign In</a>
                 <a href="#" class="dropdown-item" id="menuAbout">About</a>
                 <a href="#" class="dropdown-item" id="menuLeaveComment">Leave Comment</a>
-                <a href="#" class="dropdown-item" id="menuReviewComments">Review Comments</a>
             </div>
         </div>
 
@@ -2086,11 +2085,6 @@
                 e.preventDefault();
                 toggleDropdown();
                 showCommentsModal();
-            });
-            document.getElementById('menuReviewComments').addEventListener('click', function(e) {
-                e.preventDefault();
-                toggleDropdown();
-                showReviewModal();
             });
             
             document.getElementById('stateInput').addEventListener('keypress', function(e) {
