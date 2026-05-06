@@ -124,23 +124,33 @@ This provides a full audit trail of login frequency and timing per user. Combine
 
 ### Firestore Security Rules
 
-The following rules should be set in the Firebase Console under **Firestore → Rules**:
+The following rules are currently live in the Firebase Console under **Firestore → Rules**:
 
 ```
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // Users can only read and write their own preferences document
-    match /users/{userId} {
-      allow read, write: if request.auth != null && request.auth.uid == userId;
+    // Anyone can read and write comments (open for public feedback)
+    match /comments/{commentId} {
+      allow read, write: if true;
     }
 
-    // Anyone can add a comment; only authenticated users can read all comments
-    match /comments/{commentId} {
-      allow create: if true;
-      allow read: if request.auth != null;
+    // Collaboration collection — signed-in users only
+    match /collaboration/{document=**} {
+      allow read, write: if request.auth != null;
     }
+
+    // Each user can only read and write their own preferences document
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+
+      // Each user can only add entries to their own login history
+      match /loginHistory/{entry} {
+        allow create: if request.auth != null && request.auth.uid == userId;
+      }
+    }
+
   }
 }
 ```
