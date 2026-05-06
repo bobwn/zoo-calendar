@@ -83,6 +83,7 @@ Created when a new user completes account registration. Each document is keyed b
 | `email` | string | User's email address |
 | `uid` | string | Firebase Auth UID |
 | `interests` | array | List of selected interest tags (see below) |
+| `otherInterests` | string | Free-text field for interests not covered by the preset list (empty string if skipped) |
 | `preferencesSet` | boolean | `true` if user selected interests; `false` if skipped |
 | `createdAt` | timestamp | Account creation time |
 | `updatedAt` | timestamp | Last preferences update time |
