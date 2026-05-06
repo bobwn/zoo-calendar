@@ -87,6 +87,28 @@ Created when a new user completes account registration. Each document is keyed b
 | `createdAt` | timestamp | Account creation time |
 | `updatedAt` | timestamp | Last preferences update time |
 
+Two additional fields are written on every sign-in (merged, not overwritten):
+
+| Field | Type | Description |
+|---|---|
+| `loginCount` | number | Running total of all sign-ins |
+| `lastLoginAt` | timestamp | Time of the most recent sign-in |
+
+#### `users/{uid}/loginHistory` subcollection
+
+A new document is added to this subcollection every time the user signs in. Each document is auto-ID'd and contains:
+
+| Field | Type | Description |
+|---|---|---|
+| `timestamp` | timestamp | Server time of the login event |
+| `userAgent` | string | Browser and device information |
+
+This provides a full audit trail of login frequency and timing per user. Combined with `loginCount` on the parent document, you can query both summary stats and the full history.
+
+**Note:** Login events are recorded only on fresh sign-ins, not on page-load session restores (i.e., when a user returns to the site while already logged in from a previous session).
+
+---
+
 **Interest tags** (values stored in the `interests` array):
 
 | Tag | Label |

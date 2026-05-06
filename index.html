@@ -1561,12 +1561,48 @@
         }
 
         // Authentication state management
+        // Track whether this is the initial page load auth restore vs. a fresh sign-in
+        let _authInitialized = false;
+
         function setupAuthStateListener() {
-            firebase.auth().onAuthStateChanged(function(user) {
+            firebase.auth().onAuthStateChanged(async function(user) {
+                const wasPreviouslyNull = currentUser === null;
                 currentUser = user;
                 updateUIForAuthState(user);
                 console.log('Auth state changed:', user ? user.email : 'Not signed in');
+
+                // Record a login event only on a fresh sign-in (not on page-load session restore)
+                if (user && _authInitialized) {
+                    await recordLoginEvent(user);
+                }
+
+                _authInitialized = true;
             });
+        }
+
+        async function recordLoginEvent(user) {
+            try {
+                const userRef = db.collection('users').doc(user.uid);
+                const loginRef = userRef.collection('loginHistory').doc();
+
+                // Add a login history entry
+                await loginRef.set({
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                    userAgent: navigator.userAgent
+                });
+
+                // Increment loginCount on the user document (merge so it doesn't overwrite)
+                await userRef.set({
+                    loginCount: firebase.firestore.FieldValue.increment(1),
+                    lastLoginAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    email: user.email,
+                    uid: user.uid
+                }, { merge: true });
+
+                console.log('Login event recorded for:', user.email);
+            } catch (e) {
+                console.error('Failed to record login event:', e);
+            }
         }
 
         function updateUIForAuthState(user) {
