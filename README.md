@@ -132,9 +132,13 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // Anyone can read and write comments (open for public feedback)
+    // Anyone can submit a comment, but only signed-in users can read them.
+    // This prevents unauthenticated users from harvesting user email addresses.
+    // Update and delete are explicitly blocked from the browser.
     match /comments/{commentId} {
-      allow read, write: if true;
+      allow create: if true;
+      allow read: if request.auth != null;
+      allow update, delete: if false;
     }
 
     // Collaboration collection — signed-in users only
