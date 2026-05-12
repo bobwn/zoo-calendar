@@ -1576,7 +1576,7 @@
                 console.log("Attempting to send reset email to:", email);
                 await firebase.auth().sendPasswordResetEmail(email);
                 console.log("Firebase sendPasswordResetEmail completed successfully");
-                showAuthError('Password reset email sent! Check your inbox.');
+                showAuthError('Password reset email sent! Check your inbox — if you don\'t see it within a few minutes, please check your spam or junk folder.');
             } catch (error) {
                 console.error('Password reset error:', error);
                 console.error('Error code:', error.code);
