@@ -1941,8 +1941,8 @@
                     firstTile.element.remove();
                 }
                 
-                // Add new tile
-                tilesContainer.appendChild(tile);
+                // Add new tile at the top so latest results appear first
+                tilesContainer.prepend(tile);
                 currentTiles.push({ state: normalizedSearch, element: tile });
                 
                 // Show the clear button if we have tiles
@@ -1983,8 +1983,8 @@
                         firstTile.element.remove();
                     }
                     
-                    // Add new tile
-                    tilesContainer.appendChild(tile);
+                    // Add new tile at the top so latest results appear first
+                    tilesContainer.prepend(tile);
                     currentTiles.push({ state: state, element: tile });
                     
                     // Show the clear button if we have tiles
