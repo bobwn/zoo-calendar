@@ -1340,6 +1340,16 @@
                     <a id="skipPreferencesLink">Skip for now</a>
                 </div>
             </div>
+
+            <!-- Step 3: Email Verification Notice -->
+            <div class="preferences-step" id="verificationNoticeStep">
+                <div class="sign-in-header">
+                    <h2>Check your email! 📬</h2>
+                </div>
+                <p class="preferences-intro" id="verificationEmailText">We sent a verification link to your email address. Please click the link to activate your account.</p>
+                <p class="preferences-intro" style="font-size:0.85rem; color:#666;">Don't see it? Check your <strong>spam or junk folder</strong>. Once verified, come back and sign in.</p>
+                <button class="auth-submit-btn" id="verificationDoneBtn">OK, I'll verify now</button>
+            </div>
         </div>
     </div>
 
@@ -1424,7 +1434,37 @@
             
             try {
                 const userCredential = await firebase.auth().signInWithEmailAndPassword(email, password);
-                currentUser = userCredential.user;
+                const user = userCredential.user;
+
+                // Block sign-in if email is not verified
+                if (!user.emailVerified) {
+                    await firebase.auth().signOut();
+                    showAuthError(
+                        'Please verify your email before signing in. ' +
+                        '<a href="#" id="resendVerificationLink" style="color:#2d5a3d;font-weight:bold;">Resend verification email</a>'
+                    );
+                    // Attach resend handler
+                    setTimeout(function() {
+                        const link = document.getElementById('resendVerificationLink');
+                        if (link) {
+                            link.addEventListener('click', async function(ev) {
+                                ev.preventDefault();
+                                try {
+                                    // Re-sign in briefly to get the user object, then send verification
+                                    const cred = await firebase.auth().signInWithEmailAndPassword(email, password);
+                                    await cred.user.sendEmailVerification();
+                                    await firebase.auth().signOut();
+                                    showAuthError('Verification email resent! Check your inbox and spam folder.');
+                                } catch(err) {
+                                    showAuthError('Could not resend email. Please try again.');
+                                }
+                            });
+                        }
+                    }, 100);
+                    return;
+                }
+
+                currentUser = user;
                 updateUIForAuthState(currentUser);
                 showMessage('Successfully signed in!', false);
                 hideSignInModal();
@@ -1483,15 +1523,22 @@
             try {
                 const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
                 currentUser = userCredential.user;
-                updateUIForAuthState(currentUser);
+
+                // Send verification email before anything else
+                await currentUser.sendEmailVerification();
 
                 // Clear form
                 document.getElementById('signUpEmail').value = '';
                 document.getElementById('signUpPassword').value = '';
                 document.getElementById('signUpPasswordConfirm').value = '';
 
-                // Show preferences step instead of closing
-                showPreferencesStep();
+                // Sign them out immediately — they must verify before using the app
+                await firebase.auth().signOut();
+                currentUser = null;
+                updateUIForAuthState(null);
+
+                // Show verification notice
+                showVerificationNotice(email);
             } catch (error) {
                 console.error('Sign up error:', error);
                 let errorMessage = 'Account creation failed. Please try again.';
@@ -1512,6 +1559,18 @@
         }
 
         // ── Preferences Step ─────────────────────────
+        function showVerificationNotice(email) {
+            document.querySelector('.sign-in-benefits').style.display = 'none';
+            document.querySelector('.custom-auth-form').style.display = 'none';
+            document.getElementById('preferencesStep').classList.remove('active');
+            const notice = document.getElementById('verificationNoticeStep');
+            notice.classList.add('active');
+            if (email) {
+                document.getElementById('verificationEmailText').textContent =
+                    'We sent a verification link to ' + email + '. Please click the link to activate your account.';
+            }
+        }
+
         function showPreferencesStep() {
             // Hide auth form panels, show preferences
             document.querySelector('.sign-in-benefits').style.display = 'none';
@@ -2311,6 +2370,11 @@
             });
             document.getElementById('skipPreferencesLink').addEventListener('click', function() {
                 saveUserPreferences(true);
+            });
+            document.getElementById('verificationDoneBtn').addEventListener('click', function() {
+                hideSignInModal();
+                // Reset verification notice for next open
+                document.getElementById('verificationNoticeStep').classList.remove('active');
             });
             
             // Password visibility toggles for sign-up
